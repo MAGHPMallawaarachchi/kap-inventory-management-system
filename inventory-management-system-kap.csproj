@@ -130,6 +130,9 @@
     <EmbeddedResource Include="Views\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\HomeView.resx">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\InventoryView.resx">
       <DependentUpon>InventoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +204,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\icons\AddCircl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Revenue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Cost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\profit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

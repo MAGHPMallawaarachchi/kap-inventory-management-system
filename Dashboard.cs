@@ -20,7 +20,7 @@ namespace inventory_management_system_kap
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            openChildForm(new Views.HomeView(), btnHome);
         }
 
         private Form activeForm = null;
@@ -65,7 +65,7 @@ namespace inventory_management_system_kap
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new Views.HomeView(), btnHome);
         }
     }
 }
