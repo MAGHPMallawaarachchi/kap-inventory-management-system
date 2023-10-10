@@ -23,4 +23,3 @@
 
 ## Contributors
 
-- [Dilantha Wijesinghe](https://github.com/Dilantha-Wijesinghe)
