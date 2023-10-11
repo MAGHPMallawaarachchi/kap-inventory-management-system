@@ -93,5 +93,12 @@ namespace inventory_management_system_kap.Views
                 e.FormattingApplied = true;
             }
         }
+
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = txtSearchBar.Text.Trim();
+            IEnumerable<InvoiceModel> filteredInvoices = invoiceController.SearchInvoice(searchValue);
+            dgvInvoices.DataSource = filteredInvoices.ToList();
+        }
     }
 }
