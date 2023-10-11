@@ -19,7 +19,7 @@
 
 ## Getting Started
 - Set up Guna UI
-  - [Download Guna UI](https://drive.google.com/file/d/1lcWOpMqsX01QQJhS61OPAc331NHS08If/view?usp=sharing)
+  - [Download Guna UI](https://drive.google.com/file/d/1uAN3Lfbbp0MzX3w8kOnbquOt63q4aJpc/view?usp=sharing)
   - [Watch me](https://www.youtube.com/watch?v=jRxSL8d58Cc)
     
 - Connect to SQL Server by setting up the connection string
