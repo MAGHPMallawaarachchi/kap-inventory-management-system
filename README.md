@@ -17,9 +17,19 @@
 - Invoicing: Create and manage invoices seamlessly.
 - Intuitive UI: User-friendly interface for effortless navigation and management.
 
+## Getting Started
+- Set up Guna UI
+  - [Download Guna UI](https://drive.google.com/file/d/1lcWOpMqsX01QQJhS61OPAc331NHS08If/view?usp=sharing)
+  - [Watch me](https://www.youtube.com/watch?v=jRxSL8d58Cc)
+    
+- Connect to SQL Server by setting up the connection string
+
+## Other Resources
+- [UI Design](https://www.figma.com/file/CMFhhcSh5INqrDdQhP73eE/Inventory-Management-System-(Copy)?type=design&node-id=0%3A1&mode=design&t=4uGnvlHP1tkAf5YG-1)
+- [Database Design](https://drive.google.com/file/d/106xcOXQBxRzY1_2y-k6aKBhBFpU0MO_o/view?usp=sharing)
+
 ## Commit messages
 
-- We follow conventional commits during our development workflow as a good practice. More information can be found at their official [documentation](https://www.conventionalcommits.org/en/v1.0.0-beta.4/#examples)
+- We follow conventional commits during our development workflow as a good practice. More information can be found here [How to write better git commits](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
 
-## Contributors
 
