@@ -19,23 +19,23 @@ namespace inventory_management_system_kap.Views
     public partial class InvoicesView : Form
     {
         UIHelper UIHelper = new UIHelper();
-        private InvoiceController invoiceController;
+        private InvoiceController controller;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
         private int currentPage = 1;
-        private int itemsPerPage = 2;
+        private int itemsPerPage = 10;
         private int initialRowNumber = 1;
 
         public InvoicesView()
         {
             InitializeComponent();
-            invoiceController = new InvoiceController(new InvoiceRepository(sqlConnectionString));
+            controller = new InvoiceController(new InvoiceRepository(sqlConnectionString));
         }
 
         private void RefreshDataGrid()
         {
             int currentRowNumber = (currentPage - 1) * itemsPerPage + 1;
 
-            IEnumerable<InvoiceModel> invoices = invoiceController.GetAllInvoices(currentPage, itemsPerPage);
+            IEnumerable<InvoiceModel> invoices = controller.GetAllInvoices(currentPage, itemsPerPage);
             var displayedInvoices = invoices.ToList();
 
             dgvInvoices.DataSource = displayedInvoices;
@@ -57,12 +57,7 @@ namespace inventory_management_system_kap.Views
             }
         }
 
-        private bool HasMoreItemsOnPage(int page, int itemsPerPage)
-        {
-            int offset = (page - 1) * itemsPerPage;
-            IEnumerable<InvoiceModel> items = invoiceController.GetAllInvoices(page, itemsPerPage);
-            return items.Any();
-        }
+        
 
         private void InvoicesView_Load(object sender, EventArgs e)
         {
@@ -102,7 +97,7 @@ namespace inventory_management_system_kap.Views
         private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
             string searchValue = txtSearchBar.Text.Trim();
-            IEnumerable<InvoiceModel> filteredInvoices = invoiceController.SearchInvoice(searchValue,currentPage,itemsPerPage);
+            IEnumerable<InvoiceModel> filteredInvoices = controller.SearchInvoice(searchValue,currentPage,itemsPerPage);
             dgvInvoices.DataSource = filteredInvoices.ToList();
         }
 
@@ -120,7 +115,7 @@ namespace inventory_management_system_kap.Views
         {
             int nextPage = currentPage + 1;
 
-            if (HasMoreItemsOnPage(nextPage, itemsPerPage))
+            if (controller.HasMoreItemsOnPage(nextPage, itemsPerPage))
             {
                 currentPage = nextPage;
                 RefreshDataGrid();

@@ -40,5 +40,10 @@ namespace inventory_management_system_kap.Controllers
             }
         }
 
+        public bool HasMoreItemsOnPage(int page, int itemsPerPage)
+        {
+            IEnumerable<InvoiceModel> items = GetAllInvoices(page, itemsPerPage);
+            return items.Any();
+        }
     }
 }
