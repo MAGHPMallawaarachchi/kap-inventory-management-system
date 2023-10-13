@@ -216,5 +216,17 @@
   <ItemGroup>
     <None Include="assets\icons\profit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Edit-table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Delete-table.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
