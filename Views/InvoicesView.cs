@@ -33,20 +33,40 @@ namespace inventory_management_system_kap.Views
 
         private void RefreshDataGrid()
         {
+            dgvInvoices.AutoGenerateColumns = false;
+            dgvInvoices.ColumnCount = 8;
+
             int currentRowNumber = (currentPage - 1) * itemsPerPage + 1;
 
             IEnumerable<InvoiceModel> invoices = controller.GetAllInvoices(currentPage, itemsPerPage);
             var displayedInvoices = invoices.ToList();
 
+            dgvInvoices.Columns[1].DataPropertyName = "InvoiceNo";
+            dgvInvoices.Columns[2].DataPropertyName = "CustomerId";
+            dgvInvoices.Columns[3].DataPropertyName = "Date";
+            dgvInvoices.Columns[4].DataPropertyName = "DueDate";
+            dgvInvoices.Columns[5].DataPropertyName = "PaymentType";
+            dgvInvoices.Columns[6].DataPropertyName = "TotalAmount";
+            dgvInvoices.Columns[7].DataPropertyName = "PaymentStatus";
+            AddPaymentStatusImageColumn();
+
             dgvInvoices.DataSource = displayedInvoices;
             lblPageNumber.Text = "Page " + currentPage;
 
-            dgvInvoices.Columns["InvoiceNo"].HeaderText = "Invoice No";
-            dgvInvoices.Columns["CustomerId"].HeaderText = "Customer ID";
-            dgvInvoices.Columns["DueDate"].HeaderText = "Due Date";
-            dgvInvoices.Columns["PaymentType"].HeaderText = "Payment Type";
-            dgvInvoices.Columns["TotalAmount"].HeaderText = "Total Amount";
-            dgvInvoices.Columns["PaymentStatus"].HeaderText = "Payment Satus";
+            dgvInvoices.Columns[1].HeaderText = "Invoice No";
+            dgvInvoices.Columns[2].HeaderText = "Customer ID";
+            dgvInvoices.Columns[3].HeaderText = "Date";
+            dgvInvoices.Columns[4].HeaderText = "Due Date";
+            dgvInvoices.Columns[5].HeaderText = "Payment Type";
+            dgvInvoices.Columns[6].HeaderText = "Total Amount";
+            dgvInvoices.Columns[7].HeaderText = "Status";
+
+            dgvInvoices.Columns[2].Width = 150;
+            dgvInvoices.Columns[6].Width = 100;
+            dgvInvoices.Columns[0].Width = 70;
+            dgvInvoices.Columns[7].Width = 50;
+
+            dgvInvoices.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             initialRowNumber = currentRowNumber;
 
@@ -54,17 +74,25 @@ namespace inventory_management_system_kap.Views
             {
                 row.Cells["number"].Value = currentRowNumber;
                 currentRowNumber++;
-            }
+            }        
+
         }
 
-        
+        private void AddPaymentStatusImageColumn()
+        {
+            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+            imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            imageColumn.DefaultCellStyle.Padding = new Padding(15, 15, 15, 15);
+            imageColumn.HeaderText = "";
+            dgvInvoices.Columns.Insert(8,imageColumn);
+        }
 
         private void InvoicesView_Load(object sender, EventArgs e)
         {
             UIHelper.UpdatePanelRegion(pnlInvoices);
             dgvInvoices.ClearSelection();
-            RefreshDataGrid();
-
+            
+            RefreshDataGrid(); 
             dgvInvoices.DataBindingComplete += dgvInvoices_DataBindingComplete;
         }
 
@@ -75,7 +103,7 @@ namespace inventory_management_system_kap.Views
 
         private void dgvInvoices_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == dgvInvoices.Columns["TotalAmount"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvInvoices.Columns[6].Index && e.RowIndex >= 0)
             {
                 if (e.Value is decimal totalAmount)
                 {
@@ -84,12 +112,29 @@ namespace inventory_management_system_kap.Views
                 }
             }
 
-            if (e.ColumnIndex == dgvInvoices.Columns["InvoiceNo"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvInvoices.Columns[1].Index && e.RowIndex >= 0)
             {
                 if (e.Value is int InvoiceNo)
                 {
                     e.Value = "KAP-" + InvoiceNo.ToString("D6");
                     e.FormattingApplied = true;
+                }
+            }
+
+            if (e.ColumnIndex == dgvInvoices.Columns[8].Index && e.RowIndex >= 0)
+            {
+                if (dgvInvoices[7, e.RowIndex].Value is string paymentStatus)
+                {
+                    if (paymentStatus.Equals("pending", StringComparison.OrdinalIgnoreCase))
+                    {
+                        e.Value = Properties.Resources.orange_icon;
+                        e.FormattingApplied = true;
+                    }
+                    else
+                    {
+                        e.Value = Properties.Resources.green_icon;
+                        e.FormattingApplied = true;
+                    }
                 }
             }
         }

@@ -213,5 +213,11 @@
   <ItemGroup>
     <None Include="assets\icons\profit.png" />
   </ItemGroup>
+<ItemGroup>
+  <None Include="assets\icons\green-icon.png" />
+</ItemGroup>
+<ItemGroup>
+  <None Include="assets\icons\orange-icon.png" />
+</ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
