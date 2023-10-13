@@ -34,39 +34,14 @@ namespace inventory_management_system_kap.Views
         private void RefreshDataGrid()
         {
             dgvInvoices.AutoGenerateColumns = false;
-            dgvInvoices.ColumnCount = 8;
+            dgvInvoices.ColumnCount = 9;
 
             int currentRowNumber = (currentPage - 1) * itemsPerPage + 1;
 
             IEnumerable<InvoiceModel> invoices = controller.GetAllInvoices(currentPage, itemsPerPage);
             var displayedInvoices = invoices.ToList();
-
-            dgvInvoices.Columns[1].DataPropertyName = "InvoiceNo";
-            dgvInvoices.Columns[2].DataPropertyName = "CustomerId";
-            dgvInvoices.Columns[3].DataPropertyName = "Date";
-            dgvInvoices.Columns[4].DataPropertyName = "DueDate";
-            dgvInvoices.Columns[5].DataPropertyName = "PaymentType";
-            dgvInvoices.Columns[6].DataPropertyName = "TotalAmount";
-            dgvInvoices.Columns[7].DataPropertyName = "PaymentStatus";
-            AddPaymentStatusImageColumn();
-
             dgvInvoices.DataSource = displayedInvoices;
             lblPageNumber.Text = "Page " + currentPage;
-
-            dgvInvoices.Columns[1].HeaderText = "Invoice No";
-            dgvInvoices.Columns[2].HeaderText = "Customer ID";
-            dgvInvoices.Columns[3].HeaderText = "Date";
-            dgvInvoices.Columns[4].HeaderText = "Due Date";
-            dgvInvoices.Columns[5].HeaderText = "Payment Type";
-            dgvInvoices.Columns[6].HeaderText = "Total Amount";
-            dgvInvoices.Columns[7].HeaderText = "Status";
-
-            dgvInvoices.Columns[2].Width = 150;
-            dgvInvoices.Columns[6].Width = 100;
-            dgvInvoices.Columns[0].Width = 70;
-            dgvInvoices.Columns[7].Width = 50;
-
-            dgvInvoices.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             initialRowNumber = currentRowNumber;
 
@@ -76,15 +51,6 @@ namespace inventory_management_system_kap.Views
                 currentRowNumber++;
             }        
 
-        }
-
-        private void AddPaymentStatusImageColumn()
-        {
-            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
-            imageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            imageColumn.DefaultCellStyle.Padding = new Padding(15, 15, 15, 15);
-            imageColumn.HeaderText = "";
-            dgvInvoices.Columns.Insert(8,imageColumn);
         }
 
         private void InvoicesView_Load(object sender, EventArgs e)

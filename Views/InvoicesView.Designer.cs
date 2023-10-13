@@ -46,6 +46,14 @@
             this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddInvoice = new Guna.UI2.WinForms.Guna2Button();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaymentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaymentStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaymentStatusImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnlChildForm.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -233,7 +241,15 @@
             this.dgvInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInvoices.ColumnHeadersHeight = 30;
             this.dgvInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.number});
+            this.number,
+            this.InvoiceNo,
+            this.CustomerId,
+            this.Date,
+            this.DueDate,
+            this.PaymentType,
+            this.TotalAmount,
+            this.PaymentStatus,
+            this.PaymentStatusImage});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Inter", 10F);
@@ -246,7 +262,7 @@
             this.dgvInvoices.EnableHeadersVisualStyles = false;
             this.dgvInvoices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
             this.dgvInvoices.Location = new System.Drawing.Point(0, 44);
-            this.dgvInvoices.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
+            this.dgvInvoices.Margin = new System.Windows.Forms.Padding(0, 15, 20, 0);
             this.dgvInvoices.Name = "dgvInvoices";
             this.dgvInvoices.ReadOnly = true;
             this.dgvInvoices.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -255,7 +271,7 @@
             this.dgvInvoices.RowHeadersWidth = 51;
             this.dgvInvoices.RowTemplate.Height = 50;
             this.dgvInvoices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInvoices.Size = new System.Drawing.Size(1024, 500);
+            this.dgvInvoices.Size = new System.Drawing.Size(1004, 500);
             this.dgvInvoices.TabIndex = 2;
             this.dgvInvoices.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Dark;
             this.dgvInvoices.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.Empty;
@@ -366,9 +382,73 @@
             // 
             // number
             // 
+            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.number.HeaderText = "No.";
             this.number.Name = "number";
             this.number.ReadOnly = true;
+            this.number.Width = 53;
+            // 
+            // InvoiceNo
+            // 
+            this.InvoiceNo.DataPropertyName = "InvoiceNo";
+            this.InvoiceNo.HeaderText = "Invoice No";
+            this.InvoiceNo.Name = "InvoiceNo";
+            this.InvoiceNo.ReadOnly = true;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.DataPropertyName = "CustomerId";
+            this.CustomerId.HeaderText = "Customer ID";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // DueDate
+            // 
+            this.DueDate.DataPropertyName = "DueDate";
+            this.DueDate.HeaderText = "DueDate";
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            // 
+            // PaymentType
+            // 
+            this.PaymentType.DataPropertyName = "PaymentType";
+            this.PaymentType.HeaderText = "Payment Type";
+            this.PaymentType.Name = "PaymentType";
+            this.PaymentType.ReadOnly = true;
+            // 
+            // TotalAmount
+            // 
+            this.TotalAmount.DataPropertyName = "TotalAmount";
+            this.TotalAmount.HeaderText = "Total Amount";
+            this.TotalAmount.Name = "TotalAmount";
+            this.TotalAmount.ReadOnly = true;
+            // 
+            // PaymentStatus
+            // 
+            this.PaymentStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PaymentStatus.DataPropertyName = "PaymentStatus";
+            this.PaymentStatus.HeaderText = "Status";
+            this.PaymentStatus.Name = "PaymentStatus";
+            this.PaymentStatus.ReadOnly = true;
+            this.PaymentStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PaymentStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PaymentStatus.Width = 53;
+            // 
+            // PaymentStatusImage
+            // 
+            this.PaymentStatusImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.PaymentStatusImage.HeaderText = "";
+            this.PaymentStatusImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.PaymentStatusImage.Name = "PaymentStatusImage";
+            this.PaymentStatusImage.ReadOnly = true;
+            this.PaymentStatusImage.Width = 16;
             // 
             // InvoicesView
             // 
@@ -410,5 +490,13 @@
         private Guna.UI2.WinForms.Guna2Button btnAddInvoice;
         private Guna.UI2.WinForms.Guna2DataGridView dgvInvoices;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaymentType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaymentStatus;
+        private System.Windows.Forms.DataGridViewImageColumn PaymentStatusImage;
     }
 }
