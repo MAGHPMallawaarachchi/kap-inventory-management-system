@@ -12,12 +12,12 @@ namespace inventory_management_system_kap.Models
         private string name;
         private string address;
         private string city;
-        private int contactNo;
+        private string contactNo;
 
         public string CustomerId { get => customerId; set => customerId = value; }
         public string Name { get => name; set => name = value; }
         public string Address { get => address; set => address = value; }
         public string City { get => city; set => city = value; }
-        public int ContactNo { get => contactNo; set => contactNo = value; }
+        public string ContactNo { get => contactNo; set => contactNo = value; }
     }
 }
