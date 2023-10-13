@@ -17,25 +17,26 @@ namespace inventory_management_system_kap.Controllers
             this._invoiceRepository = repository;
         }
 
-        public IEnumerable<InvoiceModel> GetAllInvoices()
+        public IEnumerable<InvoiceModel> GetAllInvoices(int page, int itemsPerPage)
         {
-            return _invoiceRepository.GetAll();
+            return _invoiceRepository.GetAll(page, itemsPerPage);
         }
 
-        public IEnumerable<InvoiceModel> GetInvoiceByValue(string value)
+
+        public IEnumerable<InvoiceModel> GetInvoiceByValue(string value, int page, int itemsPerPage)
         {
-            return _invoiceRepository.GetByValue(value);
+            return _invoiceRepository.GetByValue(value, page, itemsPerPage);
         }
 
-        public IEnumerable<InvoiceModel> SearchInvoice(string value)
+        public IEnumerable<InvoiceModel> SearchInvoice(string value, int page, int itemsPerPage)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                return GetAllInvoices();
+                return GetAllInvoices(page, itemsPerPage);
             }
             else
             {
-                return GetInvoiceByValue(value);
+                return GetInvoiceByValue(value, page, itemsPerPage);
             }
         }
 

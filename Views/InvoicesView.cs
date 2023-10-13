@@ -21,7 +21,9 @@ namespace inventory_management_system_kap.Views
         UIHelper UIHelper = new UIHelper();
         private InvoiceController invoiceController;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
-
+        private int currentPage = 1;
+        private int itemsPerPage = 2;
+        private int initialRowNumber = 1;
 
         public InvoicesView()
         {
@@ -29,34 +31,16 @@ namespace inventory_management_system_kap.Views
             invoiceController = new InvoiceController(new InvoiceRepository(sqlConnectionString));
         }
 
-        private void InvoicesView_Load(object sender, EventArgs e)
+        private void RefreshDataGrid()
         {
-            UIHelper.UpdatePanelRegion(pnlInvoices);
-            dgvInvoices.ClearSelection();
-            GetAllInvoices();
-        }
+            int currentRowNumber = (currentPage - 1) * itemsPerPage + 1;
 
-        private void pnlInvoices_SizeChanged(object sender, EventArgs e)
-        {
-            UIHelper.UpdatePanelRegion(pnlInvoices);
-        }
+            IEnumerable<InvoiceModel> invoices = invoiceController.GetAllInvoices(currentPage, itemsPerPage);
+            var displayedInvoices = invoices.ToList();
 
-        private void btnAddInvoice_Click(object sender, EventArgs e)
-        {
-            AddInvoiceView addInvoiceForm = new AddInvoiceView();
-            addInvoiceForm.TopLevel = false;
-            addInvoiceForm.FormBorderStyle = FormBorderStyle.None;
-            addInvoiceForm.Dock = DockStyle.Fill;
-            pnlChildForm.Controls.Add(addInvoiceForm);
-            pnlChildForm.Tag = addInvoiceForm;
-            addInvoiceForm.BringToFront();
-            addInvoiceForm.Show();
-        }
+            dgvInvoices.DataSource = displayedInvoices;
+            lblPageNumber.Text = "Page " + currentPage;
 
-        private void GetAllInvoices()
-        {
-            IEnumerable<InvoiceModel> invoices = invoiceController.GetAllInvoices();
-            dgvInvoices.DataSource = invoices.ToList();
             dgvInvoices.Columns["InvoiceNo"].HeaderText = "Invoice No";
             dgvInvoices.Columns["CustomerId"].HeaderText = "Customer ID";
             dgvInvoices.Columns["DueDate"].HeaderText = "Due Date";
@@ -64,7 +48,34 @@ namespace inventory_management_system_kap.Views
             dgvInvoices.Columns["TotalAmount"].HeaderText = "Total Amount";
             dgvInvoices.Columns["PaymentStatus"].HeaderText = "Payment Satus";
 
-            
+            initialRowNumber = currentRowNumber;
+
+            foreach (DataGridViewRow row in dgvInvoices.Rows)
+            {
+                row.Cells["number"].Value = currentRowNumber;
+                currentRowNumber++;
+            }
+        }
+
+        private bool HasMoreItemsOnPage(int page, int itemsPerPage)
+        {
+            int offset = (page - 1) * itemsPerPage;
+            IEnumerable<InvoiceModel> items = invoiceController.GetAllInvoices(page, itemsPerPage);
+            return items.Any();
+        }
+
+        private void InvoicesView_Load(object sender, EventArgs e)
+        {
+            UIHelper.UpdatePanelRegion(pnlInvoices);
+            dgvInvoices.ClearSelection();
+            RefreshDataGrid();
+
+            dgvInvoices.DataBindingComplete += dgvInvoices_DataBindingComplete;
+        }
+
+        private void pnlInvoices_SizeChanged(object sender, EventArgs e)
+        {
+            UIHelper.UpdatePanelRegion(pnlInvoices);
         }
 
         private void dgvInvoices_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -86,19 +97,60 @@ namespace inventory_management_system_kap.Views
                     e.FormattingApplied = true;
                 }
             }
-
-            if (e.ColumnIndex == dgvInvoices.Columns["number"].Index && e.RowIndex >= 0)
-            {
-                e.Value = (e.RowIndex + 1).ToString();
-                e.FormattingApplied = true;
-            }
         }
 
         private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
             string searchValue = txtSearchBar.Text.Trim();
-            IEnumerable<InvoiceModel> filteredInvoices = invoiceController.SearchInvoice(searchValue);
+            IEnumerable<InvoiceModel> filteredInvoices = invoiceController.SearchInvoice(searchValue,currentPage,itemsPerPage);
             dgvInvoices.DataSource = filteredInvoices.ToList();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                RefreshDataGrid();
+                btnNext.Enabled = true;
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int nextPage = currentPage + 1;
+
+            if (HasMoreItemsOnPage(nextPage, itemsPerPage))
+            {
+                currentPage = nextPage;
+                RefreshDataGrid();
+            }
+            else
+            {
+                btnNext.Enabled = false;
+            }
+        }
+
+        private void dgvInvoices_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            int currentRowNumber = initialRowNumber;
+            foreach (DataGridViewRow row in dgvInvoices.Rows)
+            {
+                row.Cells["number"].Value = currentRowNumber;
+                currentRowNumber++;
+            }
+        }
+
+        private void btnAddInvoice_Click(object sender, EventArgs e)
+        {
+            AddInvoiceView addInvoiceForm = new AddInvoiceView();
+            addInvoiceForm.TopLevel = false;
+            addInvoiceForm.FormBorderStyle = FormBorderStyle.None;
+            addInvoiceForm.Dock = DockStyle.Fill;
+            pnlChildForm.Controls.Add(addInvoiceForm);
+            pnlChildForm.Tag = addInvoiceForm;
+            addInvoiceForm.BringToFront();
+            addInvoiceForm.Show();
         }
     }
 }
