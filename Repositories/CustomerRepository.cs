@@ -53,7 +53,8 @@ namespace inventory_management_system_kap.Repositories
         public IEnumerable<CustomerModel> GetAll(int page, int itemsPerPage)
         {
             int offset = (page - 1) * itemsPerPage;
-            string query = "SELECT * FROM Customer" +
+            string query = "SELECT * FROM Customer " +
+                           "ORDER BY CustomerId desc " +
                            "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
 
             var parameters = new Dictionary<string, object>
@@ -67,17 +68,20 @@ namespace inventory_management_system_kap.Repositories
 
         public IEnumerable<CustomerModel> GetByValue(string value, int page, int itemsPerPage)
         {
-           
+
             string CustomerId = value;
             int offset = (page - 1) * itemsPerPage;
 
             string query = "SELECT * FROM Customer " +
-                           "WHERE (CustomerId LIKE @CustomerId+'%') " +
-                           $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY";
+                           "WHERE CustomerId LIKE @CustomerId + '%' " +
+                           "ORDER BY CustomerId desc " +
+                           "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
 
             var parameters = new Dictionary<string, object>
         {
-            { "@CustomerId", CustomerId }
+            { "@CustomerId", CustomerId },
+            { "@Offset", offset },
+            { "@ItemsPerPage", itemsPerPage }
         };
 
             return GetCustomers(query, parameters);
