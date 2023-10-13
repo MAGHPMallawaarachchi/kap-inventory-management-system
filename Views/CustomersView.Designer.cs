@@ -282,7 +282,10 @@
             this.dgvCustomers.ThemeStyle.RowsStyle.Height = 50;
             this.dgvCustomers.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.dgvCustomers.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             this.dgvCustomers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCustomers_CellFormatting);
+            this.dgvCustomers.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellMouseEnter);
+            this.dgvCustomers.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellMouseLeave);
             this.dgvCustomers.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvCustomers_DataBindingComplete);
             // 
             // dataGridViewImageColumn1
@@ -402,11 +405,13 @@
             // 
             // customerId
             // 
+            this.customerId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.customerId.DataPropertyName = "CustomerId";
             this.customerId.FillWeight = 101.963F;
             this.customerId.HeaderText = "Customer ID";
             this.customerId.Name = "customerId";
             this.customerId.ReadOnly = true;
+            this.customerId.Width = 111;
             // 
             // name
             // 

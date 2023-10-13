@@ -116,5 +116,39 @@ namespace inventory_management_system_kap.Views
                 btnNext.Enabled = false;
             }
         }
+
+        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 && e.ColumnIndex == dgvCustomers.Columns["edit"].Index)
+            {
+
+            }
+
+            if(e.RowIndex >= 0 && e.ColumnIndex == dgvCustomers.Columns["delete"].Index)
+            {
+
+            }
+        }
+
+        private void dgvCustomers_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == dgvCustomers.Columns["edit"].Index ||
+                    e.ColumnIndex == dgvCustomers.Columns["delete"].Index)
+                {
+                    dgvCustomers.Cursor = Cursors.Hand;
+                }
+                else
+                {
+                    dgvCustomers.Cursor = Cursors.Default;
+                }
+            }
+        }
+
+        private void dgvCustomers_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        { 
+            dgvCustomers.Cursor = Cursors.Default;
+        }
     }
 }
