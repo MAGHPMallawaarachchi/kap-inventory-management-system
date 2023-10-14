@@ -45,6 +45,22 @@ namespace inventory_management_system_kap.Controllers
             IEnumerable<CustomerModel> items = GetAllCustomers(page, itemsPerPage);
             return items.Any();
         }
-    }
 
+        public IEnumerable<string> GetCities()
+        {
+            return _customerRepository.GetUniqueCities();
+        }
+
+        public IEnumerable<CustomerModel> FilterCustomers(string city, int page, int itemsPerPage)
+        {
+            if (city == null)
+            {
+                return _customerRepository.GetAll(page, itemsPerPage);
+            }
+            else
+            {
+                return _customerRepository.FilterCustomers(city, page, itemsPerPage);
+            }
+        }
+    }
 }

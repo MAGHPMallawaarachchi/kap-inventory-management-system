@@ -58,10 +58,10 @@ namespace inventory_management_system_kap.Repositories
                            "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
 
             var parameters = new Dictionary<string, object>
-        {
-            { "@Offset", offset },
-            { "@ItemsPerPage", itemsPerPage }
-        };
+            {
+                { "@Offset", offset },
+                { "@ItemsPerPage", itemsPerPage }
+            };
 
             return GetCustomers(query, parameters);
         }
@@ -78,16 +78,58 @@ namespace inventory_management_system_kap.Repositories
                            "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
 
             var parameters = new Dictionary<string, object>
-        {
-            { "@CustomerId", CustomerId },
-            { "@Offset", offset },
-            { "@ItemsPerPage", itemsPerPage }
-        };
+            {
+                { "@CustomerId", CustomerId },
+                { "@Offset", offset },
+                { "@ItemsPerPage", itemsPerPage }
+            };
 
             return GetCustomers(query, parameters);
         }
+
+        public IEnumerable<string> GetUniqueCities()
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT DISTINCT City FROM Customer";
+
+                using (var command = new SqlCommand(query, connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    var cities = new List<string>();
+
+                    while (reader.Read())
+                    {
+                        string city = reader["City"].ToString();
+                        cities.Add(city);
+                    }
+
+                    return cities;
+                }
+            }
+        }
+
+        public IEnumerable<CustomerModel> FilterCustomers(string city, int page, int itemsPerPage)
+        {
+            int offset = (page - 1) * itemsPerPage;
+
+            string query = "SELECT * FROM Customer WHERE 1 = 1 ";
+
+            var parameters = new Dictionary<string, object>();
+
+            if (!string.IsNullOrEmpty(city))
+            {
+                query += " AND City LIKE @City + '%' ";
+                parameters.Add("@City", city);
+            }
+
+            query += " ORDER BY CustomerId DESC " +
+                     $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY ";
+
+            return GetCustomers(query, parameters);
+        }
+
     }
-
-
-
 }

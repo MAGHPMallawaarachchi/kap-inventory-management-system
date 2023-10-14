@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomersView));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -41,12 +42,12 @@
             this.pnlCustomers = new System.Windows.Forms.Panel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtSearchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblCustomersHeading = new System.Windows.Forms.Label();
-            this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
-            this.btnAddCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.dgvCustomers = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtSearchBar = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAddCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -201,41 +202,6 @@
             this.tableLayoutPanel14.Size = new System.Drawing.Size(1024, 29);
             this.tableLayoutPanel14.TabIndex = 1;
             // 
-            // txtSearchBar
-            // 
-            this.txtSearchBar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtSearchBar.BorderRadius = 6;
-            this.txtSearchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearchBar.DefaultText = "";
-            this.txtSearchBar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearchBar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearchBar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearchBar.DisabledState.Parent = this.txtSearchBar;
-            this.txtSearchBar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearchBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearchBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtSearchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.txtSearchBar.FocusedState.Parent = this.txtSearchBar;
-            this.txtSearchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.txtSearchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.txtSearchBar.HoverState.Parent = this.txtSearchBar;
-            this.txtSearchBar.IconLeft = global::inventory_management_system_kap.Properties.Resources.search;
-            this.txtSearchBar.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.txtSearchBar.IconLeftSize = new System.Drawing.Size(14, 14);
-            this.txtSearchBar.Location = new System.Drawing.Point(512, 0);
-            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.PasswordChar = '\0';
-            this.txtSearchBar.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.txtSearchBar.PlaceholderText = "Search here...";
-            this.txtSearchBar.SelectedText = "";
-            this.txtSearchBar.ShadowDecoration.Parent = this.txtSearchBar;
-            this.txtSearchBar.Size = new System.Drawing.Size(270, 29);
-            this.txtSearchBar.TabIndex = 22;
-            this.txtSearchBar.TextOffset = new System.Drawing.Point(5, 0);
-            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
-            // 
             // lblCustomersHeading
             // 
             this.lblCustomersHeading.AutoSize = true;
@@ -248,53 +214,6 @@
             this.lblCustomersHeading.TabIndex = 2;
             this.lblCustomersHeading.Text = "Customers";
             this.lblCustomersHeading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BorderRadius = 6;
-            this.btnFilter.CheckedState.Parent = this.btnFilter;
-            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFilter.CustomImages.Parent = this.btnFilter;
-            this.btnFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnFilter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.btnFilter.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.btnFilter.HoverState.Parent = this.btnFilter;
-            this.btnFilter.Image = global::inventory_management_system_kap.Properties.Resources.Filter;
-            this.btnFilter.ImageSize = new System.Drawing.Size(14, 14);
-            this.btnFilter.Location = new System.Drawing.Point(794, 0);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.btnFilter.ShadowDecoration.Parent = this.btnFilter;
-            this.btnFilter.Size = new System.Drawing.Size(74, 29);
-            this.btnFilter.TabIndex = 23;
-            this.btnFilter.Text = "Filter";
-            // 
-            // btnAddCustomer
-            // 
-            this.btnAddCustomer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.btnAddCustomer.BorderRadius = 6;
-            this.btnAddCustomer.CheckedState.Parent = this.btnAddCustomer;
-            this.btnAddCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddCustomer.CustomImages.Parent = this.btnAddCustomer;
-            this.btnAddCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAddCustomer.ForeColor = System.Drawing.Color.White;
-            this.btnAddCustomer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.btnAddCustomer.HoverState.Parent = this.btnAddCustomer;
-            this.btnAddCustomer.Image = global::inventory_management_system_kap.Properties.Resources.Add;
-            this.btnAddCustomer.ImageSize = new System.Drawing.Size(14, 14);
-            this.btnAddCustomer.Location = new System.Drawing.Point(878, 0);
-            this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.ShadowDecoration.Parent = this.btnAddCustomer;
-            this.btnAddCustomer.Size = new System.Drawing.Size(141, 29);
-            this.btnAddCustomer.TabIndex = 24;
-            this.btnAddCustomer.Text = "Add Customer";
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // dgvCustomers
             // 
@@ -320,14 +239,14 @@
             this.city,
             this.contactNumber,
             this.edit});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCustomers.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCustomers.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomers.EnableHeadersVisualStyles = false;
             this.dgvCustomers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
@@ -371,9 +290,9 @@
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
-            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            this.dataGridViewImageColumn1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewImageColumn1.FillWeight = 95.59032F;
             this.dataGridViewImageColumn1.HeaderText = "";
             this.dataGridViewImageColumn1.Image = global::inventory_management_system_kap.Properties.Resources.Edit;
@@ -382,6 +301,90 @@
             this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn1.Width = 30;
+            // 
+            // txtSearchBar
+            // 
+            this.txtSearchBar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.txtSearchBar.BorderRadius = 6;
+            this.txtSearchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchBar.DefaultText = "";
+            this.txtSearchBar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearchBar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearchBar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchBar.DisabledState.Parent = this.txtSearchBar;
+            this.txtSearchBar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearchBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.txtSearchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.txtSearchBar.FocusedState.Parent = this.txtSearchBar;
+            this.txtSearchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.txtSearchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.txtSearchBar.HoverState.Parent = this.txtSearchBar;
+            this.txtSearchBar.IconLeft = global::inventory_management_system_kap.Properties.Resources.search;
+            this.txtSearchBar.IconLeftOffset = new System.Drawing.Point(5, 0);
+            this.txtSearchBar.IconLeftSize = new System.Drawing.Size(14, 14);
+            this.txtSearchBar.Location = new System.Drawing.Point(512, 0);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.txtSearchBar.Name = "txtSearchBar";
+            this.txtSearchBar.PasswordChar = '\0';
+            this.txtSearchBar.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.txtSearchBar.PlaceholderText = "Search here...";
+            this.txtSearchBar.SelectedText = "";
+            this.txtSearchBar.ShadowDecoration.Parent = this.txtSearchBar;
+            this.txtSearchBar.Size = new System.Drawing.Size(270, 29);
+            this.txtSearchBar.TabIndex = 22;
+            this.txtSearchBar.TextOffset = new System.Drawing.Point(5, 0);
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.BorderRadius = 6;
+            this.btnFilter.CheckedState.Parent = this.btnFilter;
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.CustomImages.Parent = this.btnFilter;
+            this.btnFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFilter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.btnFilter.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.btnFilter.HoverState.Parent = this.btnFilter;
+            this.btnFilter.Image = global::inventory_management_system_kap.Properties.Resources.Filter;
+            this.btnFilter.ImageSize = new System.Drawing.Size(14, 14);
+            this.btnFilter.Location = new System.Drawing.Point(794, 0);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.btnFilter.ShadowDecoration.Parent = this.btnFilter;
+            this.btnFilter.Size = new System.Drawing.Size(74, 29);
+            this.btnFilter.TabIndex = 23;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.btnAddCustomer.BorderRadius = 6;
+            this.btnAddCustomer.CheckedState.Parent = this.btnAddCustomer;
+            this.btnAddCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddCustomer.CustomImages.Parent = this.btnAddCustomer;
+            this.btnAddCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnAddCustomer.ForeColor = System.Drawing.Color.White;
+            this.btnAddCustomer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.btnAddCustomer.HoverState.Parent = this.btnAddCustomer;
+            this.btnAddCustomer.Image = global::inventory_management_system_kap.Properties.Resources.Add;
+            this.btnAddCustomer.ImageSize = new System.Drawing.Size(14, 14);
+            this.btnAddCustomer.Location = new System.Drawing.Point(878, 0);
+            this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.ShadowDecoration.Parent = this.btnAddCustomer;
+            this.btnAddCustomer.Size = new System.Drawing.Size(141, 29);
+            this.btnAddCustomer.TabIndex = 24;
+            this.btnAddCustomer.Text = "Add Customer";
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // dataGridViewImageColumn2
             // 
@@ -395,34 +398,34 @@
             // 
             // number
             // 
+            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.number.HeaderText = "No.";
             this.number.Name = "number";
             this.number.ReadOnly = true;
+            this.number.Width = 53;
             // 
             // customerId
             // 
-            this.customerId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.customerId.DataPropertyName = "CustomerId";
             this.customerId.FillWeight = 101.963F;
             this.customerId.HeaderText = "Customer ID";
             this.customerId.Name = "customerId";
             this.customerId.ReadOnly = true;
-            this.customerId.Width = 108;
             // 
             // name
             // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.name.DataPropertyName = "Name";
             this.name.FillWeight = 101.963F;
             this.name.HeaderText = "Name";
             this.name.Name = "name";
             this.name.ReadOnly = true;
-            this.name.Width = 68;
             // 
             // address
             // 
             this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.address.DataPropertyName = "Address";
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.address.DefaultCellStyle = dataGridViewCellStyle2;
             this.address.FillWeight = 101.963F;
             this.address.HeaderText = "Address";
             this.address.Name = "address";
@@ -448,9 +451,9 @@
             // edit
             // 
             this.edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-            this.edit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
+            this.edit.DefaultCellStyle = dataGridViewCellStyle3;
             this.edit.FillWeight = 95.59032F;
             this.edit.HeaderText = "";
             this.edit.Image = global::inventory_management_system_kap.Properties.Resources.Edit_table;

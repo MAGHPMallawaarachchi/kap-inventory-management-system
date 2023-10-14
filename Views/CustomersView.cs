@@ -32,7 +32,6 @@ namespace inventory_management_system_kap.Views
         private void RefreshDataGrid()
         {
             dgvCustomers.AutoGenerateColumns = false;
-            dgvCustomers.ColumnCount = 9;
 
             int currentRowNumber = (currentPage - 1) * itemsPerPage + 1;
 
@@ -143,6 +142,28 @@ namespace inventory_management_system_kap.Views
         private void dgvCustomers_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         { 
             dgvCustomers.Cursor = Cursors.Default;
+        }
+
+        CustomerFilterView filterPopup = null;
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (filterPopup == null)
+            {
+                filterPopup = new CustomerFilterView(string.Empty);
+            }
+
+            if (filterPopup.ShowDialog() == DialogResult.OK)
+            {
+                string city = filterPopup.City;
+
+                var filteredCustomers = controller.FilterCustomers(city, currentPage, itemsPerPage);
+                dgvCustomers.DataSource = filteredCustomers.ToList();
+            }
+            else
+            {
+                RefreshDataGrid();
+            }
         }
     }
 }
