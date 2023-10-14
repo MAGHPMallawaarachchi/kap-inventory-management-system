@@ -131,5 +131,26 @@ namespace inventory_management_system_kap.Repositories
             return GetCustomers(query, parameters);
         }
 
+        public IEnumerable<string> GetAllCustomerIds()
+        {
+            string query = "SELECT CustomerId FROM Customer";
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    var customerIds = new List<string>();
+                    while (reader.Read())
+                    {
+                        customerIds.Add(reader["CustomerId"].ToString());
+                    }
+                    return customerIds;
+                }
+            }
+        }
+
     }
 }

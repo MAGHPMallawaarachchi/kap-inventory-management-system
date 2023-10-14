@@ -17,27 +17,45 @@ namespace inventory_management_system_kap.Controllers
             this._invoiceRepository = repository;
         }
 
-        public IEnumerable<InvoiceModel> GetAllInvoices()
+        public IEnumerable<InvoiceModel> GetAllInvoices(int page, int itemsPerPage)
         {
-            return _invoiceRepository.GetAll();
+            return _invoiceRepository.GetAll(page, itemsPerPage);
         }
 
-        public IEnumerable<InvoiceModel> GetInvoiceByValue(string value)
+        public IEnumerable<InvoiceModel> FilterInvoices(DateTime fromDate, DateTime toDate, string customer, int page, int itemsPerPage)
         {
-            return _invoiceRepository.GetByValue(value);
-        }
-
-        public IEnumerable<InvoiceModel> SearchInvoice(string value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
+            if(fromDate == null || toDate == null || customer == null)
             {
-                return GetAllInvoices();
+                return _invoiceRepository.GetAll(page, itemsPerPage);
             }
             else
             {
-                return GetInvoiceByValue(value);
+                return _invoiceRepository.FilterInvoices(fromDate, toDate, customer, page, itemsPerPage);
             }
         }
 
+
+        public IEnumerable<InvoiceModel> GetInvoiceByValue(string value, int page, int itemsPerPage)
+        {
+            return _invoiceRepository.GetByValue(value, page, itemsPerPage);
+        }
+
+        public IEnumerable<InvoiceModel> SearchInvoice(string value, int page, int itemsPerPage)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return GetAllInvoices(page, itemsPerPage);
+            }
+            else
+            {
+                return GetInvoiceByValue(value, page, itemsPerPage);
+            }
+        }
+
+        public bool HasMoreItemsOnPage(int page, int itemsPerPage)
+        {
+            IEnumerable<InvoiceModel> items = GetAllInvoices(page, itemsPerPage);
+            return items.Any();
+        }
     }
 }

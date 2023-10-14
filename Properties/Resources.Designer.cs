@@ -183,6 +183,16 @@ namespace inventory_management_system_kap.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap green_icon {
+            get {
+                object obj = ResourceManager.GetObject("green_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Home {
             get {
                 object obj = ResourceManager.GetObject("Home", resourceCulture);
@@ -246,6 +256,16 @@ namespace inventory_management_system_kap.Properties {
         internal static System.Drawing.Bitmap low_in_stock {
             get {
                 object obj = ResourceManager.GetObject("low-in-stock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap orange_icon {
+            get {
+                object obj = ResourceManager.GetObject("orange_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
