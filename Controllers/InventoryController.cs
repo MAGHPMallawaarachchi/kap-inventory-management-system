@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace inventory_management_system_kap.Controllers
 {
-    internal class InventoryController
+    public class InventoryController
     {
         private readonly InventoryRepository _inventoryRepository;
 

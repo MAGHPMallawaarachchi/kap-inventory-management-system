@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace inventory_management_system_kap.Models
 {
-    internal class InventoryModel
+    public class InventoryModel
     {
         private int partNo;
         private int oemNo;
@@ -18,7 +18,7 @@ namespace inventory_management_system_kap.Models
         private string description;
         private decimal buyingPrice;
         private decimal unitPrice;
-        private long itemImage;
+        private byte[] itemImage;
 
 
         public int PartNo { get => partNo; set => partNo = value; }
@@ -31,6 +31,6 @@ namespace inventory_management_system_kap.Models
         public string Description { get => description; set => description = value; }
         public decimal BuyingPrice { get => buyingPrice; set => buyingPrice = value; }
         public decimal UnitPrice { get => unitPrice; set => unitPrice = value; }
-        public long ItemImage { get => itemImage; set => itemImage = value; }
+        public byte [] ItemImage { get => itemImage; set => itemImage = value; }
     }
 }

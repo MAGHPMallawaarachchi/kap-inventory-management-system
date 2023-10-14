@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace inventory_management_system_kap.Repositories
 {
-    internal class InventoryRepository
+    public class InventoryRepository
     {
         private readonly string connectionString;
 
@@ -36,14 +36,14 @@ namespace inventory_management_system_kap.Repositories
                             PartNo = (int)reader["PartNo"],
                             OEMNo = (int)reader["OEMNo"],
                             BrandId = (string)reader["BrandId"],
-                            QtySold = (int)reader["QtySold"], 
-                            QtyInHand = (int)reader["QtyInHand"], 
-                            TotalQty = (int)reader["TotalQty"], 
+                            QtySold = (int)reader["QtySold"],
+                            QtyInHand = (int)reader["QtyInHand"],
+                            TotalQty = (int)reader["TotalQty"],
                             Category = (string)reader["Category"],
                             Description = (string)reader["Description"],
                             BuyingPrice = (decimal)reader["BuyingPrice"],
                             UnitPrice = (decimal)reader["UnitPrice"],
-                            ItemImage = (long)reader["ItemImage"]
+                            ItemImage = (byte[])reader["ItemImage"]
                         };
                         inventoryList.Add(inventoryModel);
                     }
@@ -84,7 +84,7 @@ namespace inventory_management_system_kap.Repositories
                             Description = (string)reader["Description"],
                             BuyingPrice = (decimal)reader["BuyingPrice"],
                             UnitPrice = (decimal)reader["UnitPrice"],
-                            ItemImage = (long)reader["ItemImage"]
+                            ItemImage = (byte[])reader["ItemImage"]
                         };
                         inventoryList.Add(inventoryModel);
                     }
