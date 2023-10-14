@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryView));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlInventorySummary = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -59,13 +62,6 @@
             this.pnlItems = new System.Windows.Forms.Panel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyInHand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtySold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.availability = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblItemsHeading = new System.Windows.Forms.Label();
@@ -75,6 +71,14 @@
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.lblPageNumber = new System.Windows.Forms.Label();
             this.btnPrevious = new Guna.UI2.WinForms.Guna2Button();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.partNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyInHand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtySold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.availability = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlInventorySummary.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -496,18 +500,19 @@
             this.number,
             this.partNo,
             this.brand,
+            this.category,
             this.qtyInHand,
             this.qtySold,
             this.unitPrice,
             this.availability});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Inter", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Inter", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.EnableHeadersVisualStyles = false;
             this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
@@ -516,7 +521,7 @@
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
             this.dgvItems.RowTemplate.Height = 50;
@@ -547,56 +552,6 @@
             this.dgvItems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             this.dgvItems.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvItems_CellFormatting);
             this.dgvItems.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvItems_DataBindingComplete);
-            // 
-            // number
-            // 
-            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.number.HeaderText = "No.";
-            this.number.MinimumWidth = 6;
-            this.number.Name = "number";
-            this.number.ReadOnly = true;
-            this.number.Width = 53;
-            // 
-            // partNo
-            // 
-            this.partNo.DataPropertyName = "PartNo";
-            this.partNo.HeaderText = "Part No";
-            this.partNo.Name = "partNo";
-            this.partNo.ReadOnly = true;
-            // 
-            // brand
-            // 
-            this.brand.DataPropertyName = "BrandId";
-            this.brand.HeaderText = "Brand";
-            this.brand.Name = "brand";
-            this.brand.ReadOnly = true;
-            // 
-            // qtyInHand
-            // 
-            this.qtyInHand.DataPropertyName = "QtyInHand";
-            this.qtyInHand.HeaderText = "Quantity in Hand";
-            this.qtyInHand.Name = "qtyInHand";
-            this.qtyInHand.ReadOnly = true;
-            // 
-            // qtySold
-            // 
-            this.qtySold.DataPropertyName = "QtySold";
-            this.qtySold.HeaderText = "Quantity Sold";
-            this.qtySold.Name = "qtySold";
-            this.qtySold.ReadOnly = true;
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.DataPropertyName = "UnitPrice";
-            this.unitPrice.HeaderText = "Unit Price";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
-            // 
-            // availability
-            // 
-            this.availability.HeaderText = "Availability";
-            this.availability.Name = "availability";
-            this.availability.ReadOnly = true;
             // 
             // tableLayoutPanel14
             // 
@@ -787,6 +742,74 @@
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
+            // number
+            // 
+            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.number.HeaderText = "No.";
+            this.number.MinimumWidth = 6;
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
+            this.number.Width = 53;
+            // 
+            // partNo
+            // 
+            this.partNo.DataPropertyName = "PartNo";
+            this.partNo.HeaderText = "Part No";
+            this.partNo.Name = "partNo";
+            this.partNo.ReadOnly = true;
+            // 
+            // brand
+            // 
+            this.brand.DataPropertyName = "BrandId";
+            this.brand.HeaderText = "Brand";
+            this.brand.Name = "brand";
+            this.brand.ReadOnly = true;
+            // 
+            // category
+            // 
+            this.category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.category.DataPropertyName = "Category";
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.category.DefaultCellStyle = dataGridViewCellStyle2;
+            this.category.HeaderText = "Category";
+            this.category.Name = "category";
+            this.category.ReadOnly = true;
+            this.category.Width = 91;
+            // 
+            // qtyInHand
+            // 
+            this.qtyInHand.DataPropertyName = "QtyInHand";
+            this.qtyInHand.HeaderText = "Quantity in Hand";
+            this.qtyInHand.Name = "qtyInHand";
+            this.qtyInHand.ReadOnly = true;
+            // 
+            // qtySold
+            // 
+            this.qtySold.DataPropertyName = "QtySold";
+            this.qtySold.HeaderText = "Quantity Sold";
+            this.qtySold.Name = "qtySold";
+            this.qtySold.ReadOnly = true;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.DataPropertyName = "UnitPrice";
+            this.unitPrice.HeaderText = "Unit Price";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.ReadOnly = true;
+            // 
+            // availability
+            // 
+            this.availability.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(30, 0, 30, 0);
+            this.availability.DefaultCellStyle = dataGridViewCellStyle3;
+            this.availability.HeaderText = "Availability";
+            this.availability.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.availability.Name = "availability";
+            this.availability.ReadOnly = true;
+            this.availability.Width = 80;
+            // 
             // InventoryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -872,6 +895,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
         private System.Windows.Forms.DataGridViewTextBoxColumn partNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn brand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn category;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtyInHand;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtySold;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;

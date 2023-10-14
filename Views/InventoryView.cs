@@ -23,7 +23,7 @@ namespace inventory_management_system_kap.Views
         private ItemController controller;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
         private int currentPage = 1;
-        private int itemsPerPage = 10;
+        private int itemsPerPage = 9;
         private int initialRowNumber = 1;
 
         public InventoryView()
@@ -102,6 +102,28 @@ namespace inventory_management_system_kap.Views
                 {
                     e.Value = "Rs." + unitPrice.ToString("N2");
                     e.FormattingApplied = true;
+                }
+            }
+
+            if (e.ColumnIndex == dgvItems.Columns["availability"].Index && e.RowIndex >= 0)
+            {
+                if (dgvItems["qtyInHand", e.RowIndex].Value is int qtyInHand)
+                {
+                    if (qtyInHand < 30)
+                    {
+                        e.Value = Properties.Resources.red_icon;
+                        e.FormattingApplied = true;
+                    }
+                    else if (qtyInHand < 60)
+                    {
+                        e.Value = Properties.Resources.orange_icon;
+                        e.FormattingApplied = true;
+                    }
+                    else
+                    {
+                        e.Value = Properties.Resources.green_icon;
+                        e.FormattingApplied = true;
+                    }
                 }
             }
         }
