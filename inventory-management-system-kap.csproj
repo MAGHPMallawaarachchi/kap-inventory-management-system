@@ -76,6 +76,12 @@
     <Compile Include="Views\CustomersView.Designer.cs">
       <DependentUpon>CustomersView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FilterPopupView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FilterPopupView.Designer.cs">
+      <DependentUpon>FilterPopupView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FilterPopupView.resx">
+      <DependentUpon>FilterPopupView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeView.resx">
       <DependentUpon>HomeView.cs</DependentUpon>
@@ -213,11 +222,11 @@
   <ItemGroup>
     <None Include="assets\icons\profit.png" />
   </ItemGroup>
-<ItemGroup>
-  <None Include="assets\icons\green-icon.png" />
-</ItemGroup>
-<ItemGroup>
-  <None Include="assets\icons\orange-icon.png" />
-</ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\green-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\orange-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

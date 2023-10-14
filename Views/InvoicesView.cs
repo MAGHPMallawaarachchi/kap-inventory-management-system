@@ -158,5 +158,11 @@ namespace inventory_management_system_kap.Views
             addInvoiceForm.BringToFront();
             addInvoiceForm.Show();
         }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            FilterPopupView filterPopupView = new FilterPopupView();
+            filterPopupView.ShowDialog();
+        }
     }
 }

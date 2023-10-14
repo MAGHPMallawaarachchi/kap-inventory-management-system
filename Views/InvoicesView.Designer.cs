@@ -40,11 +40,7 @@
             this.pnlInvoices = new System.Windows.Forms.Panel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblInvoicesHeading = new System.Windows.Forms.Label();
             this.dgvInvoices = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.txtSearchBar = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
-            this.btnAddInvoice = new Guna.UI2.WinForms.Guna2Button();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +50,10 @@
             this.TotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaymentStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PaymentStatusImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblInvoicesHeading = new System.Windows.Forms.Label();
+            this.txtSearchBar = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAddInvoice = new Guna.UI2.WinForms.Guna2Button();
             this.pnlChildForm.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -211,19 +211,6 @@
             this.tableLayoutPanel14.Size = new System.Drawing.Size(1024, 29);
             this.tableLayoutPanel14.TabIndex = 1;
             // 
-            // lblInvoicesHeading
-            // 
-            this.lblInvoicesHeading.AutoSize = true;
-            this.lblInvoicesHeading.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblInvoicesHeading.Font = new System.Drawing.Font("Inter Medium", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvoicesHeading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblInvoicesHeading.Location = new System.Drawing.Point(3, 0);
-            this.lblInvoicesHeading.Name = "lblInvoicesHeading";
-            this.lblInvoicesHeading.Size = new System.Drawing.Size(499, 29);
-            this.lblInvoicesHeading.TabIndex = 2;
-            this.lblInvoicesHeading.Text = "Invoices";
-            this.lblInvoicesHeading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // dgvInvoices
             // 
             this.dgvInvoices.AllowUserToAddRows = false;
@@ -298,88 +285,6 @@
             this.dgvInvoices.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInvoices_CellFormatting);
             this.dgvInvoices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvInvoices_DataBindingComplete);
             // 
-            // txtSearchBar
-            // 
-            this.txtSearchBar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtSearchBar.BorderRadius = 6;
-            this.txtSearchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearchBar.DefaultText = "";
-            this.txtSearchBar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearchBar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearchBar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearchBar.DisabledState.Parent = this.txtSearchBar;
-            this.txtSearchBar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearchBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearchBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtSearchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.txtSearchBar.FocusedState.Parent = this.txtSearchBar;
-            this.txtSearchBar.Font = new System.Drawing.Font("Inter", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.txtSearchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.txtSearchBar.HoverState.Parent = this.txtSearchBar;
-            this.txtSearchBar.IconLeft = global::inventory_management_system_kap.Properties.Resources.search;
-            this.txtSearchBar.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.txtSearchBar.IconLeftSize = new System.Drawing.Size(14, 14);
-            this.txtSearchBar.Location = new System.Drawing.Point(512, 0);
-            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.PasswordChar = '\0';
-            this.txtSearchBar.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.txtSearchBar.PlaceholderText = "Search here...";
-            this.txtSearchBar.SelectedText = "";
-            this.txtSearchBar.ShadowDecoration.Parent = this.txtSearchBar;
-            this.txtSearchBar.Size = new System.Drawing.Size(270, 29);
-            this.txtSearchBar.TabIndex = 22;
-            this.txtSearchBar.TextOffset = new System.Drawing.Point(5, 0);
-            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BorderRadius = 6;
-            this.btnFilter.CheckedState.Parent = this.btnFilter;
-            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFilter.CustomImages.Parent = this.btnFilter;
-            this.btnFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnFilter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.btnFilter.Font = new System.Drawing.Font("Inter", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.btnFilter.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.btnFilter.HoverState.Parent = this.btnFilter;
-            this.btnFilter.Image = global::inventory_management_system_kap.Properties.Resources.Filter;
-            this.btnFilter.ImageSize = new System.Drawing.Size(14, 14);
-            this.btnFilter.Location = new System.Drawing.Point(794, 0);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.btnFilter.ShadowDecoration.Parent = this.btnFilter;
-            this.btnFilter.Size = new System.Drawing.Size(74, 29);
-            this.btnFilter.TabIndex = 23;
-            this.btnFilter.Text = "Filter";
-            // 
-            // btnAddInvoice
-            // 
-            this.btnAddInvoice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.btnAddInvoice.BorderRadius = 6;
-            this.btnAddInvoice.CheckedState.Parent = this.btnAddInvoice;
-            this.btnAddInvoice.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddInvoice.CustomImages.Parent = this.btnAddInvoice;
-            this.btnAddInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddInvoice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.btnAddInvoice.Font = new System.Drawing.Font("Inter", 10F);
-            this.btnAddInvoice.ForeColor = System.Drawing.Color.White;
-            this.btnAddInvoice.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
-            this.btnAddInvoice.HoverState.Parent = this.btnAddInvoice;
-            this.btnAddInvoice.Image = global::inventory_management_system_kap.Properties.Resources.Add;
-            this.btnAddInvoice.ImageSize = new System.Drawing.Size(14, 14);
-            this.btnAddInvoice.Location = new System.Drawing.Point(878, 0);
-            this.btnAddInvoice.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.btnAddInvoice.Name = "btnAddInvoice";
-            this.btnAddInvoice.ShadowDecoration.Parent = this.btnAddInvoice;
-            this.btnAddInvoice.Size = new System.Drawing.Size(141, 29);
-            this.btnAddInvoice.TabIndex = 24;
-            this.btnAddInvoice.Text = "Add Invoice";
-            this.btnAddInvoice.Click += new System.EventHandler(this.btnAddInvoice_Click);
-            // 
             // number
             // 
             this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -450,6 +355,102 @@
             this.PaymentStatusImage.ReadOnly = true;
             this.PaymentStatusImage.Width = 16;
             // 
+            // lblInvoicesHeading
+            // 
+            this.lblInvoicesHeading.AutoSize = true;
+            this.lblInvoicesHeading.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblInvoicesHeading.Font = new System.Drawing.Font("Inter Medium", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvoicesHeading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.lblInvoicesHeading.Location = new System.Drawing.Point(3, 0);
+            this.lblInvoicesHeading.Name = "lblInvoicesHeading";
+            this.lblInvoicesHeading.Size = new System.Drawing.Size(499, 29);
+            this.lblInvoicesHeading.TabIndex = 2;
+            this.lblInvoicesHeading.Text = "Invoices";
+            this.lblInvoicesHeading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtSearchBar
+            // 
+            this.txtSearchBar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.txtSearchBar.BorderRadius = 6;
+            this.txtSearchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchBar.DefaultText = "";
+            this.txtSearchBar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearchBar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearchBar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchBar.DisabledState.Parent = this.txtSearchBar;
+            this.txtSearchBar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearchBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.txtSearchBar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.txtSearchBar.FocusedState.Parent = this.txtSearchBar;
+            this.txtSearchBar.Font = new System.Drawing.Font("Inter", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.txtSearchBar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.txtSearchBar.HoverState.Parent = this.txtSearchBar;
+            this.txtSearchBar.IconLeft = global::inventory_management_system_kap.Properties.Resources.search;
+            this.txtSearchBar.IconLeftOffset = new System.Drawing.Point(5, 0);
+            this.txtSearchBar.IconLeftSize = new System.Drawing.Size(14, 14);
+            this.txtSearchBar.Location = new System.Drawing.Point(512, 0);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.txtSearchBar.Name = "txtSearchBar";
+            this.txtSearchBar.PasswordChar = '\0';
+            this.txtSearchBar.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.txtSearchBar.PlaceholderText = "Search here...";
+            this.txtSearchBar.SelectedText = "";
+            this.txtSearchBar.ShadowDecoration.Parent = this.txtSearchBar;
+            this.txtSearchBar.Size = new System.Drawing.Size(270, 29);
+            this.txtSearchBar.TabIndex = 22;
+            this.txtSearchBar.TextOffset = new System.Drawing.Point(5, 0);
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.BorderRadius = 6;
+            this.btnFilter.CheckedState.Parent = this.btnFilter;
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.CustomImages.Parent = this.btnFilter;
+            this.btnFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFilter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.btnFilter.Font = new System.Drawing.Font("Inter", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.btnFilter.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.btnFilter.HoverState.Parent = this.btnFilter;
+            this.btnFilter.Image = global::inventory_management_system_kap.Properties.Resources.Filter;
+            this.btnFilter.ImageSize = new System.Drawing.Size(14, 14);
+            this.btnFilter.Location = new System.Drawing.Point(794, 0);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.btnFilter.ShadowDecoration.Parent = this.btnFilter;
+            this.btnFilter.Size = new System.Drawing.Size(74, 29);
+            this.btnFilter.TabIndex = 23;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // btnAddInvoice
+            // 
+            this.btnAddInvoice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.btnAddInvoice.BorderRadius = 6;
+            this.btnAddInvoice.CheckedState.Parent = this.btnAddInvoice;
+            this.btnAddInvoice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddInvoice.CustomImages.Parent = this.btnAddInvoice;
+            this.btnAddInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddInvoice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.btnAddInvoice.Font = new System.Drawing.Font("Inter", 10F);
+            this.btnAddInvoice.ForeColor = System.Drawing.Color.White;
+            this.btnAddInvoice.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(116)))), ((int)(((byte)(225)))));
+            this.btnAddInvoice.HoverState.Parent = this.btnAddInvoice;
+            this.btnAddInvoice.Image = global::inventory_management_system_kap.Properties.Resources.Add;
+            this.btnAddInvoice.ImageSize = new System.Drawing.Size(14, 14);
+            this.btnAddInvoice.Location = new System.Drawing.Point(878, 0);
+            this.btnAddInvoice.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnAddInvoice.Name = "btnAddInvoice";
+            this.btnAddInvoice.ShadowDecoration.Parent = this.btnAddInvoice;
+            this.btnAddInvoice.Size = new System.Drawing.Size(141, 29);
+            this.btnAddInvoice.TabIndex = 24;
+            this.btnAddInvoice.Text = "Add Invoice";
+            this.btnAddInvoice.Click += new System.EventHandler(this.btnAddInvoice_Click);
+            // 
             // InvoicesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,7 +486,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private Guna.UI2.WinForms.Guna2TextBox txtSearchBar;
-        private System.Windows.Forms.Label lblInvoicesHeading;
         private Guna.UI2.WinForms.Guna2Button btnFilter;
         private Guna.UI2.WinForms.Guna2Button btnAddInvoice;
         private Guna.UI2.WinForms.Guna2DataGridView dgvInvoices;
@@ -498,5 +498,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn PaymentStatus;
         private System.Windows.Forms.DataGridViewImageColumn PaymentStatusImage;
+        private System.Windows.Forms.Label lblInvoicesHeading;
     }
 }
