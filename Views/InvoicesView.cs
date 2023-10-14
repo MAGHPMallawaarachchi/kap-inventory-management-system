@@ -34,7 +34,6 @@ namespace inventory_management_system_kap.Views
         private void RefreshDataGrid()
         {
             dgvInvoices.AutoGenerateColumns = false;
-            dgvInvoices.ColumnCount = 9;
 
             int currentRowNumber = (currentPage - 1) * itemsPerPage + 1;
 
@@ -159,10 +158,31 @@ namespace inventory_management_system_kap.Views
             addInvoiceForm.Show();
         }
 
+        FilterPopupView filterPopup = null;
+        DateTime minValue = new DateTime(2010, 1, 1);
+
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            FilterPopupView filterPopupView = new FilterPopupView();
-            filterPopupView.ShowDialog();
+            if (filterPopup == null)
+            {
+                filterPopup = new FilterPopupView(minValue, DateTime.Today, string.Empty);
+            }
+
+            if (filterPopup.ShowDialog() == DialogResult.OK)
+            {
+                DateTime fromDate = filterPopup.FromDate;
+                DateTime toDate = filterPopup.ToDate;
+                string customer = filterPopup.Customer;
+
+                var filteredInvoices = controller.FilterInvoices(fromDate, toDate, customer, currentPage, itemsPerPage);
+                dgvInvoices.DataSource = filteredInvoices.ToList();
+            }
+            else
+            {
+                RefreshDataGrid();
+            }
         }
+
+
     }
 }

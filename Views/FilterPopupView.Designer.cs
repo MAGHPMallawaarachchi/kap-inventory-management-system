@@ -32,14 +32,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dtpFilter = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpFromDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.lblPartNumber = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.imgBtnClose = new Guna.UI2.WinForms.Guna2ImageButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblHeading = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.cmbCustomer = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpToDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddFilter = new Guna.UI2.WinForms.Guna2Button();
@@ -52,12 +52,12 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.guna2DateTimePicker1, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.dtpToDate, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.guna2HtmlLabel3, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.cmbCustomer, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblPartNumber, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dtpFilter, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dtpFromDate, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.guna2HtmlLabel1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.guna2HtmlLabel2, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 8);
@@ -99,24 +99,24 @@
             this.guna2HtmlLabel1.TabIndex = 13;
             this.guna2HtmlLabel1.Text = "Sort by Date";
             // 
-            // dtpFilter
+            // dtpFromDate
             // 
-            this.dtpFilter.BorderRadius = 6;
-            this.dtpFilter.CheckedState.Parent = this.dtpFilter;
-            this.dtpFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dtpFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpFilter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.dtpFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.dtpFilter.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpFilter.HoverState.Parent = this.dtpFilter;
-            this.dtpFilter.Location = new System.Drawing.Point(3, 173);
-            this.dtpFilter.MaxDate = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
-            this.dtpFilter.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dtpFilter.Name = "dtpFilter";
-            this.dtpFilter.ShadowDecoration.Parent = this.dtpFilter;
-            this.dtpFilter.Size = new System.Drawing.Size(277, 36);
-            this.dtpFilter.TabIndex = 14;
-            this.dtpFilter.Value = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
+            this.dtpFromDate.BorderRadius = 6;
+            this.dtpFromDate.CheckedState.Parent = this.dtpFromDate;
+            this.dtpFromDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpFromDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpFromDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.dtpFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpFromDate.HoverState.Parent = this.dtpFromDate;
+            this.dtpFromDate.Location = new System.Drawing.Point(3, 173);
+            this.dtpFromDate.MaxDate = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
+            this.dtpFromDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.ShadowDecoration.Parent = this.dtpFromDate;
+            this.dtpFromDate.Size = new System.Drawing.Size(277, 36);
+            this.dtpFromDate.TabIndex = 14;
+            this.dtpFromDate.Value = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
             // 
             // lblPartNumber
             // 
@@ -204,28 +204,28 @@
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(3, 215);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(19, 18);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(19, 16);
             this.guna2HtmlLabel3.TabIndex = 16;
             this.guna2HtmlLabel3.Text = "To";
             // 
-            // guna2DateTimePicker1
+            // dtpToDate
             // 
-            this.guna2DateTimePicker1.BorderRadius = 6;
-            this.guna2DateTimePicker1.CheckedState.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2DateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2DateTimePicker1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.guna2DateTimePicker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker1.HoverState.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(3, 237);
-            this.guna2DateTimePicker1.MaxDate = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.ShadowDecoration.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(277, 36);
-            this.guna2DateTimePicker1.TabIndex = 17;
-            this.guna2DateTimePicker1.Value = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
+            this.dtpToDate.BorderRadius = 6;
+            this.dtpToDate.CheckedState.Parent = this.dtpToDate;
+            this.dtpToDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpToDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpToDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.dtpToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpToDate.HoverState.Parent = this.dtpToDate;
+            this.dtpToDate.Location = new System.Drawing.Point(3, 237);
+            this.dtpToDate.MaxDate = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
+            this.dtpToDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.ShadowDecoration.Parent = this.dtpToDate;
+            this.dtpToDate.Size = new System.Drawing.Size(277, 36);
+            this.dtpToDate.TabIndex = 17;
+            this.dtpToDate.Value = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
             // 
             // tableLayoutPanel3
             // 
@@ -263,6 +263,7 @@
             this.btnClear.Size = new System.Drawing.Size(105, 31);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnAddFilter
             // 
@@ -284,6 +285,7 @@
             this.btnAddFilter.Size = new System.Drawing.Size(106, 31);
             this.btnAddFilter.TabIndex = 5;
             this.btnAddFilter.Text = "Add Filter";
+            this.btnAddFilter.Click += new System.EventHandler(this.btnAddFilter_Click);
             // 
             // FilterPopupView
             // 
@@ -299,6 +301,7 @@
             this.Padding = new System.Windows.Forms.Padding(20);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FilterPopupView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -311,14 +314,14 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpToDate;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2ComboBox cmbCustomer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Guna.UI2.WinForms.Guna2ImageButton imgBtnClose;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblHeading;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblPartNumber;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFilter;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFromDate;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;

@@ -22,6 +22,18 @@ namespace inventory_management_system_kap.Controllers
             return _invoiceRepository.GetAll(page, itemsPerPage);
         }
 
+        public IEnumerable<InvoiceModel> FilterInvoices(DateTime fromDate, DateTime toDate, string customer, int page, int itemsPerPage)
+        {
+            if(fromDate == null || toDate == null || customer == null)
+            {
+                return _invoiceRepository.GetAll(page, itemsPerPage);
+            }
+            else
+            {
+                return _invoiceRepository.FilterInvoices(fromDate, toDate, customer, page, itemsPerPage);
+            }
+        }
+
 
         public IEnumerable<InvoiceModel> GetInvoiceByValue(string value, int page, int itemsPerPage)
         {
