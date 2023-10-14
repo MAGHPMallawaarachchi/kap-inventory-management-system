@@ -17,8 +17,7 @@ namespace inventory_management_system_kap.Repositories
         {
             this.connectionString = connectionString;
         }
-
-        public IEnumerable<InventoryModel> GetAll()
+        public IEnumerable<InventoryModel> GetItem()
         {
             var inventoryList = new List<InventoryModel>();
             using (var connection = new SqlConnection(connectionString))
@@ -26,24 +25,18 @@ namespace inventory_management_system_kap.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM Item ORDER BY PartNo DESC";
+                command.CommandText = "SELECT PartNo,BrandID, QtySold,QtyInHand,UnitPrice FROM Item ORDER BY PartNo DESC";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         var inventoryModel = new InventoryModel
                         {
-                            PartNo = (int)reader["PartNo"],
-                            OEMNo = (int)reader["OEMNo"],
+                            PartNo = (string)reader["PartNo"],                          
                             BrandId = (string)reader["BrandId"],
-                            QtySold = (int)reader["QtySold"],
                             QtyInHand = (int)reader["QtyInHand"],
-                            TotalQty = (int)reader["TotalQty"],
-                            Category = (string)reader["Category"],
-                            Description = (string)reader["Description"],
-                            BuyingPrice = (decimal)reader["BuyingPrice"],
-                            UnitPrice = (decimal)reader["UnitPrice"],
-                            ItemImage = (byte[])reader["ItemImage"]
+                            QtySold = (int)reader["QtySold"],                           
+                            UnitPrice = (decimal)reader["UnitPrice"]                   
                         };
                         inventoryList.Add(inventoryModel);
                     }
@@ -55,18 +48,18 @@ namespace inventory_management_system_kap.Repositories
         public IEnumerable<InventoryModel> GetByValue(string value)
         {
             var inventoryList = new List<InventoryModel>();
-            int PartNo = int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
+            string PartNo = value;
             string BrandId = value;
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM Item " +
+                command.CommandText = "SELECT PartNo,BrandID, QtySold,QtyInHand,UnitPrice FROM Item " +
                                         "WHERE PartNo = @PartNo OR BrandId LIKE @BrandId+'%' " +
                                         "ORDER BY PartNo DESC";
 
-                command.Parameters.Add("@PartNo", SqlDbType.Int).Value = PartNo;
+                command.Parameters.Add("@PartNo", SqlDbType.VarChar).Value = PartNo;
                 command.Parameters.Add("@BrandId", SqlDbType.VarChar).Value = BrandId;
                 using (var reader = command.ExecuteReader())
                 {
@@ -74,17 +67,11 @@ namespace inventory_management_system_kap.Repositories
                     {
                         var inventoryModel = new InventoryModel
                         {
-                            PartNo = (int)reader["PartNo"],
-                            OEMNo = (int)reader["OEMNo"],
+                            PartNo = (string)reader["PartNo"],
                             BrandId = (string)reader["BrandId"],
-                            QtySold = (int)reader["QtySold"],
                             QtyInHand = (int)reader["QtyInHand"],
-                            TotalQty = (int)reader["TotalQty"],
-                            Category = (string)reader["Category"],
-                            Description = (string)reader["Description"],
-                            BuyingPrice = (decimal)reader["BuyingPrice"],
-                            UnitPrice = (decimal)reader["UnitPrice"],
-                            ItemImage = (byte[])reader["ItemImage"]
+                            QtySold = (int)reader["QtySold"],
+                            UnitPrice = (decimal)reader["UnitPrice"]
                         };
                         inventoryList.Add(inventoryModel);
                     }

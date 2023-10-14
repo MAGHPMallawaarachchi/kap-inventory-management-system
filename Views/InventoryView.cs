@@ -20,11 +20,15 @@ namespace inventory_management_system_kap.Views
         UIHelper UIHelper = new UIHelper();
         private InventoryController inventoryController;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
+        private ItemDetailsView itemDetailsView;
 
         public InventoryView()
         {
             InitializeComponent();
             inventoryController = new InventoryController(new InventoryRepository(sqlConnectionString));
+            dgvItems.RowPostPaint += dgvItems_RowPostPaint;
+            dgvItems.CellClick += dgvItems_CellClick;
+
         }
 
         private void InventoryView_Load(object sender, EventArgs e)
@@ -32,7 +36,7 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(pnlInventorySummary);
             UIHelper.UpdatePanelRegion(pnlItems);
             dgvItems.ClearSelection();
-            GetAllInventory();
+            GetItemGrid();
         }
 
         private void pnlInventorySummary_SizeChanged(object sender, EventArgs e)
@@ -51,25 +55,23 @@ namespace inventory_management_system_kap.Views
             newItemModalView.ShowDialog();
         }
 
-        private void GetAllInventory()
+        private void GetItemGrid()
         {
-            IEnumerable<InventoryModel> inventory = inventoryController.GetAllInventory();
+            IEnumerable<InventoryModel> inventory = inventoryController.GetItemGrid();
             dgvItems.DataSource = inventory.ToList();
+            dgvItems.Columns["number"].HeaderText = "No";
             dgvItems.Columns["PartNo"].HeaderText = "Part No";
             dgvItems.Columns["BrandId"].HeaderText = "Brand";
             dgvItems.Columns["QtyInHand"].HeaderText = "Quantity In Hand";
             dgvItems.Columns["QtySold"].HeaderText = "Quantity Sold";
             dgvItems.Columns["UnitPrice"].HeaderText = "Unit Price";
             dgvItems.Columns["Availability"].HeaderText = "Availability";
-        }
-
-        private void dgvItems_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == dgvItems.Columns["number"].Index && e.RowIndex >= 0)
-            {
-                e.Value = (e.RowIndex + 1).ToString();
-                e.FormattingApplied = true;
-            }
+            dgvItems.Columns["OEMNo"].Visible = false;
+            dgvItems.Columns["TotalQty"].Visible = false;
+            dgvItems.Columns["Category"].Visible = false;
+            dgvItems.Columns["Description"].Visible = false;
+            dgvItems.Columns["BuyingPrice"].Visible = false;
+            dgvItems.Columns["ItemImage"].Visible = false;
         }
 
         private void txtSearchBar_TextChanged(object sender, EventArgs e)
@@ -77,6 +79,26 @@ namespace inventory_management_system_kap.Views
             string searchValue = txtSearchBar.Text.Trim();
             IEnumerable<InventoryModel> filteredItem = inventoryController.SearchItem(searchValue);
             dgvItems.DataSource = filteredItem.ToList();
+        }
+
+        private void dgvItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            int rowNumber = (e.RowIndex + 1);
+            dgvItems.Rows[e.RowIndex].Cells["number"].Value = rowNumber.ToString();
+        }
+
+        private void dgvItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (itemDetailsView == null)
+                {
+                    itemDetailsView = new ItemDetailsView();
+                    itemDetailsView.FormClosed += (s, ev) => { itemDetailsView = null; };
+                    itemDetailsView.Show();
+                }
+            }
+
         }
     }
 }

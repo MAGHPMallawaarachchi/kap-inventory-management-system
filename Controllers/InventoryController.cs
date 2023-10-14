@@ -17,9 +17,9 @@ namespace inventory_management_system_kap.Controllers
             this._inventoryRepository = inventoryRepository;
         }
 
-        public IEnumerable<InventoryModel> GetAllInventory() 
+        public IEnumerable<InventoryModel> GetItemGrid() 
         {
-            return _inventoryRepository.GetAll();
+            return _inventoryRepository.GetItem();
         }
 
         public IEnumerable<InventoryModel> GetItemByValue(string value)
@@ -31,7 +31,7 @@ namespace inventory_management_system_kap.Controllers
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                return GetAllInventory();
+                return GetItemGrid();
             }
             else
             {
