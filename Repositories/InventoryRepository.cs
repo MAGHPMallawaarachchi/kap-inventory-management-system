@@ -25,25 +25,30 @@ namespace inventory_management_system_kap.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "SELECT PartNo,BrandID, QtySold,QtyInHand,UnitPrice FROM Item ORDER BY PartNo DESC";
+                command.CommandText = "SELECT PartNo, BrandID, QtySold, QtyInHand, UnitPrice FROM Item ORDER BY PartNo DESC";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         var inventoryModel = new InventoryModel
                         {
-                            PartNo = (string)reader["PartNo"],                          
+                            PartNo = (string)reader["PartNo"],
                             BrandId = (string)reader["BrandId"],
                             QtyInHand = (int)reader["QtyInHand"],
-                            QtySold = (int)reader["QtySold"],                           
-                            UnitPrice = (decimal)reader["UnitPrice"]                   
+                            QtySold = (int)reader["QtySold"],
+                            UnitPrice = (decimal)reader["UnitPrice"],
                         };
+
+                        // Calculate availability
+                        inventoryModel.Availability = inventoryModel.QtyInHand > inventoryModel.QtySold ? "Yes" : "No";
+
                         inventoryList.Add(inventoryModel);
                     }
                 }
             }
             return inventoryList;
         }
+
 
         public IEnumerable<InventoryModel> GetByValue(string value)
         {

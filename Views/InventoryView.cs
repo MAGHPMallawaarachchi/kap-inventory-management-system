@@ -65,7 +65,7 @@ namespace inventory_management_system_kap.Views
             dgvItems.Columns["QtyInHand"].HeaderText = "Quantity In Hand";
             dgvItems.Columns["QtySold"].HeaderText = "Quantity Sold";
             dgvItems.Columns["UnitPrice"].HeaderText = "Unit Price";
-            dgvItems.Columns["Availability"].HeaderText = "Availability";
+            dgvItems.Columns["Availability"].HeaderText = "Availability"; // Add this line
             dgvItems.Columns["OEMNo"].Visible = false;
             dgvItems.Columns["TotalQty"].Visible = false;
             dgvItems.Columns["Category"].Visible = false;
@@ -73,6 +73,7 @@ namespace inventory_management_system_kap.Views
             dgvItems.Columns["BuyingPrice"].Visible = false;
             dgvItems.Columns["ItemImage"].Visible = false;
         }
+
 
         private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
