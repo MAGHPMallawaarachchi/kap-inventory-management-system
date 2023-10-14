@@ -21,5 +21,22 @@ namespace inventory_management_system_kap.Controllers
         {
             return _inventoryRepository.GetAll();
         }
+
+        public IEnumerable<InventoryModel> GetItemByValue(string value)
+        {
+            return _inventoryRepository.GetByValue(value);
+        }
+
+        public IEnumerable<InventoryModel> SearchItem(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return GetAllInventory();
+            }
+            else
+            {
+                return GetItemByValue(value);
+            }
+        }
     }
 }

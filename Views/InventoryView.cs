@@ -65,7 +65,18 @@ namespace inventory_management_system_kap.Views
 
         private void dgvItems_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (e.ColumnIndex == dgvItems.Columns["number"].Index && e.RowIndex >= 0)
+            {
+                e.Value = (e.RowIndex + 1).ToString();
+                e.FormattingApplied = true;
+            }
+        }
 
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = txtSearchBar.Text.Trim();
+            IEnumerable<InventoryModel> filteredItem = inventoryController.SearchItem(searchValue);
+            dgvItems.DataSource = filteredItem.ToList();
         }
     }
 }
