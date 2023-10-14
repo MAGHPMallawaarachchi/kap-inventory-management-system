@@ -182,7 +182,5 @@ namespace inventory_management_system_kap.Views
                 RefreshDataGrid();
             }
         }
-
-
     }
 }

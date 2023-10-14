@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Dashboard.cs">
@@ -60,11 +62,15 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrandModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BrandRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
     <Compile Include="utils\UIHelper.cs" />
     <Compile Include="Views\AddInvoiceView.cs">
@@ -90,6 +96,12 @@
     </Compile>
     <Compile Include="Views\FilterViews\CustomerFilterView.Designer.cs">
       <DependentUpon>CustomerFilterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilterViews\ItemsFilterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FilterViews\ItemsFilterView.Designer.cs">
+      <DependentUpon>ItemsFilterView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeView.cs">
       <SubType>Form</SubType>
@@ -151,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FilterViews\CustomerFilterView.resx">
       <DependentUpon>CustomerFilterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FilterViews\ItemsFilterView.resx">
+      <DependentUpon>ItemsFilterView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeView.resx">
       <DependentUpon>HomeView.cs</DependentUpon>
@@ -254,6 +269,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\icons\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\red-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

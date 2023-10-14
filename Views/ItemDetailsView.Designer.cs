@@ -89,7 +89,7 @@
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnBack = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblIPartNo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
             this.guna2Panel10.SuspendLayout();
@@ -864,7 +864,7 @@
             // 
             // guna2Panel8
             // 
-            this.guna2Panel8.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2Panel8.Controls.Add(this.lblIPartNo);
             this.guna2Panel8.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel8.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel8.Name = "guna2Panel8";
@@ -872,16 +872,16 @@
             this.guna2Panel8.Size = new System.Drawing.Size(186, 75);
             this.guna2Panel8.TabIndex = 0;
             // 
-            // guna2HtmlLabel1
+            // lblIPartNo
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Inter Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(3, 3);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(112, 24);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "YB03-1001";
+            this.lblIPartNo.BackColor = System.Drawing.Color.Transparent;
+            this.lblIPartNo.Font = new System.Drawing.Font("Inter Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPartNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.lblIPartNo.Location = new System.Drawing.Point(3, 3);
+            this.lblIPartNo.Name = "lblIPartNo";
+            this.lblIPartNo.Size = new System.Drawing.Size(112, 24);
+            this.lblIPartNo.TabIndex = 0;
+            this.lblIPartNo.Text = "YB03-1001";
             // 
             // ItemDetailsView
             // 
@@ -957,7 +957,7 @@
         private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2Button btnBack;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel8;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblIPartNo;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel16;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel17;

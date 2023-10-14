@@ -12,9 +12,12 @@ namespace inventory_management_system_kap.Views
 {
     public partial class ItemDetailsView : Form
     {
-        public ItemDetailsView()
+        public string PartNo { get => lblIPartNo.Text ; set { lblIPartNo.Text = value; } }
+
+        public ItemDetailsView(string partNo)
         {
             InitializeComponent();
+            PartNo = partNo;
         }
     }
 }
