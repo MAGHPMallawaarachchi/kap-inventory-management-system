@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -61,10 +62,12 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\InventoryModel.cs" />
+    <Compile Include="Repositories\InventoryRepository.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\InventoryRepository.cs" />
+    <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\InvoiceRepository.cs" />
     <Compile Include="utils\UIHelper.cs" />
     <Compile Include="Views\AddInvoiceView.cs">
@@ -78,6 +81,18 @@
     </Compile>
     <Compile Include="Views\CustomersView.Designer.cs">
       <DependentUpon>CustomersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilterViews\InvoicesFilterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FilterViews\InvoicesFilterView.Designer.cs">
+      <DependentUpon>InvoicesFilterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilterViews\CustomerFilterView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FilterViews\CustomerFilterView.Designer.cs">
+      <DependentUpon>CustomerFilterView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeView.cs">
       <SubType>Form</SubType>
@@ -133,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FilterViews\InvoicesFilterView.resx">
+      <DependentUpon>InvoicesFilterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FilterViews\CustomerFilterView.resx">
+      <DependentUpon>CustomerFilterView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeView.resx">
       <DependentUpon>HomeView.cs</DependentUpon>
@@ -215,6 +236,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\icons\profit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\green-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\orange-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Edit-table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Delete-table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\icons\Close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
