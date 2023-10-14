@@ -2,6 +2,7 @@
 using inventory_management_system_kap.Controllers;
 using inventory_management_system_kap.Models;
 using inventory_management_system_kap.Repositories;
+using inventory_management_system_kap.Views.FilterViews;
 using InventoryManagementSystem;
 using System;
 using System.Collections.Generic;
@@ -127,6 +128,28 @@ namespace inventory_management_system_kap.Views
             else
             {
                 btnNext.Enabled = false;
+            }
+        }
+
+        ItemsFilterView filterPopup = null;
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (filterPopup == null)
+            {
+                filterPopup = new ItemsFilterView(string.Empty);
+            }
+
+            if (filterPopup.ShowDialog() == DialogResult.OK)
+            {
+                string brand = filterPopup.Brand;
+
+                var filteredItems = controller.FilterItems(brand, currentPage, itemsPerPage);
+                dgvItems.DataSource = filteredItems.ToList();
+            }
+            else
+            {
+                RefreshDataGrid();
             }
         }
     }

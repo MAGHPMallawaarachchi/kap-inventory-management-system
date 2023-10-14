@@ -89,5 +89,25 @@ namespace inventory_management_system_kap.Repositories
 
             return GetItems(query, parameters);
         }
+
+        public IEnumerable<ItemModel> FilterItems(string brandId, int page, int itemsPerPage)
+        {
+            int offset = (page - 1) * itemsPerPage;
+
+            string query = "SELECT * FROM Item WHERE 1 = 1 ";
+
+            var parameters = new Dictionary<string, object>();
+
+            if (!string.IsNullOrEmpty(brandId))
+            {
+                query += " AND BrandId LIKE @BrandId + '%' ";
+                parameters.Add("@BrandId", brandId);
+            }
+
+            query += " ORDER BY PartNo DESC " +
+                     $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY ";
+
+            return GetItems(query, parameters);
+        }
     }
 }

@@ -39,6 +39,18 @@ namespace inventory_management_system_kap.Controllers
             }
         }
 
+        public IEnumerable<ItemModel> FilterItems(string brandId, int page, int itemsPerPage)
+        {
+            if (brandId == null)
+            {
+                return _itemRepository.GetAll(page, itemsPerPage);
+            }
+            else
+            {
+                return _itemRepository.FilterItems(brandId, page, itemsPerPage);
+            }
+        }
+
         public bool HasMoreItemsOnPage(int page, int itemsPerPage)
         {
             IEnumerable<ItemModel> items = GetAllItems(page, itemsPerPage);
