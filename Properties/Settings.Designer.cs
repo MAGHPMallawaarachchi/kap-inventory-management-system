@@ -26,7 +26,7 @@ namespace inventory_management_system_kap.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-IU3BJP3T;Initial Catalog=KAPInventoryManager;Integrated Securi" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PUNSALA\Hasini;Initial Catalog=KAPInventoryManager;Integrated Securi" +
             "ty=True")]
         public string SqlConnection {
             get {
