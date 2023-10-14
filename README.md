@@ -19,9 +19,10 @@
 
 ## Getting Started
 - Set up Guna UI
-  - [Download Guna UI](https://drive.google.com/file/d/1lcWOpMqsX01QQJhS61OPAc331NHS08If/view?usp=sharing)
+  - [Download Guna UI](https://drive.google.com/file/d/1uAN3Lfbbp0MzX3w8kOnbquOt63q4aJpc/view?usp=sharing)
   - [Watch me](https://www.youtube.com/watch?v=jRxSL8d58Cc)
-    
+
+- Download the database backup file from [here](https://drive.google.com/file/d/19NjcYwgtR3gAU6k37a0OuS5j7TGqZdd9/view?usp=sharing)
 - Connect to SQL Server by setting up the connection string
 
 ## Other Resources
@@ -29,7 +30,6 @@
 - [Database Design](https://drive.google.com/file/d/106xcOXQBxRzY1_2y-k6aKBhBFpU0MO_o/view?usp=sharing)
 
 ## Commit messages
-
 - We follow conventional commits during our development workflow as a good practice. More information can be found here [How to write better git commits](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
 
 
