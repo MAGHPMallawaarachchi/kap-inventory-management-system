@@ -1,4 +1,5 @@
-﻿using inventory_management_system_kap.Controllers;
+﻿using Guna.UI2.AnimatorNS;
+using inventory_management_system_kap.Controllers;
 using inventory_management_system_kap.Models;
 using inventory_management_system_kap.Repositories;
 using InventoryManagementSystem;
@@ -18,25 +19,45 @@ namespace inventory_management_system_kap.Views
     public partial class InventoryView : Form
     {
         UIHelper UIHelper = new UIHelper();
-        private InventoryController inventoryController;
+        private ItemController controller;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
-        private ItemDetailsView itemDetailsView;
+        private int currentPage = 1;
+        private int itemsPerPage = 10;
+        private int initialRowNumber = 1;
 
         public InventoryView()
         {
             InitializeComponent();
-            inventoryController = new InventoryController(new InventoryRepository(sqlConnectionString));
-            dgvItems.RowPostPaint += dgvItems_RowPostPaint;
-            dgvItems.CellClick += dgvItems_CellClick;
+            controller = new ItemController(new ItemRepository(sqlConnectionString));
+        }
 
+        private void RefreshDataGrid()
+        {
+            dgvItems.AutoGenerateColumns = false;
+
+            int currentRowNumber = (currentPage - 1) * itemsPerPage + 1;
+
+            IEnumerable<ItemModel> items = controller.GetAllItems(currentPage, itemsPerPage);
+            var displayedItems = items.ToList();
+            dgvItems.DataSource = displayedItems;
+            lblPageNumber.Text = "Page " + currentPage;
+
+            initialRowNumber = currentRowNumber;
+
+            foreach (DataGridViewRow row in dgvItems.Rows)
+            {
+                row.Cells["number"].Value = currentRowNumber;
+                currentRowNumber++;
+            }
         }
 
         private void InventoryView_Load(object sender, EventArgs e)
         {
             UIHelper.UpdatePanelRegion(pnlInventorySummary);
             UIHelper.UpdatePanelRegion(pnlItems);
-            dgvItems.ClearSelection();
-            GetItemGrid();
+
+            RefreshDataGrid();
+            dgvItems.DataBindingComplete += dgvItems_DataBindingComplete;
         }
 
         private void pnlInventorySummary_SizeChanged(object sender, EventArgs e)
@@ -49,57 +70,64 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(pnlItems);
         }
 
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = txtSearchBar.Text.Trim();
+            IEnumerable<ItemModel> filteredItem = controller.SearchItem(searchValue,currentPage,itemsPerPage);
+            dgvItems.DataSource = filteredItem.ToList();
+        }
+
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             NewItemModalView newItemModalView = new NewItemModalView();
             newItemModalView.ShowDialog();
         }
 
-        private void GetItemGrid()
+        private void dgvItems_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            IEnumerable<InventoryModel> inventory = inventoryController.GetItemGrid();
-            dgvItems.DataSource = inventory.ToList();
-            dgvItems.Columns["number"].HeaderText = "No";
-            dgvItems.Columns["PartNo"].HeaderText = "Part No";
-            dgvItems.Columns["BrandId"].HeaderText = "Brand";
-            dgvItems.Columns["QtyInHand"].HeaderText = "Quantity In Hand";
-            dgvItems.Columns["QtySold"].HeaderText = "Quantity Sold";
-            dgvItems.Columns["UnitPrice"].HeaderText = "Unit Price";
-            dgvItems.Columns["Availability"].HeaderText = "Availability"; // Add this line
-            dgvItems.Columns["OEMNo"].Visible = false;
-            dgvItems.Columns["TotalQty"].Visible = false;
-            dgvItems.Columns["Category"].Visible = false;
-            dgvItems.Columns["Description"].Visible = false;
-            dgvItems.Columns["BuyingPrice"].Visible = false;
-            dgvItems.Columns["ItemImage"].Visible = false;
-        }
-
-
-        private void txtSearchBar_TextChanged(object sender, EventArgs e)
-        {
-            string searchValue = txtSearchBar.Text.Trim();
-            IEnumerable<InventoryModel> filteredItem = inventoryController.SearchItem(searchValue);
-            dgvItems.DataSource = filteredItem.ToList();
-        }
-
-        private void dgvItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            int rowNumber = (e.RowIndex + 1);
-            dgvItems.Rows[e.RowIndex].Cells["number"].Value = rowNumber.ToString();
-        }
-
-        private void dgvItems_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
+            int currentRowNumber = initialRowNumber;
+            foreach (DataGridViewRow row in dgvItems.Rows)
             {
-                if (itemDetailsView == null)
+                row.Cells["number"].Value = currentRowNumber;
+                currentRowNumber++;
+            }
+        }
+
+        private void dgvItems_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dgvItems.Columns["unitPrice"].Index && e.RowIndex >= 0)
+            {
+                if (e.Value is decimal unitPrice)
                 {
-                    itemDetailsView = new ItemDetailsView();
-                    itemDetailsView.FormClosed += (s, ev) => { itemDetailsView = null; };
-                    itemDetailsView.Show();
+                    e.Value = "Rs." + unitPrice.ToString("N2");
+                    e.FormattingApplied = true;
                 }
             }
+        }
 
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                RefreshDataGrid();
+                btnNext.Enabled = true;
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int nextPage = currentPage + 1;
+
+            if (controller.HasMoreItemsOnPage(nextPage, itemsPerPage))
+            {
+                currentPage = nextPage;
+                RefreshDataGrid();
+            }
+            else
+            {
+                btnNext.Enabled = false;
+            }
         }
     }
 }
