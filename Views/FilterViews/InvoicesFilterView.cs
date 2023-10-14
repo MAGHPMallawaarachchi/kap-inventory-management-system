@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace inventory_management_system_kap.Views
 {
-    public partial class FilterPopupView : Form
+    public partial class InvoicesFilterView : Form
     {
         public DateTime FromDate { get;  set; }
         public DateTime ToDate { get;  set; }
@@ -22,7 +22,7 @@ namespace inventory_management_system_kap.Views
         private CustomerController controller;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
 
-        public FilterPopupView(DateTime fromDate, DateTime toDate, string customer)
+        public InvoicesFilterView(DateTime fromDate, DateTime toDate, string customer)
         {
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace inventory_management_system_kap.Views
         {
             FromDate = dtpFromDate.Value;
             ToDate = dtpToDate.Value;
-            Customer = cmbCustomer.SelectedText;
+            Customer = cmbCustomer.Text;
 
             DialogResult = DialogResult.OK;
             Close();

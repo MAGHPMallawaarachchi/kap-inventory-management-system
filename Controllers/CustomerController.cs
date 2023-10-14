@@ -62,5 +62,10 @@ namespace inventory_management_system_kap.Controllers
                 return _customerRepository.FilterCustomers(city, page, itemsPerPage);
             }
         }
+
+        public IEnumerable<string> GettAllCustomerId()
+        {
+            return _customerRepository.GetAllCustomerIds();
+        }
     }
 }

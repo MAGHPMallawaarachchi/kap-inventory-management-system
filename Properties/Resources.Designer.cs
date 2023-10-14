@@ -185,7 +185,7 @@ namespace inventory_management_system_kap.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap green_icon {
             get {
-                object obj = ResourceManager.GetObject("green-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("green_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -265,7 +265,7 @@ namespace inventory_management_system_kap.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap orange_icon {
             get {
-                object obj = ResourceManager.GetObject("orange-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("orange_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

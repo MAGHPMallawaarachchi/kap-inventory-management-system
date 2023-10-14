@@ -158,14 +158,14 @@ namespace inventory_management_system_kap.Views
             addInvoiceForm.Show();
         }
 
-        FilterPopupView filterPopup = null;
+        InvoicesFilterView filterPopup = null;
         DateTime minValue = new DateTime(2010, 1, 1);
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
             if (filterPopup == null)
             {
-                filterPopup = new FilterPopupView(minValue, DateTime.Today, string.Empty);
+                filterPopup = new InvoicesFilterView(minValue, DateTime.Today, string.Empty);
             }
 
             if (filterPopup.ShowDialog() == DialogResult.OK)
