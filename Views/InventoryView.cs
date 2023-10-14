@@ -21,6 +21,10 @@ namespace inventory_management_system_kap.Views
         private InventoryController inventoryController;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
         private ItemDetailsView itemDetailsView;
+        private int currentPage = 1;
+        private int itemsPerPage = 10; 
+        private int totalPages;
+        private IEnumerable<InventoryModel> currentInventoryData;
 
         public InventoryView()
         {
@@ -28,7 +32,6 @@ namespace inventory_management_system_kap.Views
             inventoryController = new InventoryController(new InventoryRepository(sqlConnectionString));
             dgvItems.RowPostPaint += dgvItems_RowPostPaint;
             dgvItems.CellClick += dgvItems_CellClick;
-
         }
 
         private void InventoryView_Load(object sender, EventArgs e)
@@ -37,6 +40,8 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(pnlItems);
             dgvItems.ClearSelection();
             GetItemGrid();
+            totalPages = (int)Math.Ceiling((double)currentInventoryData.Count() / itemsPerPage);
+            ShowPage(currentPage); ;
         }
 
         private void pnlInventorySummary_SizeChanged(object sender, EventArgs e)
@@ -58,6 +63,7 @@ namespace inventory_management_system_kap.Views
         private void GetItemGrid()
         {
             IEnumerable<InventoryModel> inventory = inventoryController.GetItemGrid();
+            currentInventoryData = inventoryController.GetItemGrid();
             dgvItems.DataSource = inventory.ToList();
             dgvItems.Columns["number"].HeaderText = "No";
             dgvItems.Columns["PartNo"].HeaderText = "Part No";
@@ -65,7 +71,7 @@ namespace inventory_management_system_kap.Views
             dgvItems.Columns["QtyInHand"].HeaderText = "Quantity In Hand";
             dgvItems.Columns["QtySold"].HeaderText = "Quantity Sold";
             dgvItems.Columns["UnitPrice"].HeaderText = "Unit Price";
-            dgvItems.Columns["Availability"].HeaderText = "Availability"; // Add this line
+            dgvItems.Columns["Availability"].HeaderText = "Availability"; 
             dgvItems.Columns["OEMNo"].Visible = false;
             dgvItems.Columns["TotalQty"].Visible = false;
             dgvItems.Columns["Category"].Visible = false;
@@ -73,7 +79,6 @@ namespace inventory_management_system_kap.Views
             dgvItems.Columns["BuyingPrice"].Visible = false;
             dgvItems.Columns["ItemImage"].Visible = false;
         }
-
 
         private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
@@ -100,6 +105,32 @@ namespace inventory_management_system_kap.Views
                 }
             }
 
+        }
+
+        private void ShowPage(int page)
+        {
+            if (page < 1)
+                page = 1;
+            if (page > totalPages)
+                page = totalPages;
+
+            int startIndex = (page - 1) * itemsPerPage;
+
+            var pageData = currentInventoryData.Skip(startIndex).Take(itemsPerPage).ToList();
+            dgvItems.DataSource = pageData;
+            lblPageNumber.Text = $"Page {page} of {totalPages}";
+
+            currentPage = page;  
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            ShowPage(currentPage + 1);
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            ShowPage(currentPage - 1);
         }
     }
 }
