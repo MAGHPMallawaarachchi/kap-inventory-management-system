@@ -174,5 +174,38 @@ namespace inventory_management_system_kap.Views
                 RefreshDataGrid();
             }
         }
+
+        private void dgvItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string partNo = dgvItems["PartNo", e.RowIndex].Value.ToString();
+
+                ItemDetailsView itemDetailsView = new ItemDetailsView(partNo);
+                itemDetailsView.PartNo = partNo;
+
+                itemDetailsView.TopLevel = false;
+                itemDetailsView.FormBorderStyle = FormBorderStyle.None;
+                itemDetailsView.Dock = DockStyle.Fill;
+                pnlChildForm.Controls.Add(itemDetailsView);
+                pnlChildForm.Tag = itemDetailsView;
+                itemDetailsView.BringToFront();
+                itemDetailsView.Show();
+            }
+        }
+
+        private void dgvItems_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvItems.Cursor = Cursors.Hand;
+            }
+        }
+
+        private void dgvItems_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvItems.Cursor = Cursors.Default;
+        }
+
     }
 }
