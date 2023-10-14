@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlInventorySummary = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -60,6 +60,12 @@
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvItems = new Guna.UI2.WinForms.Guna2DataGridView();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.partNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyInHand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtySold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.availability = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearchBar = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblItemsHeading = new System.Windows.Forms.Label();
@@ -69,13 +75,6 @@
             this.btnNext = new Guna.UI2.WinForms.Guna2Button();
             this.lblPageNumber = new System.Windows.Forms.Label();
             this.btnPrevious = new Guna.UI2.WinForms.Guna2Button();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.partNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtyInHand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtySold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.availability = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlInventorySummary.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -561,7 +560,48 @@
             this.number.MinimumWidth = 6;
             this.number.Name = "number";
             this.number.ReadOnly = true;
-            this.number.Width = 61;
+            this.number.Width = 53;
+            // 
+            // partNo
+            // 
+            this.partNo.DataPropertyName = "PartNo";
+            this.partNo.HeaderText = "Part No";
+            this.partNo.Name = "partNo";
+            this.partNo.ReadOnly = true;
+            // 
+            // brand
+            // 
+            this.brand.DataPropertyName = "BrandId";
+            this.brand.HeaderText = "Brand";
+            this.brand.Name = "brand";
+            this.brand.ReadOnly = true;
+            // 
+            // qtyInHand
+            // 
+            this.qtyInHand.DataPropertyName = "QtyInHand";
+            this.qtyInHand.HeaderText = "Quantity in Hand";
+            this.qtyInHand.Name = "qtyInHand";
+            this.qtyInHand.ReadOnly = true;
+            // 
+            // qtySold
+            // 
+            this.qtySold.DataPropertyName = "QtySold";
+            this.qtySold.HeaderText = "Quantity Sold";
+            this.qtySold.Name = "qtySold";
+            this.qtySold.ReadOnly = true;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.DataPropertyName = "UnitPrice";
+            this.unitPrice.HeaderText = "Unit Price";
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.ReadOnly = true;
+            // 
+            // availability
+            // 
+            this.availability.HeaderText = "Availability";
+            this.availability.Name = "availability";
+            this.availability.ReadOnly = true;
             // 
             // tableLayoutPanel14
             // 
@@ -750,55 +790,6 @@
             this.btnPrevious.TabIndex = 8;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
-            // 
-            // number
-            // 
-            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.number.HeaderText = "No.";
-            this.number.Name = "number";
-            this.number.ReadOnly = true;
-            this.number.Width = 53;
-            // 
-            // partNo
-            // 
-            this.partNo.DataPropertyName = "PartNo";
-            this.partNo.HeaderText = "Part No";
-            this.partNo.Name = "partNo";
-            this.partNo.ReadOnly = true;
-            // 
-            // brand
-            // 
-            this.brand.DataPropertyName = "BrandId";
-            this.brand.HeaderText = "Brand";
-            this.brand.Name = "brand";
-            this.brand.ReadOnly = true;
-            // 
-            // qtyInHand
-            // 
-            this.qtyInHand.DataPropertyName = "QtyInHand";
-            this.qtyInHand.HeaderText = "Quantity in Hand";
-            this.qtyInHand.Name = "qtyInHand";
-            this.qtyInHand.ReadOnly = true;
-            // 
-            // qtySold
-            // 
-            this.qtySold.DataPropertyName = "QtySold";
-            this.qtySold.HeaderText = "Quantity Sold";
-            this.qtySold.Name = "qtySold";
-            this.qtySold.ReadOnly = true;
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.DataPropertyName = "UnitPrice";
-            this.unitPrice.HeaderText = "Unit Price";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
-            // 
-            // availability
-            // 
-            this.availability.HeaderText = "Availability";
-            this.availability.Name = "availability";
-            this.availability.ReadOnly = true;
             // 
             // InventoryView
             // 

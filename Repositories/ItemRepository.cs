@@ -84,7 +84,7 @@ namespace inventory_management_system_kap.Repositories
 
             var parameters = new Dictionary<string, object>
             {
-                { "@InvoiceNo", PartNo },
+                { "@PartNo", PartNo },
             };
 
             return GetItems(query, parameters);
