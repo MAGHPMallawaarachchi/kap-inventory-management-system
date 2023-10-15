@@ -62,34 +62,37 @@ namespace inventory_management_system_kap.Views
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            try
+            if (ValidateForm())
             {
-                ItemModel item = new ItemModel
+                try
                 {
-                    PartNo = txtPartNumber.Text,
-                    OEMNo = txtOemNumber.Text,
-                    BrandId = cmbBrand.Text,
-                    QtySold = 0,
-                    TotalQty = (int)nudQuantity.Value,
-                    Category = txtCategory.Text,
-                    Description = txtDescription.Text,
-                    BuyingPrice = nudBuyingPrice.Value,
-                    UnitPrice = nudUnitPrice.Value,
-                };
+                    ItemModel item = new ItemModel
+                    {
+                        PartNo = txtPartNumber.Text,
+                        OEMNo = txtOemNumber.Text,
+                        BrandId = cmbBrand.Text,
+                        QtySold = 0,
+                        TotalQty = (int)nudQuantity.Value,
+                        Category = txtCategory.Text,
+                        Description = txtDescription.Text,
+                        BuyingPrice = nudBuyingPrice.Value,
+                        UnitPrice = nudUnitPrice.Value,
+                    };
 
-                using (var stream = new MemoryStream())
-                {
-                    picAddImage.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    item.ItemImage = stream.ToArray();
+                    using (var stream = new MemoryStream())
+                    {
+                        picAddImage.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        item.ItemImage = stream.ToArray();
+                    }
+
+                    itemController.AddItem(item);
+                    ClearForm();
+                    MessageBox.Show("Item added successfully");
                 }
-
-                itemController.AddItem(item);
-                ClearForm();
-                MessageBox.Show("Item added successfully");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
             }
         }
 
@@ -110,5 +113,86 @@ namespace inventory_management_system_kap.Views
         {
             ClearForm();
         }
+
+        private bool ValidateForm()
+        {
+            bool isValid = true;
+
+            lblPartNoError.Visible = false;
+            lblBrandError.Visible = false;
+            lblOemNoError.Visible = false;
+            lblQtyError.Visible = false;
+            lblCategoryError.Visible = false;
+            lblDescriptionError.Visible = false;
+            lblBuyingPriceError.Visible = false;
+            lblUnitPriceError.Visible = false;
+            lblImageError.Visible = false;
+
+            if (string.IsNullOrWhiteSpace(txtPartNumber.Text))
+            {
+                lblPartNoError.Text = "Part Number is required";
+                lblPartNoError.Visible = true;
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtOemNumber.Text))
+            {
+                lblOemNoError.Text = "OEM Number is required";
+                lblOemNoError.Visible = true;
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(cmbBrand.Text) || cmbBrand.SelectedIndex == 0)
+            {
+                lblBrandError.Text = "Please select a valid Brand.";
+                lblBrandError.Visible = true;
+                isValid = false;
+            }
+
+            if (nudQuantity.Value == 0)
+            {
+                lblQtyError.Text = "Quantity must be greater than zero.";
+                lblQtyError.Visible = true;
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCategory.Text))
+            {
+                lblCategoryError.Text = "Category is required.";
+                lblCategoryError.Visible = true;
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                lblDescriptionError.Text = "Description is required.";
+                lblDescriptionError.Visible = true;
+                isValid = false;
+            }
+
+            if (nudBuyingPrice.Value == 0.00m)
+            {
+                lblBuyingPriceError.Text = "Buying Price must be greater than zero.";
+                lblBuyingPriceError.Visible = true;
+                isValid = false;
+            }
+
+            if (nudUnitPrice.Value == 0.00m)
+            {
+                lblUnitPriceError.Text = "Unit Price must be greater than zero.";
+                lblUnitPriceError.Visible = true;
+                isValid = false;
+            }
+
+            if (picAddImage.Image == null)
+            {
+                lblImageError.Text = "Please select an image for the item.";
+                lblImageError.Visible = true;
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
     }
 }

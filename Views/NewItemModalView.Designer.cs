@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewItemModalView));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.nudBuyingPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.nudUnitPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
             this.picAddImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnAddImage = new Guna.UI2.WinForms.Guna2Button();
             this.nudQuantity = new Guna.UI2.WinForms.Guna2NumericUpDown();
@@ -55,18 +58,24 @@
             this.imgBtnClose = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lblHeading = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
-            this.nudUnitPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.nudBuyingPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.lblPartNoError = new System.Windows.Forms.Label();
+            this.lblOemNoError = new System.Windows.Forms.Label();
+            this.lblDescriptionError = new System.Windows.Forms.Label();
+            this.lblCategoryError = new System.Windows.Forms.Label();
+            this.lblBrandError = new System.Windows.Forms.Label();
+            this.lblBuyingPriceError = new System.Windows.Forms.Label();
+            this.lblUnitPriceError = new System.Windows.Forms.Label();
+            this.lblQtyError = new System.Windows.Forms.Label();
+            this.lblImageError = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnitPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAddImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudUnitPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -86,6 +95,15 @@
             // 
             // guna2Panel5
             // 
+            this.guna2Panel5.Controls.Add(this.lblImageError);
+            this.guna2Panel5.Controls.Add(this.lblQtyError);
+            this.guna2Panel5.Controls.Add(this.lblUnitPriceError);
+            this.guna2Panel5.Controls.Add(this.lblBuyingPriceError);
+            this.guna2Panel5.Controls.Add(this.lblBrandError);
+            this.guna2Panel5.Controls.Add(this.lblCategoryError);
+            this.guna2Panel5.Controls.Add(this.lblDescriptionError);
+            this.guna2Panel5.Controls.Add(this.lblOemNoError);
+            this.guna2Panel5.Controls.Add(this.lblPartNoError);
             this.guna2Panel5.Controls.Add(this.nudBuyingPrice);
             this.guna2Panel5.Controls.Add(this.nudUnitPrice);
             this.guna2Panel5.Controls.Add(this.txtCategory);
@@ -103,6 +121,103 @@
             this.guna2Panel5.ShadowDecoration.Parent = this.guna2Panel5;
             this.guna2Panel5.Size = new System.Drawing.Size(238, 537);
             this.guna2Panel5.TabIndex = 3;
+            // 
+            // nudBuyingPrice
+            // 
+            this.nudBuyingPrice.BackColor = System.Drawing.Color.Transparent;
+            this.nudBuyingPrice.BorderColor = System.Drawing.Color.Transparent;
+            this.nudBuyingPrice.BorderRadius = 6;
+            this.nudBuyingPrice.BorderThickness = 0;
+            this.nudBuyingPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudBuyingPrice.DecimalPlaces = 2;
+            this.nudBuyingPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.nudBuyingPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.nudBuyingPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.nudBuyingPrice.DisabledState.Parent = this.nudBuyingPrice;
+            this.nudBuyingPrice.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
+            this.nudBuyingPrice.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
+            this.nudBuyingPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudBuyingPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.nudBuyingPrice.FocusedState.Parent = this.nudBuyingPrice;
+            this.nudBuyingPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudBuyingPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.nudBuyingPrice.Location = new System.Drawing.Point(8, 276);
+            this.nudBuyingPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.nudBuyingPrice.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            131072});
+            this.nudBuyingPrice.Name = "nudBuyingPrice";
+            this.nudBuyingPrice.ShadowDecoration.Parent = this.nudBuyingPrice;
+            this.nudBuyingPrice.Size = new System.Drawing.Size(229, 36);
+            this.nudBuyingPrice.TabIndex = 14;
+            this.nudBuyingPrice.ThousandsSeparator = true;
+            this.nudBuyingPrice.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudBuyingPrice.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            // 
+            // nudUnitPrice
+            // 
+            this.nudUnitPrice.BackColor = System.Drawing.Color.Transparent;
+            this.nudUnitPrice.BorderColor = System.Drawing.Color.Transparent;
+            this.nudUnitPrice.BorderRadius = 6;
+            this.nudUnitPrice.BorderThickness = 0;
+            this.nudUnitPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudUnitPrice.DecimalPlaces = 2;
+            this.nudUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.nudUnitPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.nudUnitPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.nudUnitPrice.DisabledState.Parent = this.nudUnitPrice;
+            this.nudUnitPrice.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
+            this.nudUnitPrice.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
+            this.nudUnitPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudUnitPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.nudUnitPrice.FocusedState.Parent = this.nudUnitPrice;
+            this.nudUnitPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudUnitPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.nudUnitPrice.Location = new System.Drawing.Point(8, 330);
+            this.nudUnitPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.nudUnitPrice.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            131072});
+            this.nudUnitPrice.Name = "nudUnitPrice";
+            this.nudUnitPrice.ShadowDecoration.Parent = this.nudUnitPrice;
+            this.nudUnitPrice.Size = new System.Drawing.Size(229, 36);
+            this.nudUnitPrice.TabIndex = 13;
+            this.nudUnitPrice.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudUnitPrice.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.BackColor = System.Drawing.Color.Transparent;
+            this.txtCategory.BorderColor = System.Drawing.Color.Transparent;
+            this.txtCategory.BorderRadius = 6;
+            this.txtCategory.BorderThickness = 0;
+            this.txtCategory.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCategory.DefaultText = "";
+            this.txtCategory.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCategory.DisabledState.Parent = this.txtCategory;
+            this.txtCategory.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.txtCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCategory.FocusedState.Parent = this.txtCategory;
+            this.txtCategory.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.txtCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCategory.HoverState.Parent = this.txtCategory;
+            this.txtCategory.Location = new System.Drawing.Point(9, 168);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.PasswordChar = '\0';
+            this.txtCategory.PlaceholderText = "Enter category";
+            this.txtCategory.SelectedText = "";
+            this.txtCategory.ShadowDecoration.Parent = this.txtCategory;
+            this.txtCategory.Size = new System.Drawing.Size(229, 36);
+            this.txtCategory.TabIndex = 12;
             // 
             // picAddImage
             // 
@@ -157,6 +272,11 @@
             this.nudQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             this.nudQuantity.Location = new System.Drawing.Point(8, 384);
             this.nudQuantity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.nudQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nudQuantity.Name = "nudQuantity";
             this.nudQuantity.ShadowDecoration.Parent = this.nudQuantity;
             this.nudQuantity.Size = new System.Drawing.Size(229, 36);
@@ -495,102 +615,113 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // txtCategory
+            // lblPartNoError
             // 
-            this.txtCategory.BackColor = System.Drawing.Color.Transparent;
-            this.txtCategory.BorderColor = System.Drawing.Color.Transparent;
-            this.txtCategory.BorderRadius = 6;
-            this.txtCategory.BorderThickness = 0;
-            this.txtCategory.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCategory.DefaultText = "";
-            this.txtCategory.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCategory.DisabledState.Parent = this.txtCategory;
-            this.txtCategory.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCategory.FocusedState.Parent = this.txtCategory;
-            this.txtCategory.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.txtCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCategory.HoverState.Parent = this.txtCategory;
-            this.txtCategory.Location = new System.Drawing.Point(9, 168);
-            this.txtCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.PasswordChar = '\0';
-            this.txtCategory.PlaceholderText = "Enter category";
-            this.txtCategory.SelectedText = "";
-            this.txtCategory.ShadowDecoration.Parent = this.txtCategory;
-            this.txtCategory.Size = new System.Drawing.Size(229, 36);
-            this.txtCategory.TabIndex = 12;
+            this.lblPartNoError.AutoSize = true;
+            this.lblPartNoError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblPartNoError.Location = new System.Drawing.Point(6, 44);
+            this.lblPartNoError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblPartNoError.Name = "lblPartNoError";
+            this.lblPartNoError.Size = new System.Drawing.Size(32, 14);
+            this.lblPartNoError.TabIndex = 15;
+            this.lblPartNoError.Text = "error";
+            this.lblPartNoError.Visible = false;
             // 
-            // nudUnitPrice
+            // lblOemNoError
             // 
-            this.nudUnitPrice.BackColor = System.Drawing.Color.Transparent;
-            this.nudUnitPrice.BorderColor = System.Drawing.Color.Transparent;
-            this.nudUnitPrice.BorderRadius = 6;
-            this.nudUnitPrice.BorderThickness = 0;
-            this.nudUnitPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nudUnitPrice.DecimalPlaces = 2;
-            this.nudUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.nudUnitPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.nudUnitPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nudUnitPrice.DisabledState.Parent = this.nudUnitPrice;
-            this.nudUnitPrice.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
-            this.nudUnitPrice.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
-            this.nudUnitPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.nudUnitPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nudUnitPrice.FocusedState.Parent = this.nudUnitPrice;
-            this.nudUnitPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudUnitPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.nudUnitPrice.Location = new System.Drawing.Point(8, 330);
-            this.nudUnitPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
-            this.nudUnitPrice.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            131072});
-            this.nudUnitPrice.Name = "nudUnitPrice";
-            this.nudUnitPrice.ShadowDecoration.Parent = this.nudUnitPrice;
-            this.nudUnitPrice.Size = new System.Drawing.Size(229, 36);
-            this.nudUnitPrice.TabIndex = 13;
-            this.nudUnitPrice.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.nudUnitPrice.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.lblOemNoError.AutoSize = true;
+            this.lblOemNoError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblOemNoError.Location = new System.Drawing.Point(7, 97);
+            this.lblOemNoError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblOemNoError.Name = "lblOemNoError";
+            this.lblOemNoError.Size = new System.Drawing.Size(32, 14);
+            this.lblOemNoError.TabIndex = 16;
+            this.lblOemNoError.Text = "error";
+            this.lblOemNoError.Visible = false;
             // 
-            // nudBuyingPrice
+            // lblDescriptionError
             // 
-            this.nudBuyingPrice.BackColor = System.Drawing.Color.Transparent;
-            this.nudBuyingPrice.BorderColor = System.Drawing.Color.Transparent;
-            this.nudBuyingPrice.BorderRadius = 6;
-            this.nudBuyingPrice.BorderThickness = 0;
-            this.nudBuyingPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nudBuyingPrice.DecimalPlaces = 2;
-            this.nudBuyingPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.nudBuyingPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.nudBuyingPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nudBuyingPrice.DisabledState.Parent = this.nudBuyingPrice;
-            this.nudBuyingPrice.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
-            this.nudBuyingPrice.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
-            this.nudBuyingPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.nudBuyingPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nudBuyingPrice.FocusedState.Parent = this.nudBuyingPrice;
-            this.nudBuyingPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudBuyingPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.nudBuyingPrice.Location = new System.Drawing.Point(8, 276);
-            this.nudBuyingPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
-            this.nudBuyingPrice.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            131072});
-            this.nudBuyingPrice.Name = "nudBuyingPrice";
-            this.nudBuyingPrice.ShadowDecoration.Parent = this.nudBuyingPrice;
-            this.nudBuyingPrice.Size = new System.Drawing.Size(229, 36);
-            this.nudBuyingPrice.TabIndex = 14;
-            this.nudBuyingPrice.ThousandsSeparator = true;
-            this.nudBuyingPrice.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.nudBuyingPrice.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.lblDescriptionError.AutoSize = true;
+            this.lblDescriptionError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblDescriptionError.Location = new System.Drawing.Point(7, 151);
+            this.lblDescriptionError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblDescriptionError.Name = "lblDescriptionError";
+            this.lblDescriptionError.Size = new System.Drawing.Size(32, 14);
+            this.lblDescriptionError.TabIndex = 17;
+            this.lblDescriptionError.Text = "error";
+            this.lblDescriptionError.Visible = false;
+            // 
+            // lblCategoryError
+            // 
+            this.lblCategoryError.AutoSize = true;
+            this.lblCategoryError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblCategoryError.Location = new System.Drawing.Point(7, 205);
+            this.lblCategoryError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblCategoryError.Name = "lblCategoryError";
+            this.lblCategoryError.Size = new System.Drawing.Size(32, 14);
+            this.lblCategoryError.TabIndex = 18;
+            this.lblCategoryError.Text = "error";
+            this.lblCategoryError.Visible = false;
+            // 
+            // lblBrandError
+            // 
+            this.lblBrandError.AutoSize = true;
+            this.lblBrandError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblBrandError.Location = new System.Drawing.Point(7, 259);
+            this.lblBrandError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblBrandError.Name = "lblBrandError";
+            this.lblBrandError.Size = new System.Drawing.Size(32, 14);
+            this.lblBrandError.TabIndex = 19;
+            this.lblBrandError.Text = "error";
+            this.lblBrandError.Visible = false;
+            // 
+            // lblBuyingPriceError
+            // 
+            this.lblBuyingPriceError.AutoSize = true;
+            this.lblBuyingPriceError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblBuyingPriceError.Location = new System.Drawing.Point(7, 313);
+            this.lblBuyingPriceError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblBuyingPriceError.Name = "lblBuyingPriceError";
+            this.lblBuyingPriceError.Size = new System.Drawing.Size(32, 14);
+            this.lblBuyingPriceError.TabIndex = 20;
+            this.lblBuyingPriceError.Text = "error";
+            this.lblBuyingPriceError.Visible = false;
+            // 
+            // lblUnitPriceError
+            // 
+            this.lblUnitPriceError.AutoSize = true;
+            this.lblUnitPriceError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblUnitPriceError.Location = new System.Drawing.Point(7, 367);
+            this.lblUnitPriceError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblUnitPriceError.Name = "lblUnitPriceError";
+            this.lblUnitPriceError.Size = new System.Drawing.Size(32, 14);
+            this.lblUnitPriceError.TabIndex = 21;
+            this.lblUnitPriceError.Text = "error";
+            this.lblUnitPriceError.Visible = false;
+            // 
+            // lblQtyError
+            // 
+            this.lblQtyError.AutoSize = true;
+            this.lblQtyError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblQtyError.Location = new System.Drawing.Point(7, 424);
+            this.lblQtyError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblQtyError.Name = "lblQtyError";
+            this.lblQtyError.Size = new System.Drawing.Size(32, 14);
+            this.lblQtyError.TabIndex = 22;
+            this.lblQtyError.Text = "error";
+            this.lblQtyError.Visible = false;
+            // 
+            // lblImageError
+            // 
+            this.lblImageError.AutoSize = true;
+            this.lblImageError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(44)))), ((int)(((byte)(34)))));
+            this.lblImageError.Location = new System.Drawing.Point(7, 504);
+            this.lblImageError.Margin = new System.Windows.Forms.Padding(3, 0, 3, 8);
+            this.lblImageError.Name = "lblImageError";
+            this.lblImageError.Size = new System.Drawing.Size(32, 14);
+            this.lblImageError.TabIndex = 23;
+            this.lblImageError.Text = "error";
+            this.lblImageError.Visible = false;
             // 
             // NewItemModalView
             // 
@@ -609,6 +740,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel5.ResumeLayout(false);
+            this.guna2Panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnitPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAddImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             this.guna2Panel4.ResumeLayout(false);
@@ -616,8 +750,6 @@
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudUnitPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -653,5 +785,14 @@
         private Guna.UI2.WinForms.Guna2TextBox txtCategory;
         private Guna.UI2.WinForms.Guna2NumericUpDown nudBuyingPrice;
         private Guna.UI2.WinForms.Guna2NumericUpDown nudUnitPrice;
+        private System.Windows.Forms.Label lblBrandError;
+        private System.Windows.Forms.Label lblCategoryError;
+        private System.Windows.Forms.Label lblDescriptionError;
+        private System.Windows.Forms.Label lblOemNoError;
+        private System.Windows.Forms.Label lblPartNoError;
+        private System.Windows.Forms.Label lblImageError;
+        private System.Windows.Forms.Label lblQtyError;
+        private System.Windows.Forms.Label lblUnitPriceError;
+        private System.Windows.Forms.Label lblBuyingPriceError;
     }
 }
