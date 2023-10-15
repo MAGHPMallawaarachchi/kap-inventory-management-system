@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlItems = new System.Windows.Forms.Panel();
@@ -176,11 +176,11 @@
             this.dgvInvoice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInvoice.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvInvoice.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvInvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInvoice.ColumnHeadersHeight = 30;
             this.dgvInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.number,
@@ -190,25 +190,25 @@
             this.qty,
             this.unitPrice,
             this.amount});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Inter", 10F);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInvoice.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Inter", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInvoice.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInvoice.EnableHeadersVisualStyles = false;
             this.dgvInvoice.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
             this.dgvInvoice.Location = new System.Drawing.Point(0, 49);
             this.dgvInvoice.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
             this.dgvInvoice.Name = "dgvInvoice";
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvInvoice.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvInvoice.RowHeadersVisible = false;
             this.dgvInvoice.RowTemplate.Height = 40;
             this.dgvInvoice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -310,7 +310,7 @@
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(109, 28);
             this.lblTotalAmount.TabIndex = 2;
-            this.lblTotalAmount.Text = "Total Amount";
+            this.lblTotalAmount.Text = "Rs. 0.00";
             this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
@@ -882,7 +882,7 @@
             // partNo
             // 
             this.partNo.FillWeight = 101.963F;
-            this.partNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.partNo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.partNo.HeaderText = "Part No";
             this.partNo.Items.AddRange(new object[] {
             "hello",
@@ -901,8 +901,8 @@
             // description
             // 
             this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
-            this.description.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
+            this.description.DefaultCellStyle = dataGridViewCellStyle2;
             this.description.FillWeight = 101.963F;
             this.description.HeaderText = "Description";
             this.description.Name = "description";
@@ -911,18 +911,18 @@
             // 
             // qty
             // 
-            dataGridViewCellStyle17.Format = "N0";
-            dataGridViewCellStyle17.NullValue = "0";
-            this.qty.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.qty.DefaultCellStyle = dataGridViewCellStyle3;
             this.qty.FillWeight = 101.963F;
             this.qty.HeaderText = "Qty";
             this.qty.Name = "qty";
             // 
             // unitPrice
             // 
-            dataGridViewCellStyle18.Format = "N2";
-            dataGridViewCellStyle18.NullValue = "0";
-            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.unitPrice.FillWeight = 101.963F;
             this.unitPrice.HeaderText = "Unit Price";
             this.unitPrice.Name = "unitPrice";
@@ -930,9 +930,9 @@
             // 
             // amount
             // 
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = "0.00";
-            this.amount.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0.00";
+            this.amount.DefaultCellStyle = dataGridViewCellStyle5;
             this.amount.HeaderText = "Amount";
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;

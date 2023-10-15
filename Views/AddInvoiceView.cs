@@ -82,7 +82,7 @@ namespace inventory_management_system_kap.Views
             {
                 var selectedPartNo = dgvInvoice.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 
-                if(selectedPartNo != null)
+                if(selectedPartNo != null || selectedPartNo != "-- part number --")
                 {
                     var item = itemController.GetItemByPartNo(selectedPartNo);
                     if (item != null)
@@ -149,7 +149,6 @@ namespace inventory_management_system_kap.Views
 
             DataGridViewRow templateRow = dgvInvoice.Rows[rowIndex];
             templateRow.Cells[0].Value = rowIndex + 1;
-            templateRow.Cells[1].Value = "";
             templateRow.Cells[2].Value = "-- Brand --";
             templateRow.Cells[3].Value = "-- Description --";
             templateRow.Cells[4].Value = 0;
@@ -254,48 +253,106 @@ namespace inventory_management_system_kap.Views
             lblTotalAmount.Text = "Rs." +totalAmount.ToString("N2");
         }
 
+        private bool ValidateInvoice()
+        {
+            if (cmbCustomer.Text == "-- customer id --")
+            {
+                MessageBox.Show("Please select a customer.");
+                return false;
+            }
+
+            bool anyItemsAdded = false;
+            List<string> addedPartNos = new List<string>();
+            bool hasZeroQty = false;
+
+            foreach (DataGridViewRow row in dgvInvoice.Rows)
+            {
+                if (row.Cells["partNo"].Value != null)
+                {
+                    anyItemsAdded = true;
+                    string partNo = row.Cells["partNo"].Value.ToString();
+
+                    if (addedPartNos.Contains(partNo))
+                    {
+                        MessageBox.Show("Duplicate item detected: " + partNo);
+                        return false;
+                    }
+
+                    addedPartNos.Add(partNo);
+                }
+
+                if (row.Cells["qty"].Value != null)
+                {
+                    int qty;
+                    if (int.TryParse(row.Cells["qty"].Value.ToString(), out qty) && qty == 0)
+                    {
+                        hasZeroQty = true;
+                    }
+                }
+            }
+
+            if (!anyItemsAdded)
+            {
+                MessageBox.Show("Please add at least one item to the invoice.");
+                return false;
+            }
+
+            if (hasZeroQty)
+            {
+                MessageBox.Show("The invoice contains an item with no quantity.");
+                return false;
+            }
+
+            return true;
+        }
+
+
         private void btnAddInvoice_Click(object sender, EventArgs e)
         {
             try
             {
-                InvoiceModel invoice = new InvoiceModel
+                if(ValidateInvoice())
                 {
-                    CustomerId = cmbCustomer.Text.ToString(),
-                    Date = DateTime.Now,
-                    DueDate = invoiceController.GetDueDate(cmbPaymentType.Text.ToLower()),
-                    PaymentType = cmbPaymentType.Text.ToLower(),
-                    Discount = (int)nudDiscount.Value,
-                    TotalAmount = CalculateTotalAmount(),
-                    PaymentStatus = "pending"
-                };
-
-                List<InvoiceItemModel> invoiceItems = new List<InvoiceItemModel>();
-                foreach (DataGridViewRow row in dgvInvoice.Rows)
-                {
-                    int qty;
-
-                    if (row.Cells["partNo"].Value != null && row.Cells["qty"].Value != null && row.Cells["unitPrice"].Value != null && row.Cells["amount"].Value != null && int.TryParse(row.Cells["qty"].Value.ToString(), out qty))
+                    InvoiceModel invoice = new InvoiceModel
                     {
-                        string partNo = row.Cells["partNo"].Value.ToString();
-                        decimal buyingPrice = itemController.GetItemByPartNo(partNo).BuyingPrice;
-                        decimal unitPrice = itemController.GetItemByPartNo(partNo).UnitPrice;
+                        CustomerId = cmbCustomer.Text.ToString(),
+                        Date = DateTime.Now,
+                        DueDate = invoiceController.GetDueDate(cmbPaymentType.Text.ToLower()),
+                        PaymentType = cmbPaymentType.Text.ToLower(),
+                        Discount = (int)nudDiscount.Value,
+                        TotalAmount = CalculateTotalAmount(),
+                        PaymentStatus = "pending"
+                    };
 
-                        var item = new InvoiceItemModel
+                    List<InvoiceItemModel> invoiceItems = new List<InvoiceItemModel>();
+                    foreach (DataGridViewRow row in dgvInvoice.Rows)
+                    {
+                        int qty;
+
+                        if (row.Cells["partNo"].Value != null && row.Cells["qty"].Value != null && row.Cells["unitPrice"].Value != null && row.Cells["amount"].Value != null && int.TryParse(row.Cells["qty"].Value.ToString(), out qty))
                         {
-                            InvoiceNo = invoiceController.GetLastInvoiceNumber(),
-                            PartNo = partNo,
-                            Qty = qty,
-                            BuyingPrice = buyingPrice,
-                            UnitPrice = unitPrice,
-                            Amount = invoiceController.GetAmountPerItem((int)nudDiscount.Value, unitPrice, qty)
-                        };
+                            string partNo = row.Cells["partNo"].Value.ToString();
+                            decimal buyingPrice = itemController.GetItemByPartNo(partNo).BuyingPrice;
+                            decimal unitPrice = itemController.GetItemByPartNo(partNo).UnitPrice;
 
-                        invoiceItems.Add(item);
-                        itemController.UpdateQtySold(item.PartNo, item.Qty);
+                            var item = new InvoiceItemModel
+                            {
+                                InvoiceNo = invoiceController.GetLastInvoiceNumber(),
+                                PartNo = partNo,
+                                Qty = qty,
+                                BuyingPrice = buyingPrice,
+                                UnitPrice = unitPrice,
+                                Amount = invoiceController.GetAmountPerItem((int)nudDiscount.Value, unitPrice, qty)
+                            };
+
+                            invoiceItems.Add(item);
+                            itemController.UpdateQtySold(item.PartNo, item.Qty);
+                        }
                     }
+                    invoiceController.AddInvoice(invoice, invoiceItems);
+                    MessageBox.Show("Invoice saved successfully");
+                    ClearPage();
                 }
-                invoiceController.AddInvoice(invoice, invoiceItems);
-                ClearPage();
             }
             catch(Exception ex)
             {
