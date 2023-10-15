@@ -109,5 +109,65 @@ namespace inventory_management_system_kap.Repositories
 
             return GetItems(query, parameters);
         }
+
+        public IEnumerable<string> GetAllPartNos()
+        {
+            string query = "SELECT PartNo FROM Item";
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (var reader = command.ExecuteReader())
+                {
+                    var partNos = new List<string>();
+                    while (reader.Read())
+                    {
+                        partNos.Add(reader["PartNo"].ToString());
+                    }
+                    return partNos;
+                }
+            }
+        }
+
+        public ItemModel GetItemByPartNo(string partNo)
+        {
+            string query = "SELECT * FROM Item WHERE PartNo = @PartNo";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@PartNo", partNo }
+            };
+
+            var items = GetItems(query, parameters);
+
+            return items.FirstOrDefault();
+        }
+
+        public void UpdateQtySold(string partNo, int qtySold)
+        {
+            string query = "UPDATE Item " +
+                           "SET QtySold = QtySold + @QtySold " +
+                           "WHERE PartNo = @PartNo";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@PartNo", partNo },
+                { "@QtySold", qtySold }
+            };
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand(query, connection))
+            {
+                foreach (var param in parameters)
+                {
+                    command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                }
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

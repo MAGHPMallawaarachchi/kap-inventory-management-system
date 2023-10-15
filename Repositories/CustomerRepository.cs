@@ -152,5 +152,18 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
+        public CustomerModel GetCustomerByCustomerId(string customerId)
+        {
+            string query = "SELECT * FROM Customer WHERE CustomerId = @CustomerId";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@CustomerId", customerId }
+            };
+
+            var customers = GetCustomers(query, parameters);
+
+            return customers.FirstOrDefault();
+        }
     }
 }

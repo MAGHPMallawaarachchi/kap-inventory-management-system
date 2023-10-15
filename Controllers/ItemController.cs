@@ -56,5 +56,20 @@ namespace inventory_management_system_kap.Controllers
             IEnumerable<ItemModel> items = GetAllItems(page, itemsPerPage);
             return items.Any();
         }
+
+        public IEnumerable<string> GetAllPartNos()
+        {
+            return _itemRepository.GetAllPartNos();
+        }
+
+        public ItemModel GetItemByPartNo(string partNo)
+        {
+            return _itemRepository.GetItemByPartNo(partNo);
+        }
+
+        public void UpdateQtySold(string partNo, int qtySold)
+        {
+            _itemRepository.UpdateQtySold(partNo, qtySold);
+        }
     }
 }

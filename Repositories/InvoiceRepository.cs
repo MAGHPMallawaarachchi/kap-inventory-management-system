@@ -117,6 +117,110 @@ namespace inventory_management_system_kap.Repositories
             return GetInvoices(query, parameters);
         }
 
-    }
+        public void AddInvoice(InvoiceModel invoice, List<InvoiceItemModel> invoiceItems)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        var invoiceId = InsertInvoice(invoice, connection, transaction);
+
+                        foreach (var item in invoiceItems)
+                        {
+                            InsertInvoiceItem(item, invoiceId, connection, transaction);
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        private int InsertInvoice(InvoiceModel invoice, SqlConnection connection, SqlTransaction transaction)
+        {
+            var invoiceQuery = "INSERT INTO Invoice (CustomerId, Date, DueDate, PaymentType, Discount, TotalAmount, PaymentStatus) " +
+                              "VALUES (@CustomerId, @Date, @DueDate, @PaymentType, @Discount, @TotalAmount, @PaymentStatus); " +
+                              "SELECT SCOPE_IDENTITY()";
+
+            var invoiceParameters = new Dictionary<string, object>
+            {
+                { "@CustomerId", invoice.CustomerId },
+                { "@Date", invoice.Date },
+                { "@DueDate", invoice.DueDate },
+                { "@PaymentType", invoice.PaymentType },
+                { "@Discount", invoice.Discount },
+                { "@TotalAmount", invoice.TotalAmount },
+                { "@PaymentStatus", invoice.PaymentStatus }
+            };
+
+            using (var command = new SqlCommand(invoiceQuery, connection, transaction))
+            {
+                foreach (var param in invoiceParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                }
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+        private void InsertInvoiceItem(InvoiceItemModel item, int invoiceId, SqlConnection connection, SqlTransaction transaction)
+        {
+            var invoiceItemQuery = "INSERT INTO InvoiceItem (InvoiceNo, PartNo, Qty, BuyingPrice, UnitPrice, Amount) " +
+                                "VALUES (@InvoiceNo, @PartNo, @Qty, @BuyingPrice, @UnitPrice, @Amount)";
+
+            var invoiceItemParameters = new Dictionary<string, object>
+            {
+                { "@InvoiceNo", invoiceId },
+                { "@PartNo", item.PartNo },
+                { "@Qty", item.Qty },
+                { "@BuyingPrice", item.BuyingPrice },
+                { "@UnitPrice", item.UnitPrice },
+                { "@Amount", item.Amount }
+            };
+
+            using (var command = new SqlCommand(invoiceItemQuery, connection, transaction))
+            {
+                foreach (var param in invoiceItemParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                }
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public int GetLastInvoiceNumber()
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT TOP 1 InvoiceNo FROM Invoice ORDER BY InvoiceNo DESC";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    var result = command.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        return (int)result + 1;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
+
+    }
 }
