@@ -31,7 +31,6 @@ namespace inventory_management_system_kap.Views
             customerController = new CustomerController(new CustomerRepository(sqlConnectionString));
             itemController = new ItemController(new ItemRepository(sqlConnectionString));
             setLabels();
-            SetCustomerIdsInComboBox();
             InitializeDataGridView();
         }
 
@@ -46,16 +45,23 @@ namespace inventory_management_system_kap.Views
 
         private void cmbCustomer_SelectedValueChanged(object sender, EventArgs e)
         {
-            CustomerModel customer = customerController.GetCustomerByCustomerId(cmbCustomer.Text);
-            if (customer != null)
+            if(cmbCustomer.Text != "-- customer id --")
             {
-                lblName.Text = customer.Name;
-                lblAddress.Text = customer.Address;
-                lblPhoneNo.Text = customer.ContactNo;
+                CustomerModel customer = customerController.GetCustomerByCustomerId(cmbCustomer.Text);
+                if (customer != null)
+                {
+                    lblName.Text = customer.Name;
+                    lblAddress.Text = customer.Address;
+                    lblPhoneNo.Text = customer.ContactNo;
+                }
+                else
+                {
+                    setCustomerDetails();
+                }
             }
             else
             {
-                setCustomerDetails();
+                setCustomerDetails() ;
             }
         }
 
@@ -64,6 +70,7 @@ namespace inventory_management_system_kap.Views
             dgvInvoice.AutoGenerateColumns = false;
 
             List<string> partNos = itemController.GetAllPartNos().ToList();
+            partNos.Insert(0, "-- part number --");
             partNo.DataSource = partNos;
 
             AddRow();
@@ -111,6 +118,9 @@ namespace inventory_management_system_kap.Views
             lblInvoiceNo.Text = "KAP-" + invoiceController.GetLastInvoiceNumber().ToString("D6");
             lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm tt");
             setCustomerDetails();
+            nudDiscount.Value = 0;
+            cmbPaymentType.SelectedIndex = 0;
+            SetCustomerIdsInComboBox();
         }
 
         private void setCustomerDetails()
@@ -122,10 +132,13 @@ namespace inventory_management_system_kap.Views
 
         private void SetCustomerIdsInComboBox()
         {
-            var customerIds = customerController.GettAllCustomerId();
+            var customerIds = customerController.GettAllCustomerId().ToList();
+            customerIds.Insert(0, "-- customer id --");
 
             cmbCustomer.Items.Clear();
             cmbCustomer.Items.AddRange(customerIds.ToArray());
+
+            cmbCustomer.SelectedIndex = 0;
         }
 
         private void AddRow()
@@ -243,44 +256,64 @@ namespace inventory_management_system_kap.Views
 
         private void btnAddInvoice_Click(object sender, EventArgs e)
         {
-            InvoiceModel invoice = new InvoiceModel
+            try
             {
-                CustomerId = cmbCustomer.Text.ToString(),
-                Date = DateTime.Now,
-                DueDate = invoiceController.GetDueDate(cmbPaymentType.Text.ToLower()),
-                PaymentType = cmbPaymentType.Text.ToLower(),
-                Discount = (int)nudDiscount.Value,
-                TotalAmount = CalculateTotalAmount(),
-                PaymentStatus = "pending"
-            };
-
-            List<InvoiceItemModel> invoiceItems = new List<InvoiceItemModel>();
-            foreach (DataGridViewRow row in dgvInvoice.Rows)
-            {
-                int qty;
-
-                if (row.Cells["partNo"].Value != null && row.Cells["qty"].Value != null && row.Cells["unitPrice"].Value != null && row.Cells["amount"].Value != null && int.TryParse(row.Cells["qty"].Value.ToString(), out qty))
+                InvoiceModel invoice = new InvoiceModel
                 {
-                    string partNo = row.Cells["partNo"].Value.ToString();
-                    decimal buyingPrice = itemController.GetItemByPartNo(partNo).BuyingPrice;
-                    decimal unitPrice = itemController.GetItemByPartNo(partNo).UnitPrice;
+                    CustomerId = cmbCustomer.Text.ToString(),
+                    Date = DateTime.Now,
+                    DueDate = invoiceController.GetDueDate(cmbPaymentType.Text.ToLower()),
+                    PaymentType = cmbPaymentType.Text.ToLower(),
+                    Discount = (int)nudDiscount.Value,
+                    TotalAmount = CalculateTotalAmount(),
+                    PaymentStatus = "pending"
+                };
 
-                    var item = new InvoiceItemModel
+                List<InvoiceItemModel> invoiceItems = new List<InvoiceItemModel>();
+                foreach (DataGridViewRow row in dgvInvoice.Rows)
+                {
+                    int qty;
+
+                    if (row.Cells["partNo"].Value != null && row.Cells["qty"].Value != null && row.Cells["unitPrice"].Value != null && row.Cells["amount"].Value != null && int.TryParse(row.Cells["qty"].Value.ToString(), out qty))
                     {
-                        InvoiceNo = invoiceController.GetLastInvoiceNumber(),
-                        PartNo = partNo,
-                        Qty = qty,
-                        BuyingPrice = buyingPrice,
-                        UnitPrice = unitPrice,
-                        Amount = invoiceController.GetAmountPerItem((int)nudDiscount.Value, unitPrice, qty)
-                    };
+                        string partNo = row.Cells["partNo"].Value.ToString();
+                        decimal buyingPrice = itemController.GetItemByPartNo(partNo).BuyingPrice;
+                        decimal unitPrice = itemController.GetItemByPartNo(partNo).UnitPrice;
 
-                    invoiceItems.Add(item);
-                    itemController.UpdateQtySold(item.PartNo, item.Qty);
+                        var item = new InvoiceItemModel
+                        {
+                            InvoiceNo = invoiceController.GetLastInvoiceNumber(),
+                            PartNo = partNo,
+                            Qty = qty,
+                            BuyingPrice = buyingPrice,
+                            UnitPrice = unitPrice,
+                            Amount = invoiceController.GetAmountPerItem((int)nudDiscount.Value, unitPrice, qty)
+                        };
+
+                        invoiceItems.Add(item);
+                        itemController.UpdateQtySold(item.PartNo, item.Qty);
+                    }
                 }
+                invoiceController.AddInvoice(invoice, invoiceItems);
+                ClearPage();
             }
-            invoiceController.AddInvoice(invoice, invoiceItems);
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
 
+        private void btnDiscard_Click(object sender, EventArgs e)
+        {
+            ClearPage();
+        }
+
+        private void ClearPage()
+        {
+            dgvInvoice.Rows.Clear();
+            AddRow();
+            SetCustomerIdsInComboBox();
+            setLabels();
+        }
     }
 }
