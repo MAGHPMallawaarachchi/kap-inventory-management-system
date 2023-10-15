@@ -20,7 +20,6 @@ namespace inventory_management_system_kap.Views
     public partial class NewItemModalView : Form
     {
         private ItemController itemController;
-        private SupplierController supplierController;
         private BrandController brandController;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
 
@@ -28,15 +27,14 @@ namespace inventory_management_system_kap.Views
         {
             InitializeComponent();
             itemController = new ItemController(new ItemRepository(sqlConnectionString));
-            supplierController = new SupplierController(new SupplierRepository(sqlConnectionString));
             brandController = new BrandController(new BrandRepository(sqlConnectionString));
             SetBrandIdsInComboBox();
-            SetSupplierIdsInComboBox();
         }
 
         private void imgBtnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            ClearForm();
+            this.Close(); 
         }
 
         private void btnAddImage_Click(object sender, EventArgs e)
@@ -49,17 +47,6 @@ namespace inventory_management_system_kap.Views
                 string imagePath = openFileDialog.FileName;
                 picAddImage.Image = System.Drawing.Image.FromFile(imagePath);
             }
-        }
-
-        private void SetSupplierIdsInComboBox()
-        {
-            var supplierIds = supplierController.GetAllSupplierIds().ToList();
-            supplierIds.Insert(0, "Select a supplier");
-
-            cmbSupplier.Items.Clear();
-            cmbSupplier.Items.AddRange(supplierIds.ToArray());
-
-            cmbSupplier.SelectedIndex = 0;
         }
 
         private void SetBrandIdsInComboBox()
@@ -97,6 +84,7 @@ namespace inventory_management_system_kap.Views
                 }
 
                 itemController.AddItem(item);
+                ClearForm();
                 MessageBox.Show("Item added successfully");
             }
             catch (Exception ex)
@@ -105,5 +93,22 @@ namespace inventory_management_system_kap.Views
             }
         }
 
+        private void ClearForm()
+        {
+            txtPartNumber.Text = "";
+            txtOemNumber.Text = "";
+            cmbBrand.SelectedIndex = 0;
+            nudQuantity.Value = 0;
+            txtCategory.Text = "";
+            txtDescription.Text = "";
+            nudBuyingPrice.Value = 0.00m;
+            nudUnitPrice.Value = 0.00m;
+            picAddImage.Image = null;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
     }
 }
