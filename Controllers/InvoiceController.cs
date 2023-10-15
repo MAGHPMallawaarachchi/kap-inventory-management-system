@@ -57,5 +57,37 @@ namespace inventory_management_system_kap.Controllers
             IEnumerable<InvoiceModel> items = GetAllInvoices(page, itemsPerPage);
             return items.Any();
         }
+
+        public int GetLastInvoiceNumber()
+        {
+            return _invoiceRepository.GetLastInvoiceNumber();
+        }
+
+        public decimal GetAmountPerItem(int discount, decimal unitPrice, int qty)
+        {
+            decimal amount = (decimal)(unitPrice * qty * (100 - discount) / 100);
+            return amount;
+        }
+
+        public void AddInvoice(InvoiceModel invoice, List<InvoiceItemModel> invoiceItems)
+        {
+            _invoiceRepository.AddInvoice(invoice, invoiceItems);
+        }
+
+        public DateTime GetDueDate(string paymentType)
+        {
+            if (paymentType == "cash")
+            {
+                return DateTime.Now.AddMonths(1);
+            }
+            else if (paymentType == "credit")
+            {
+                return DateTime.Now.AddMonths(3);
+            }
+            else
+            {
+                return DateTime.Now.AddMonths(1);
+            }
+        }
     }
 }

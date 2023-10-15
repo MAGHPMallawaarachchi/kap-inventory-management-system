@@ -67,5 +67,10 @@ namespace inventory_management_system_kap.Controllers
         {
             return _customerRepository.GetAllCustomerIds();
         }
+
+        public CustomerModel GetCustomerByCustomerId(string customerId)
+        {
+            return _customerRepository.GetCustomerByCustomerId(customerId);
+        }
     }
 }

@@ -63,6 +63,7 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BrandModel.cs" />
+    <Compile Include="Models\InvoiceItemModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
