@@ -8,10 +8,12 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace inventory_management_system_kap.Views
 {
@@ -45,7 +47,7 @@ namespace inventory_management_system_kap.Views
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string imagePath = openFileDialog.FileName;
-                picAddImage.Image = Image.FromFile(imagePath);
+                picAddImage.Image = System.Drawing.Image.FromFile(imagePath);
             }
         }
 
@@ -70,5 +72,38 @@ namespace inventory_management_system_kap.Views
 
             cmbBrand.SelectedIndex = 0;
         }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ItemModel item = new ItemModel
+                {
+                    PartNo = txtPartNumber.Text,
+                    OEMNo = txtOemNumber.Text,
+                    BrandId = cmbBrand.Text,
+                    QtySold = 0,
+                    TotalQty = (int)nudQuantity.Value,
+                    Category = txtCategory.Text,
+                    Description = txtDescription.Text,
+                    BuyingPrice = nudBuyingPrice.Value,
+                    UnitPrice = nudUnitPrice.Value,
+                };
+
+                using (var stream = new MemoryStream())
+                {
+                    picAddImage.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    item.ItemImage = stream.ToArray();
+                }
+
+                itemController.AddItem(item);
+                MessageBox.Show("Item added successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
     }
 }

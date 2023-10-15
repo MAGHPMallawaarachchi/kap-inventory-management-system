@@ -464,6 +464,7 @@
             this.btnAddItem.Size = new System.Drawing.Size(96, 28);
             this.btnAddItem.TabIndex = 2;
             this.btnAddItem.Text = "Add Item";
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // guna2Panel2
             // 

@@ -172,8 +172,8 @@ namespace inventory_management_system_kap.Repositories
 
         public void AddItem(ItemModel item)
         {
-            string query = "INSERT INTO Item (PartNo, OEMNo, BrandId, QtySold, QtyInHand, TotalQty, Category, Description, BuyingPrice, UnitPrice, ItemImage) " +
-                           "VALUES (@PartNo, @OEMNo, @BrandId, @QtySold, @QtyInHand, @TotalQty, @Category, @Description, @BuyingPrice, @UnitPrice, @ItemImage)";
+            string query = "INSERT INTO Item (PartNo, OEMNo, BrandId, QtySold, TotalQty, Category, Description, BuyingPrice, UnitPrice, ItemImage) " +
+                           "VALUES (@PartNo, @OEMNo, @BrandId, @QtySold, @TotalQty, @Category, @Description, @BuyingPrice, @UnitPrice, @ItemImage)";
 
             var parameters = new Dictionary<string, object>
             {
@@ -181,7 +181,6 @@ namespace inventory_management_system_kap.Repositories
                 { "@OEMNo", item.OEMNo },
                 { "@BrandId", item.BrandId },
                 { "@QtySold", item.QtySold },
-                { "@QtyInHand", item.QtyInHand },
                 { "@TotalQty", item.TotalQty },
                 { "@Category", item.Category },
                 { "@Description", item.Description },
