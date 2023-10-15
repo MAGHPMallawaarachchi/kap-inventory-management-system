@@ -71,5 +71,10 @@ namespace inventory_management_system_kap.Controllers
         {
             _itemRepository.UpdateQtySold(partNo, qtySold);
         }
+
+        public void AddItem(ItemModel item)
+        {
+            _itemRepository.AddItem(item);
+        }
     }
 }

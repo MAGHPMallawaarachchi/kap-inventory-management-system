@@ -169,5 +169,39 @@ namespace inventory_management_system_kap.Repositories
                 command.ExecuteNonQuery();
             }
         }
+
+        public void AddItem(ItemModel item)
+        {
+            string query = "INSERT INTO Item (PartNo, OEMNo, BrandId, QtySold, QtyInHand, TotalQty, Category, Description, BuyingPrice, UnitPrice, ItemImage) " +
+                           "VALUES (@PartNo, @OEMNo, @BrandId, @QtySold, @QtyInHand, @TotalQty, @Category, @Description, @BuyingPrice, @UnitPrice, @ItemImage)";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@PartNo", item.PartNo },
+                { "@OEMNo", item.OEMNo },
+                { "@BrandId", item.BrandId },
+                { "@QtySold", item.QtySold },
+                { "@QtyInHand", item.QtyInHand },
+                { "@TotalQty", item.TotalQty },
+                { "@Category", item.Category },
+                { "@Description", item.Description },
+                { "@BuyingPrice", item.BuyingPrice },
+                { "@UnitPrice", item.UnitPrice },
+                { "@ItemImage", item.ItemImage }
+            };
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand(query, connection))
+            {
+                foreach (var param in parameters)
+                {
+                    command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                }
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
     }
 }
