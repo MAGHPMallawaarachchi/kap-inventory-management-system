@@ -31,16 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewItemModalView));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.cmbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.picAddImage = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnAddImage = new Guna.UI2.WinForms.Guna2Button();
             this.nudQuantity = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.cmbBrand = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtSupplier = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtUnitPrice = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtBuyingPrice = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDescription = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtOemNumber = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPartNumber = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblSupplier = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblQuantity = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblUnitPrice = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -57,16 +56,19 @@
             this.imgBtnClose = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lblHeading = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnAddImage = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.picAddImage = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
+            this.nudUnitPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.nudBuyingPrice = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.cmbSupplier = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAddImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnitPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -86,14 +88,14 @@
             // 
             // guna2Panel5
             // 
+            this.guna2Panel5.Controls.Add(this.cmbSupplier);
+            this.guna2Panel5.Controls.Add(this.nudBuyingPrice);
+            this.guna2Panel5.Controls.Add(this.nudUnitPrice);
+            this.guna2Panel5.Controls.Add(this.txtCategory);
             this.guna2Panel5.Controls.Add(this.picAddImage);
             this.guna2Panel5.Controls.Add(this.btnAddImage);
-            this.guna2Panel5.Controls.Add(this.cmbCategory);
             this.guna2Panel5.Controls.Add(this.nudQuantity);
             this.guna2Panel5.Controls.Add(this.cmbBrand);
-            this.guna2Panel5.Controls.Add(this.txtSupplier);
-            this.guna2Panel5.Controls.Add(this.txtUnitPrice);
-            this.guna2Panel5.Controls.Add(this.txtBuyingPrice);
             this.guna2Panel5.Controls.Add(this.txtDescription);
             this.guna2Panel5.Controls.Add(this.txtOemNumber);
             this.guna2Panel5.Controls.Add(this.txtPartNumber);
@@ -105,30 +107,38 @@
             this.guna2Panel5.Size = new System.Drawing.Size(238, 587);
             this.guna2Panel5.TabIndex = 3;
             // 
-            // cmbCategory
+            // picAddImage
             // 
-            this.cmbCategory.BackColor = System.Drawing.Color.Transparent;
-            this.cmbCategory.BorderColor = System.Drawing.Color.Transparent;
-            this.cmbCategory.BorderRadius = 6;
-            this.cmbCategory.BorderThickness = 0;
-            this.cmbCategory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.cmbCategory.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbCategory.FocusedState.Parent = this.cmbCategory;
-            this.cmbCategory.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.HoverState.Parent = this.cmbCategory;
-            this.cmbCategory.ItemHeight = 30;
-            this.cmbCategory.ItemsAppearance.Parent = this.cmbCategory;
-            this.cmbCategory.Location = new System.Drawing.Point(8, 168);
-            this.cmbCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.ShadowDecoration.Parent = this.cmbCategory;
-            this.cmbCategory.Size = new System.Drawing.Size(229, 36);
-            this.cmbCategory.TabIndex = 9;
+            this.picAddImage.BackColor = System.Drawing.Color.Transparent;
+            this.picAddImage.BorderRadius = 6;
+            this.picAddImage.Location = new System.Drawing.Point(140, 492);
+            this.picAddImage.Name = "picAddImage";
+            this.picAddImage.ShadowDecoration.Parent = this.picAddImage;
+            this.picAddImage.Size = new System.Drawing.Size(95, 80);
+            this.picAddImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAddImage.TabIndex = 11;
+            this.picAddImage.TabStop = false;
+            // 
+            // btnAddImage
+            // 
+            this.btnAddImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddImage.BorderRadius = 6;
+            this.btnAddImage.CheckedState.Parent = this.btnAddImage;
+            this.btnAddImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddImage.CustomImages.Parent = this.btnAddImage;
+            this.btnAddImage.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.btnAddImage.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.btnAddImage.HoverState.Parent = this.btnAddImage;
+            this.btnAddImage.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImage.Image")));
+            this.btnAddImage.ImageSize = new System.Drawing.Size(11, 11);
+            this.btnAddImage.Location = new System.Drawing.Point(8, 511);
+            this.btnAddImage.Name = "btnAddImage";
+            this.btnAddImage.ShadowDecoration.Parent = this.btnAddImage;
+            this.btnAddImage.Size = new System.Drawing.Size(112, 36);
+            this.btnAddImage.TabIndex = 10;
+            this.btnAddImage.Text = "Add Image";
+            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
             // 
             // nudQuantity
             // 
@@ -154,7 +164,8 @@
             this.nudQuantity.ShadowDecoration.Parent = this.nudQuantity;
             this.nudQuantity.Size = new System.Drawing.Size(229, 36);
             this.nudQuantity.TabIndex = 8;
-            this.nudQuantity.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.nudQuantity.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudQuantity.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             // 
             // cmbBrand
             // 
@@ -180,96 +191,6 @@
             this.cmbBrand.ShadowDecoration.Parent = this.cmbBrand;
             this.cmbBrand.Size = new System.Drawing.Size(229, 36);
             this.cmbBrand.TabIndex = 7;
-            // 
-            // txtSupplier
-            // 
-            this.txtSupplier.BackColor = System.Drawing.Color.Transparent;
-            this.txtSupplier.BorderColor = System.Drawing.Color.Transparent;
-            this.txtSupplier.BorderRadius = 6;
-            this.txtSupplier.BorderThickness = 0;
-            this.txtSupplier.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSupplier.DefaultText = "";
-            this.txtSupplier.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSupplier.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSupplier.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSupplier.DisabledState.Parent = this.txtSupplier;
-            this.txtSupplier.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSupplier.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtSupplier.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSupplier.FocusedState.Parent = this.txtSupplier;
-            this.txtSupplier.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.txtSupplier.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSupplier.HoverState.Parent = this.txtSupplier;
-            this.txtSupplier.Location = new System.Drawing.Point(8, 438);
-            this.txtSupplier.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
-            this.txtSupplier.Name = "txtSupplier";
-            this.txtSupplier.PasswordChar = '\0';
-            this.txtSupplier.PlaceholderText = "Enter supplier";
-            this.txtSupplier.SelectedText = "";
-            this.txtSupplier.ShadowDecoration.Parent = this.txtSupplier;
-            this.txtSupplier.Size = new System.Drawing.Size(229, 36);
-            this.txtSupplier.TabIndex = 6;
-            // 
-            // txtUnitPrice
-            // 
-            this.txtUnitPrice.BackColor = System.Drawing.Color.Transparent;
-            this.txtUnitPrice.BorderColor = System.Drawing.Color.Transparent;
-            this.txtUnitPrice.BorderRadius = 6;
-            this.txtUnitPrice.BorderThickness = 0;
-            this.txtUnitPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUnitPrice.DefaultText = "";
-            this.txtUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtUnitPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtUnitPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUnitPrice.DisabledState.Parent = this.txtUnitPrice;
-            this.txtUnitPrice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUnitPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtUnitPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUnitPrice.FocusedState.Parent = this.txtUnitPrice;
-            this.txtUnitPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.txtUnitPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUnitPrice.HoverState.Parent = this.txtUnitPrice;
-            this.txtUnitPrice.Location = new System.Drawing.Point(8, 330);
-            this.txtUnitPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
-            this.txtUnitPrice.Name = "txtUnitPrice";
-            this.txtUnitPrice.PasswordChar = '\0';
-            this.txtUnitPrice.PlaceholderText = "Enter unit price";
-            this.txtUnitPrice.SelectedText = "";
-            this.txtUnitPrice.ShadowDecoration.Parent = this.txtUnitPrice;
-            this.txtUnitPrice.Size = new System.Drawing.Size(229, 36);
-            this.txtUnitPrice.TabIndex = 5;
-            // 
-            // txtBuyingPrice
-            // 
-            this.txtBuyingPrice.BackColor = System.Drawing.Color.Transparent;
-            this.txtBuyingPrice.BorderColor = System.Drawing.Color.Transparent;
-            this.txtBuyingPrice.BorderRadius = 6;
-            this.txtBuyingPrice.BorderThickness = 0;
-            this.txtBuyingPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuyingPrice.DefaultText = "";
-            this.txtBuyingPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBuyingPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBuyingPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuyingPrice.DisabledState.Parent = this.txtBuyingPrice;
-            this.txtBuyingPrice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBuyingPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.txtBuyingPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuyingPrice.FocusedState.Parent = this.txtBuyingPrice;
-            this.txtBuyingPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyingPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.txtBuyingPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBuyingPrice.HoverState.Parent = this.txtBuyingPrice;
-            this.txtBuyingPrice.Location = new System.Drawing.Point(8, 276);
-            this.txtBuyingPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
-            this.txtBuyingPrice.Name = "txtBuyingPrice";
-            this.txtBuyingPrice.PasswordChar = '\0';
-            this.txtBuyingPrice.PlaceholderText = "Enter buying price";
-            this.txtBuyingPrice.SelectedText = "";
-            this.txtBuyingPrice.ShadowDecoration.Parent = this.txtBuyingPrice;
-            this.txtBuyingPrice.Size = new System.Drawing.Size(229, 36);
-            this.txtBuyingPrice.TabIndex = 4;
             // 
             // txtDescription
             // 
@@ -380,6 +301,17 @@
             this.guna2Panel4.ShadowDecoration.Parent = this.guna2Panel4;
             this.guna2Panel4.Size = new System.Drawing.Size(117, 587);
             this.guna2Panel4.TabIndex = 2;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(5, 522);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(71, 18);
+            this.guna2HtmlLabel1.TabIndex = 11;
+            this.guna2HtmlLabel1.Text = "Item Image";
             // 
             // lblSupplier
             // 
@@ -568,7 +500,7 @@
             this.lblHeading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.lblHeading.Location = new System.Drawing.Point(0, 0);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(99, 35);
+            this.lblHeading.Size = new System.Drawing.Size(107, 35);
             this.lblHeading.TabIndex = 0;
             this.lblHeading.Text = "New Item";
             // 
@@ -576,49 +508,127 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btnAddImage
+            // txtCategory
             // 
-            this.btnAddImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddImage.BorderRadius = 6;
-            this.btnAddImage.CheckedState.Parent = this.btnAddImage;
-            this.btnAddImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddImage.CustomImages.Parent = this.btnAddImage;
-            this.btnAddImage.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
-            this.btnAddImage.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.btnAddImage.HoverState.Parent = this.btnAddImage;
-            this.btnAddImage.Image = ((System.Drawing.Image)(resources.GetObject("btnAddImage.Image")));
-            this.btnAddImage.ImageSize = new System.Drawing.Size(11, 11);
-            this.btnAddImage.Location = new System.Drawing.Point(8, 511);
-            this.btnAddImage.Name = "btnAddImage";
-            this.btnAddImage.ShadowDecoration.Parent = this.btnAddImage;
-            this.btnAddImage.Size = new System.Drawing.Size(112, 36);
-            this.btnAddImage.TabIndex = 10;
-            this.btnAddImage.Text = "Add Image";
-            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
+            this.txtCategory.BackColor = System.Drawing.Color.Transparent;
+            this.txtCategory.BorderColor = System.Drawing.Color.Transparent;
+            this.txtCategory.BorderRadius = 6;
+            this.txtCategory.BorderThickness = 0;
+            this.txtCategory.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCategory.DefaultText = "";
+            this.txtCategory.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCategory.DisabledState.Parent = this.txtCategory;
+            this.txtCategory.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCategory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.txtCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCategory.FocusedState.Parent = this.txtCategory;
+            this.txtCategory.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.txtCategory.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCategory.HoverState.Parent = this.txtCategory;
+            this.txtCategory.Location = new System.Drawing.Point(9, 168);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.PasswordChar = '\0';
+            this.txtCategory.PlaceholderText = "Enter category";
+            this.txtCategory.SelectedText = "";
+            this.txtCategory.ShadowDecoration.Parent = this.txtCategory;
+            this.txtCategory.Size = new System.Drawing.Size(229, 36);
+            this.txtCategory.TabIndex = 12;
             // 
-            // guna2HtmlLabel1
+            // nudUnitPrice
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(5, 522);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(71, 18);
-            this.guna2HtmlLabel1.TabIndex = 11;
-            this.guna2HtmlLabel1.Text = "Item Image";
+            this.nudUnitPrice.BackColor = System.Drawing.Color.Transparent;
+            this.nudUnitPrice.BorderColor = System.Drawing.Color.Transparent;
+            this.nudUnitPrice.BorderRadius = 6;
+            this.nudUnitPrice.BorderThickness = 0;
+            this.nudUnitPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudUnitPrice.DecimalPlaces = 2;
+            this.nudUnitPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.nudUnitPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.nudUnitPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.nudUnitPrice.DisabledState.Parent = this.nudUnitPrice;
+            this.nudUnitPrice.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
+            this.nudUnitPrice.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
+            this.nudUnitPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudUnitPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.nudUnitPrice.FocusedState.Parent = this.nudUnitPrice;
+            this.nudUnitPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudUnitPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.nudUnitPrice.Location = new System.Drawing.Point(8, 330);
+            this.nudUnitPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.nudUnitPrice.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            131072});
+            this.nudUnitPrice.Name = "nudUnitPrice";
+            this.nudUnitPrice.ShadowDecoration.Parent = this.nudUnitPrice;
+            this.nudUnitPrice.Size = new System.Drawing.Size(229, 36);
+            this.nudUnitPrice.TabIndex = 13;
+            this.nudUnitPrice.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudUnitPrice.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             // 
-            // picAddImage
+            // nudBuyingPrice
             // 
-            this.picAddImage.BackColor = System.Drawing.Color.Transparent;
-            this.picAddImage.BorderRadius = 6;
-            this.picAddImage.Location = new System.Drawing.Point(140, 492);
-            this.picAddImage.Name = "picAddImage";
-            this.picAddImage.ShadowDecoration.Parent = this.picAddImage;
-            this.picAddImage.Size = new System.Drawing.Size(95, 80);
-            this.picAddImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAddImage.TabIndex = 11;
-            this.picAddImage.TabStop = false;
+            this.nudBuyingPrice.BackColor = System.Drawing.Color.Transparent;
+            this.nudBuyingPrice.BorderColor = System.Drawing.Color.Transparent;
+            this.nudBuyingPrice.BorderRadius = 6;
+            this.nudBuyingPrice.BorderThickness = 0;
+            this.nudBuyingPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudBuyingPrice.DecimalPlaces = 2;
+            this.nudBuyingPrice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.nudBuyingPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.nudBuyingPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.nudBuyingPrice.DisabledState.Parent = this.nudBuyingPrice;
+            this.nudBuyingPrice.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
+            this.nudBuyingPrice.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
+            this.nudBuyingPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudBuyingPrice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.nudBuyingPrice.FocusedState.Parent = this.nudBuyingPrice;
+            this.nudBuyingPrice.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudBuyingPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.nudBuyingPrice.Location = new System.Drawing.Point(8, 276);
+            this.nudBuyingPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.nudBuyingPrice.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            131072});
+            this.nudBuyingPrice.Name = "nudBuyingPrice";
+            this.nudBuyingPrice.ShadowDecoration.Parent = this.nudBuyingPrice;
+            this.nudBuyingPrice.Size = new System.Drawing.Size(229, 36);
+            this.nudBuyingPrice.TabIndex = 14;
+            this.nudBuyingPrice.ThousandsSeparator = true;
+            this.nudBuyingPrice.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.nudBuyingPrice.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            // 
+            // cmbSupplier
+            // 
+            this.cmbSupplier.BackColor = System.Drawing.Color.Transparent;
+            this.cmbSupplier.BorderColor = System.Drawing.Color.Transparent;
+            this.cmbSupplier.BorderRadius = 6;
+            this.cmbSupplier.BorderThickness = 0;
+            this.cmbSupplier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbSupplier.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSupplier.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(59)))), ((int)(((byte)(60)))));
+            this.cmbSupplier.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbSupplier.FocusedState.Parent = this.cmbSupplier;
+            this.cmbSupplier.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSupplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
+            this.cmbSupplier.FormattingEnabled = true;
+            this.cmbSupplier.HoverState.Parent = this.cmbSupplier;
+            this.cmbSupplier.ItemHeight = 30;
+            this.cmbSupplier.ItemsAppearance.Parent = this.cmbSupplier;
+            this.cmbSupplier.Location = new System.Drawing.Point(8, 438);
+            this.cmbSupplier.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.cmbSupplier.Name = "cmbSupplier";
+            this.cmbSupplier.ShadowDecoration.Parent = this.cmbSupplier;
+            this.cmbSupplier.Size = new System.Drawing.Size(229, 36);
+            this.cmbSupplier.TabIndex = 15;
             // 
             // NewItemModalView
             // 
@@ -637,13 +647,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAddImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAddImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudUnitPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBuyingPrice)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -652,12 +664,8 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbCategory;
         private Guna.UI2.WinForms.Guna2NumericUpDown nudQuantity;
         private Guna.UI2.WinForms.Guna2ComboBox cmbBrand;
-        private Guna.UI2.WinForms.Guna2TextBox txtSupplier;
-        private Guna.UI2.WinForms.Guna2TextBox txtUnitPrice;
-        private Guna.UI2.WinForms.Guna2TextBox txtBuyingPrice;
         private Guna.UI2.WinForms.Guna2TextBox txtDescription;
         private Guna.UI2.WinForms.Guna2TextBox txtOemNumber;
         private Guna.UI2.WinForms.Guna2TextBox txtPartNumber;
@@ -681,5 +689,9 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private Guna.UI2.WinForms.Guna2PictureBox picAddImage;
+        private Guna.UI2.WinForms.Guna2TextBox txtCategory;
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudBuyingPrice;
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudUnitPrice;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbSupplier;
     }
 }
