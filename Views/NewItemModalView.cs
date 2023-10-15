@@ -18,12 +18,18 @@ namespace inventory_management_system_kap.Views
     public partial class NewItemModalView : Form
     {
         private ItemController itemController;
+        private SupplierController supplierController;
+        private BrandController brandController;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
 
         public NewItemModalView()
         {
             InitializeComponent();
             itemController = new ItemController(new ItemRepository(sqlConnectionString));
+            supplierController = new SupplierController(new SupplierRepository(sqlConnectionString));
+            brandController = new BrandController(new BrandRepository(sqlConnectionString));
+            SetBrandIdsInComboBox();
+            SetSupplierIdsInComboBox();
         }
 
         private void imgBtnClose_Click(object sender, EventArgs e)
@@ -41,6 +47,28 @@ namespace inventory_management_system_kap.Views
                 string imagePath = openFileDialog.FileName;
                 picAddImage.Image = Image.FromFile(imagePath);
             }
+        }
+
+        private void SetSupplierIdsInComboBox()
+        {
+            var supplierIds = supplierController.GetAllSupplierIds().ToList();
+            supplierIds.Insert(0, "Select a supplier");
+
+            cmbSupplier.Items.Clear();
+            cmbSupplier.Items.AddRange(supplierIds.ToArray());
+
+            cmbSupplier.SelectedIndex = 0;
+        }
+
+        private void SetBrandIdsInComboBox()
+        {
+            var brandIds = brandController.GetAllBrands().ToList();
+            brandIds.Insert(0, "Select a brand");
+
+            cmbBrand.Items.Clear();
+            cmbBrand.Items.AddRange(brandIds.ToArray());
+
+            cmbBrand.SelectedIndex = 0;
         }
     }
 }
