@@ -29,5 +29,17 @@ namespace inventory_management_system_kap.Controllers
             return null;
         }
 
+        public ItemDetailsModel GetItemDetailsbyBrandId(string brandId)
+        {
+            IEnumerable<ItemDetailsModel> itemDetailsList = _itemDetailsRepository.GetItemDetailsbyBrandId(brandId);
+
+            if (itemDetailsList != null && itemDetailsList.Any())
+            {
+                return itemDetailsList.First();
+            }
+
+            return null;
+        }
+
     }
 }

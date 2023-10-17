@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,26 @@ namespace inventory_management_system_kap.Views
                 lblTotalQty.Text = itemDetails.TotalQty.ToString();
                 lblQtyInHand.Text = itemDetails.QtyInHand.ToString();
                 lblQtySold.Text = itemDetails.QtySold.ToString();
-                // Set other labels accordingly
+
+                if (itemDetails.ItemImage != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(itemDetails.ItemImage))
+                    {
+                        Image itemImage = Image.FromStream(ms);
+                        guna2PictureBox1.Image = itemImage;
+                    }
+                }
+                else {
+                    guna2PictureBox1.Image = null;
+                }
+            }
+
+            ItemDetailsModel supplierDetails = controller.GetItemDetailsbyBrandId(itemDetails.BrandId);
+            if (supplierDetails != null)
+            {
+                lblSupplierName.Text = supplierDetails.Name;
+                lblSupplierEmail.Text = supplierDetails.Email;
+                lblCountryOfOrigin.Text = supplierDetails.Country;
             }
         }
 

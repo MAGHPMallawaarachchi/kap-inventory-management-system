@@ -169,7 +169,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.07726F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.922742F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel2.Controls.Add(this.btnEdit, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnBack, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblPartNo, 0, 0);
@@ -194,7 +194,7 @@
             this.btnEdit.HoverState.Parent = this.btnEdit;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageSize = new System.Drawing.Size(11, 11);
-            this.btnEdit.Location = new System.Drawing.Point(838, 3);
+            this.btnEdit.Location = new System.Drawing.Point(837, 3);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.ShadowDecoration.Parent = this.btnEdit;
             this.btnEdit.Size = new System.Drawing.Size(75, 32);
@@ -212,11 +212,11 @@
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.HoverState.Parent = this.btnBack;
-            this.btnBack.Location = new System.Drawing.Point(926, 3);
+            this.btnBack.Location = new System.Drawing.Point(925, 3);
             this.btnBack.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.btnBack.Name = "btnBack";
             this.btnBack.ShadowDecoration.Parent = this.btnBack;
-            this.btnBack.Size = new System.Drawing.Size(79, 32);
+            this.btnBack.Size = new System.Drawing.Size(80, 32);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Back";
             // 
@@ -385,7 +385,7 @@
             this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.59509F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.40491F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 275F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 276F));
             this.tableLayoutPanel9.Controls.Add(this.lblCountryOfOrigin, 2, 2);
             this.tableLayoutPanel9.Controls.Add(this.guna2HtmlLabel3, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.lblDescription, 2, 1);
@@ -410,7 +410,7 @@
             this.lblCountryOfOrigin.BackColor = System.Drawing.Color.Transparent;
             this.lblCountryOfOrigin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCountryOfOrigin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblCountryOfOrigin.Location = new System.Drawing.Point(150, 71);
+            this.lblCountryOfOrigin.Location = new System.Drawing.Point(149, 71);
             this.lblCountryOfOrigin.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.lblCountryOfOrigin.Name = "lblCountryOfOrigin";
             this.lblCountryOfOrigin.Size = new System.Drawing.Size(56, 18);
@@ -434,7 +434,7 @@
             this.lblDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblDescription.Location = new System.Drawing.Point(150, 37);
+            this.lblDescription.Location = new System.Drawing.Point(149, 37);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(175, 18);
@@ -446,7 +446,7 @@
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(123, 71);
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(122, 71);
             this.guna2HtmlLabel8.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             this.guna2HtmlLabel8.Size = new System.Drawing.Size(6, 18);
@@ -458,7 +458,7 @@
             this.lblOemNo.BackColor = System.Drawing.Color.Transparent;
             this.lblOemNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOemNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblOemNo.Location = new System.Drawing.Point(150, 3);
+            this.lblOemNo.Location = new System.Drawing.Point(149, 3);
             this.lblOemNo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.lblOemNo.Name = "lblOemNo";
             this.lblOemNo.Size = new System.Drawing.Size(78, 18);
@@ -493,7 +493,7 @@
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(123, 3);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(122, 3);
             this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             this.guna2HtmlLabel6.Size = new System.Drawing.Size(6, 18);
@@ -505,7 +505,7 @@
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(123, 37);
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(122, 37);
             this.guna2HtmlLabel7.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             this.guna2HtmlLabel7.Size = new System.Drawing.Size(6, 18);
@@ -736,7 +736,7 @@
             this.tableLayoutPanel15.ColumnCount = 3;
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.32478F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.67521F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 164F));
             this.tableLayoutPanel15.Controls.Add(this.lblSupplierEmail, 2, 1);
             this.tableLayoutPanel15.Controls.Add(this.guna2HtmlLabel30, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.lblSupplierName, 2, 0);
@@ -757,7 +757,7 @@
             this.lblSupplierEmail.BackColor = System.Drawing.Color.Transparent;
             this.lblSupplierEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupplierEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblSupplierEmail.Location = new System.Drawing.Point(118, 58);
+            this.lblSupplierEmail.Location = new System.Drawing.Point(117, 58);
             this.lblSupplierEmail.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.lblSupplierEmail.Name = "lblSupplierEmail";
             this.lblSupplierEmail.Size = new System.Drawing.Size(156, 18);
@@ -781,7 +781,7 @@
             this.lblSupplierName.BackColor = System.Drawing.Color.Transparent;
             this.lblSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupplierName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblSupplierName.Location = new System.Drawing.Point(118, 3);
+            this.lblSupplierName.Location = new System.Drawing.Point(117, 3);
             this.lblSupplierName.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.Size = new System.Drawing.Size(85, 18);
@@ -805,7 +805,7 @@
             this.guna2HtmlLabel33.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel33.Location = new System.Drawing.Point(103, 58);
+            this.guna2HtmlLabel33.Location = new System.Drawing.Point(102, 58);
             this.guna2HtmlLabel33.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.guna2HtmlLabel33.Name = "guna2HtmlLabel33";
             this.guna2HtmlLabel33.Size = new System.Drawing.Size(6, 18);
@@ -817,7 +817,7 @@
             this.guna2HtmlLabel32.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel32.Location = new System.Drawing.Point(103, 3);
+            this.guna2HtmlLabel32.Location = new System.Drawing.Point(102, 3);
             this.guna2HtmlLabel32.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.guna2HtmlLabel32.Name = "guna2HtmlLabel32";
             this.guna2HtmlLabel32.Size = new System.Drawing.Size(6, 18);
@@ -870,7 +870,7 @@
             this.tableLayoutPanel13.ColumnCount = 3;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.22222F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.77778F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 172F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tableLayoutPanel13.Controls.Add(this.lblUnitPrice, 2, 1);
             this.tableLayoutPanel13.Controls.Add(this.guna2HtmlLabel23, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.lblBuyingPrice, 2, 0);
@@ -891,7 +891,7 @@
             this.lblUnitPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblUnitPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblUnitPrice.Location = new System.Drawing.Point(128, 59);
+            this.lblUnitPrice.Location = new System.Drawing.Point(127, 59);
             this.lblUnitPrice.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.lblUnitPrice.Name = "lblUnitPrice";
             this.lblUnitPrice.Size = new System.Drawing.Size(71, 18);
@@ -915,7 +915,7 @@
             this.lblBuyingPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblBuyingPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuyingPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblBuyingPrice.Location = new System.Drawing.Point(128, 3);
+            this.lblBuyingPrice.Location = new System.Drawing.Point(127, 3);
             this.lblBuyingPrice.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.lblBuyingPrice.Name = "lblBuyingPrice";
             this.lblBuyingPrice.Size = new System.Drawing.Size(61, 18);
@@ -939,7 +939,7 @@
             this.guna2HtmlLabel26.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel26.Location = new System.Drawing.Point(106, 59);
+            this.guna2HtmlLabel26.Location = new System.Drawing.Point(105, 59);
             this.guna2HtmlLabel26.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.guna2HtmlLabel26.Name = "guna2HtmlLabel26";
             this.guna2HtmlLabel26.Size = new System.Drawing.Size(6, 18);
@@ -951,7 +951,7 @@
             this.guna2HtmlLabel25.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel25.Location = new System.Drawing.Point(106, 3);
+            this.guna2HtmlLabel25.Location = new System.Drawing.Point(105, 3);
             this.guna2HtmlLabel25.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.guna2HtmlLabel25.Name = "guna2HtmlLabel25";
             this.guna2HtmlLabel25.Size = new System.Drawing.Size(6, 18);
