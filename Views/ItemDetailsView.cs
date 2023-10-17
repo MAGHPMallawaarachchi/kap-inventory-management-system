@@ -87,5 +87,10 @@ namespace inventory_management_system_kap.Views
         {
 
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
