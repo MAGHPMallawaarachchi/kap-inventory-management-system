@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,7 @@ namespace inventory_management_system_kap.Views
 
         private void imgBtnClose_Click(object sender, EventArgs e)
         {
+            ClearForm();
             this.Close();
         }
 
@@ -44,12 +46,27 @@ namespace inventory_management_system_kap.Views
                 };
 
                 customerController.AddCustomers(customer);
+                ClearForm();
                 MessageBox.Show("A new Customer added successfully");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error has occurred: " + ex.Message);
             }
+        }
+
+        private void ClearForm()
+        {
+            txtCustomerId.Text = "";
+            txtName.Text = "";
+            txtAddress.Text = "";
+            txtCity.Text = "";
+            txtContactNumber.Text = "";
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 }
