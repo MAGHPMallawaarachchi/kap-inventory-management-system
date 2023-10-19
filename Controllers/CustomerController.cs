@@ -72,5 +72,10 @@ namespace inventory_management_system_kap.Controllers
         {
             return _customerRepository.GetCustomerByCustomerId(customerId);
         }
+
+        public void AddCustomers(CustomerModel customer)
+        {
+            _customerRepository.AddCustomer(customer);
+        }
     }
 }

@@ -165,5 +165,33 @@ namespace inventory_management_system_kap.Repositories
 
             return customers.FirstOrDefault();
         }
+
+        public void AddCustomer(CustomerModel customer)
+        {
+            string query = "INSERT INTO Customer (CustomerId, Name,Address,City,ContactNo) " +
+                           "VALUES (@CustomerId, @Name, @Address, @City, @ContactNo)";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@CustomerId,", customer.CustomerId },
+                { "@Name", customer.Name },
+                { "@Address", customer.Address },
+                { "@City", customer.City },
+                { "@ContactNo", customer.ContactNo },
+                
+            };
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand(query, connection))
+            {
+                foreach (var param in parameters)
+                {
+                    command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                }
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
