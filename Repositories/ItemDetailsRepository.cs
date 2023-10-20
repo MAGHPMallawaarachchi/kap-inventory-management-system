@@ -53,9 +53,12 @@ namespace inventory_management_system_kap.Repositories
                             Category = (string)reader["category"],
                             Description = (string)reader["description"],
                             BuyingPrice = (decimal)reader["BuyingPrice"],
-                            UnitPrice = (decimal)reader["UnitPrice"],
-                            ItemImage = (byte[])reader["ItemImage"],
+                            UnitPrice = (decimal)reader["UnitPrice"],                           
                         };
+
+                        if (reader["ItemImage"] != DBNull.Value) {
+                            itemDetailsModel.ItemImage = (byte[])reader["ItemImage"];
+                        }
                         itemDetailsList.Add(itemDetailsModel);
                     }
                 }
@@ -98,5 +101,41 @@ namespace inventory_management_system_kap.Repositories
             return itemDetailList;
 
         }
+
+        //Delete itemdetails funtion
+        public string DeleteItemDetails(string partNo)
+        {
+            string query = "DELETE FROM Item WHERE PartNo = @PartNo";
+
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PartNo", partNo);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        // Item was deleted successfully.
+                        return "Item deleted successfully.";
+                    }
+                    else
+                    {
+                        // Item with the specified PartNo was not found.
+                        return "Item not found.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions and return an error message.
+                Console.WriteLine("Error deleting item: " + ex.Message);
+                return "An error occurred while deleting the item.";
+            }
+        }
+
     }
 }

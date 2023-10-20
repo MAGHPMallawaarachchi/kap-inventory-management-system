@@ -41,5 +41,10 @@ namespace inventory_management_system_kap.Controllers
             return null;
         }
 
+        public string DeleteItemDetails(string partNo) { 
+
+            return _itemDetailsRepository.DeleteItemDetails(partNo);
+        }
+
     }
 }

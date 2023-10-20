@@ -33,6 +33,7 @@ namespace inventory_management_system_kap.Views
             LoadItemDetails(partNo);
         }
 
+        //Display item details
         private void LoadItemDetails(string partNo)
         {
             ItemDetailsModel itemDetails = controller.GetItemDetailsByPartNo(partNo);
@@ -83,9 +84,39 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(pnlItemDetails);
         }
 
+        //delete item details
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                string partNo = lblPartNo.Text;
+                string deletionMessage = controller.DeleteItemDetails(partNo);
 
+                if (deletionMessage == "Item deleted successfully.")
+                {
+                    MessageBox.Show("Item deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    this.Close();
+                }
+                else if (deletionMessage == "Item not found.")
+                {
+                    MessageBox.Show("Item not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+                else {
+                    MessageBox.Show("An error occurred during the process. Please try again!");
+                    this.Close();
+                }
+            }
+            else if (result == DialogResult.No)
+            {
+                this.Close();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                this.Close();
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
