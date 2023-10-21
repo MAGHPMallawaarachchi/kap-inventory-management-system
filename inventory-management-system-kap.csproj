@@ -65,10 +65,10 @@
     </Compile>
     <Compile Include="Models\BrandModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
-	<Compile Include="Models\ItemDetailsModel.cs" />
+    <Compile Include="Models\ItemDetailsModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\InvoiceModel.cs" />
-	<Compile Include="Models\InvoiceItemModel.cs" />
+    <Compile Include="Models\InvoiceItemModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BrandRepository.cs" />
@@ -88,6 +88,12 @@
     </Compile>
     <Compile Include="Views\CustomersView.Designer.cs">
       <DependentUpon>CustomersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditItemDetailsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditItemDetailsView.Designer.cs">
+      <DependentUpon>EditItemDetailsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FilterViews\InvoicesFilterView.cs">
       <SubType>Form</SubType>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditItemDetailsView.resx">
+      <DependentUpon>EditItemDetailsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FilterViews\InvoicesFilterView.resx">
       <DependentUpon>InvoicesFilterView.cs</DependentUpon>
