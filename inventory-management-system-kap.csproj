@@ -89,12 +89,6 @@
     <Compile Include="Views\CustomersView.Designer.cs">
       <DependentUpon>CustomersView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditItemDetailsView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\EditItemDetailsView.Designer.cs">
-      <DependentUpon>EditItemDetailsView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\FilterViews\InvoicesFilterView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CustomersView.resx">
       <DependentUpon>CustomersView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\EditItemDetailsView.resx">
-      <DependentUpon>EditItemDetailsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FilterViews\InvoicesFilterView.resx">
       <DependentUpon>InvoicesFilterView.cs</DependentUpon>

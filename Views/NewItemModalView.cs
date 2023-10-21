@@ -19,13 +19,15 @@ namespace inventory_management_system_kap.Views
 {
     public partial class NewItemModalView : Form
     {
+        private InventoryView inventoryView;
         private ItemController itemController;
         private BrandController brandController;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
 
-        public NewItemModalView()
+        public NewItemModalView(InventoryView inventoryView)
         {
             InitializeComponent();
+            this.inventoryView = inventoryView;
             itemController = new ItemController(new ItemRepository(sqlConnectionString));
             brandController = new BrandController(new BrandRepository(sqlConnectionString));
             SetBrandIdsInComboBox();
@@ -87,6 +89,7 @@ namespace inventory_management_system_kap.Views
 
                     itemController.AddItem(item);
                     ClearForm();
+                    inventoryView.RefreshDataGrid();
                     MessageBox.Show("Item added successfully");
                 }
                 catch (Exception ex)

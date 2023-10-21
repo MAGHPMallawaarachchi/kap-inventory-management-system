@@ -20,15 +20,17 @@ namespace inventory_management_system_kap.Views
 {
     public partial class ItemDetailsView : Form
     {
+        private InventoryView inventoryView;
         UIHelper UIHelper = new UIHelper();
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
         private ItemController itemController;
         private SupplierController supplierController;
         public string PartNo { get => lblPartNo.Text ; set { lblPartNo.Text = value; } }
 
-        public ItemDetailsView(string partNo)
+        public ItemDetailsView(string partNo, InventoryView inventoryView)
         {
             InitializeComponent();
+            this.inventoryView = inventoryView;
             itemController = new ItemController(new ItemRepository(sqlConnectionString));
             supplierController = new SupplierController(new SupplierRepository(sqlConnectionString));
             PartNo = partNo;
@@ -89,7 +91,7 @@ namespace inventory_management_system_kap.Views
         //delete item details
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 string partNo = lblPartNo.Text;
@@ -98,41 +100,38 @@ namespace inventory_management_system_kap.Views
                 if (deletionMessage == "Item deleted successfully.")
                 {
                     MessageBox.Show("Item deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    this.Close();
+                    CloseItemsDetails();
                 }
                 else if (deletionMessage == "Item not found.")
                 {
                     MessageBox.Show("Item not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Close();
+                }
+                else if (deletionMessage == "Item found in Invoices, cannot delete.")
+                {
+                    MessageBox.Show("Item found in Invoices, cannot delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     MessageBox.Show("An error occurred during the process. Please try again!");
-                    this.Close();
                 }
-            }
-            else if (result == DialogResult.No)
-            {
-                this.Close();
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                this.Close();
             }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            CloseItemsDetails();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string partNo = lblPartNo.Text;
-            string brandId = lblBrand.Text;
-            EditItemDetailsView editItemDetailsView = new EditItemDetailsView(partNo,brandId);
-            editItemDetailsView.ShowDialog();
+
         }
+
+        private void CloseItemsDetails()
+        {
+            this.Close();
+            inventoryView.RefreshDataGrid();
+        }
+
     }
 }

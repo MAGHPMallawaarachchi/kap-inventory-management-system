@@ -32,7 +32,7 @@ namespace inventory_management_system_kap.Views
             controller = new ItemController(new ItemRepository(sqlConnectionString));
         }
 
-        private void RefreshDataGrid()
+        public void RefreshDataGrid()
         {
             dgvItems.AutoGenerateColumns = false;
 
@@ -80,7 +80,7 @@ namespace inventory_management_system_kap.Views
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            NewItemModalView newItemModalView = new NewItemModalView();
+            NewItemModalView newItemModalView = new NewItemModalView(this);
             newItemModalView.ShowDialog();
         }
 
@@ -181,7 +181,7 @@ namespace inventory_management_system_kap.Views
             {
                 string partNo = dgvItems["PartNo", e.RowIndex].Value.ToString();
 
-                ItemDetailsView itemDetailsView = new ItemDetailsView(partNo);
+                ItemDetailsView itemDetailsView = new ItemDetailsView(partNo, this);
                 itemDetailsView.PartNo = partNo;
 
                 itemDetailsView.TopLevel = false;
