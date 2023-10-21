@@ -48,6 +48,7 @@ namespace inventory_management_system_kap.Repositories
                             Description = (string)reader["description"],
                             BuyingPrice = (decimal)reader["BuyingPrice"],
                             UnitPrice = (decimal)reader["UnitPrice"],
+                            ItemImage = (byte[])reader["ItemImage"],
                         };
                         itemList.Add(itemModel);
                     }
@@ -167,6 +168,37 @@ namespace inventory_management_system_kap.Repositories
 
                 connection.Open();
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public string DeleteItem(string partNo)
+        {
+            string query = "DELETE FROM Item WHERE PartNo = @PartNo";
+
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PartNo", partNo);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        return "Item deleted successfully.";
+                    }
+                    else
+                    {
+                        return "Item not found.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error deleting item: " + ex.Message);
+                return "An error occurred while deleting the item.";
             }
         }
     }

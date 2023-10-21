@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace inventory_management_system_kap.Models
         private string description;
         private decimal buyingPrice;
         private decimal unitPrice;
+        private byte[] itemImage;
 
         public string PartNo { get => partNo; set => partNo = value; }
         public string OEMNo { get => oemNo; set => oemNo = value; }
@@ -29,5 +31,6 @@ namespace inventory_management_system_kap.Models
         public string Description { get => description; set => description = value; }
         public decimal BuyingPrice { get => buyingPrice; set => buyingPrice = value; }
         public decimal UnitPrice { get => unitPrice; set => unitPrice = value; }
+        public byte[] ItemImage { get => itemImage; set => itemImage = value; }
     }
 }

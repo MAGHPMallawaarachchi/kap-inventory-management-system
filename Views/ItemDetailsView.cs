@@ -22,13 +22,15 @@ namespace inventory_management_system_kap.Views
     {
         UIHelper UIHelper = new UIHelper();
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
-        private ItemDetailsController controller;
+        private ItemController itemController;
+        private SupplierController supplierController;
         public string PartNo { get => lblPartNo.Text ; set { lblPartNo.Text = value; } }
 
         public ItemDetailsView(string partNo)
         {
             InitializeComponent();
-            controller = new ItemDetailsController(new ItemDetailsRepository(sqlConnectionString));
+            itemController = new ItemController(new ItemRepository(sqlConnectionString));
+            supplierController = new SupplierController(new SupplierRepository(sqlConnectionString));
             PartNo = partNo;
             LoadItemDetails(partNo);
         }
@@ -36,24 +38,24 @@ namespace inventory_management_system_kap.Views
         //Display item details
         private void LoadItemDetails(string partNo)
         {
-            ItemDetailsModel itemDetails = controller.GetItemDetailsByPartNo(partNo);
-            if (itemDetails != null)
+            ItemModel item = itemController.GetItemByPartNo(partNo);
+            if (item != null)
             {
-                lblPartNo.Text = itemDetails.PartNo;
-                lblPartNo2.Text = itemDetails.PartNo;
-                lblOemNo.Text = itemDetails.OEMNo;
-                lblDescription.Text = itemDetails.Description;
-                lblBuyingPrice.Text = "Rs. " + itemDetails.BuyingPrice.ToString("N2");
-                lblUnitPrice.Text = "Rs. " +  itemDetails.UnitPrice.ToString("N2");
-                lblBrand.Text = itemDetails.BrandId;
-                lblCategory.Text = itemDetails.Category;
-                lblTotalQty.Text = itemDetails.TotalQty.ToString();
-                lblQtyInHand.Text = itemDetails.QtyInHand.ToString();
-                lblQtySold.Text = itemDetails.QtySold.ToString();
+                lblPartNo.Text = item.PartNo;
+                lblPartNo2.Text = item.PartNo;
+                lblOemNo.Text = item.OEMNo;
+                lblDescription.Text = item.Description;
+                lblBuyingPrice.Text = "Rs. " + item.BuyingPrice.ToString("N2");
+                lblUnitPrice.Text = "Rs. " + item.UnitPrice.ToString("N2");
+                lblBrand.Text = item.BrandId;
+                lblCategory.Text = item.Category;
+                lblTotalQty.Text = item.TotalQty.ToString();
+                lblQtyInHand.Text = item.QtyInHand.ToString();
+                lblQtySold.Text = item.QtySold.ToString();
 
-                if (itemDetails.ItemImage != null)
+                if (item.ItemImage != null)
                 {
-                    using (MemoryStream ms = new MemoryStream(itemDetails.ItemImage))
+                    using (MemoryStream ms = new MemoryStream(item.ItemImage))
                     {
                         Image itemImage = Image.FromStream(ms);
                         puItemImage.Image = itemImage;
@@ -64,7 +66,7 @@ namespace inventory_management_system_kap.Views
                 }
             }
 
-            ItemDetailsModel supplierDetails = controller.GetItemDetailsbyBrandId(itemDetails.BrandId);
+            SupplierModel supplierDetails = supplierController.GetSupplierByBrand(item.BrandId.ToString());
             if (supplierDetails != null)
             {
                 lblSupplierName.Text = supplierDetails.Name;
@@ -91,7 +93,7 @@ namespace inventory_management_system_kap.Views
             if (result == DialogResult.Yes)
             {
                 string partNo = lblPartNo.Text;
-                string deletionMessage = controller.DeleteItemDetails(partNo);
+                string deletionMessage = itemController.DeleteItem(partNo);
 
                 if (deletionMessage == "Item deleted successfully.")
                 {
