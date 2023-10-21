@@ -53,11 +53,11 @@ namespace inventory_management_system_kap.Views
 
                 if (itemDetails.ItemImage != null)
                 {
-/*                    using (MemoryStream ms = new MemoryStream(itemDetails.ItemImage))
+                    using (MemoryStream ms = new MemoryStream(itemDetails.ItemImage))
                     {
                         Image itemImage = Image.FromStream(ms);
-                        guna2PictureBox1.Image = itemImage;
-                    }*/
+                        puItemImage.Image = itemImage;
+                    }
                 }
                 else {
                     puItemImage.Image = null;
