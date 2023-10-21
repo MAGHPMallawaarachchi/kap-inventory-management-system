@@ -126,5 +126,13 @@ namespace inventory_management_system_kap.Views
         {
             this.Close();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string partNo = lblPartNo.Text;
+            string brandId = lblBrand.Text;
+            EditItemDetailsView editItemDetailsView = new EditItemDetailsView(partNo,brandId);
+            editItemDetailsView.ShowDialog();
+        }
     }
 }
