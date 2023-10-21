@@ -146,31 +146,6 @@ namespace inventory_management_system_kap.Repositories
             return items.FirstOrDefault();
         }
 
-        public void UpdateQtySold(string partNo, int qtySold)
-        {
-            string query = "UPDATE Item " +
-                           "SET QtySold = QtySold + @QtySold " +
-                           "WHERE PartNo = @PartNo";
-
-            var parameters = new Dictionary<string, object>
-            {
-                { "@PartNo", partNo },
-                { "@QtySold", qtySold }
-            };
-
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand(query, connection))
-            {
-                foreach (var param in parameters)
-                {
-                    command.Parameters.Add(new SqlParameter(param.Key, param.Value));
-                }
-
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
-
         public bool IsItemAvailableInInvoice(string partNo)
         {
             string query = "SELECT COUNT(*) FROM InvoiceItem WHERE PartNo = @PartNo";

@@ -346,7 +346,6 @@ namespace inventory_management_system_kap.Views
                             };
 
                             invoiceItems.Add(item);
-                            itemController.UpdateQtySold(item.PartNo, item.Qty);
                         }
                     }
                     invoiceController.AddInvoice(invoice, invoiceItems);

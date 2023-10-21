@@ -67,11 +67,6 @@ namespace inventory_management_system_kap.Controllers
             return _itemRepository.GetItemByPartNo(partNo);
         }
 
-        public void UpdateQtySold(string partNo, int qtySold)
-        {
-            _itemRepository.UpdateQtySold(partNo, qtySold);
-        }
-
         public string DeleteItem(string partNo)
         {
             return _itemRepository.DeleteItem(partNo);
