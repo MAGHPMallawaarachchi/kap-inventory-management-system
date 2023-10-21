@@ -171,9 +171,9 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
-        public string DeleteItem(string partNo)
+        public bool IsItemAvailableInInvoice(string partNo)
         {
-            string query = "DELETE FROM Item WHERE PartNo = @PartNo";
+            string query = "SELECT COUNT(*) FROM InvoiceItem WHERE PartNo = @PartNo";
 
             try
             {
@@ -183,16 +183,47 @@ namespace inventory_management_system_kap.Repositories
                     command.Parameters.AddWithValue("@PartNo", partNo);
 
                     connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
+                    int itemCount = (int)command.ExecuteScalar();
+                    return itemCount > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error checking item availability: " + ex.Message);
+                return false;
+            }
+        }
 
-                    if (rowsAffected > 0)
+
+        public string DeleteItem(string partNo)
+        {
+            string query = "DELETE FROM Item WHERE PartNo = @PartNo";
+
+            try
+            {
+                if (!IsItemAvailableInInvoice(partNo))
+                {
+                    using (var connection = new SqlConnection(connectionString))
+                    using (var command = new SqlCommand(query, connection))
                     {
-                        return "Item deleted successfully.";
+                        command.Parameters.AddWithValue("@PartNo", partNo);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            return "Item deleted successfully.";
+                        }
+                        else
+                        {
+                            return "Item not found.";
+                        }
                     }
-                    else
-                    {
-                        return "Item not found.";
-                    }
+                }
+                else
+                {
+                    return "Item found in Invoices, cannot delete.";
                 }
             }
             catch (Exception ex)
