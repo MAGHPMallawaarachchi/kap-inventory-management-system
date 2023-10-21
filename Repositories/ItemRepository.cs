@@ -48,6 +48,7 @@ namespace inventory_management_system_kap.Repositories
                             Description = (string)reader["description"],
                             BuyingPrice = (decimal)reader["BuyingPrice"],
                             UnitPrice = (decimal)reader["UnitPrice"],
+                            ItemImage = (byte[])reader["ItemImage"],
                         };
                         itemList.Add(itemModel);
                     }
@@ -170,6 +171,68 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
+        public bool IsItemAvailableInInvoice(string partNo)
+        {
+            string query = "SELECT COUNT(*) FROM InvoiceItem WHERE PartNo = @PartNo";
+
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PartNo", partNo);
+
+                    connection.Open();
+                    int itemCount = (int)command.ExecuteScalar();
+                    return itemCount > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error checking item availability: " + ex.Message);
+                return false;
+            }
+        }
+
+
+        public string DeleteItem(string partNo)
+        {
+            string query = "DELETE FROM Item WHERE PartNo = @PartNo";
+
+            try
+            {
+                if (!IsItemAvailableInInvoice(partNo))
+                {
+                    using (var connection = new SqlConnection(connectionString))
+                    using (var command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PartNo", partNo);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            return "Item deleted successfully.";
+                        }
+                        else
+                        {
+                            return "Item not found.";
+                        }
+                    }
+                }
+                else
+                {
+                    return "Item found in Invoices, cannot delete.";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error deleting item: " + ex.Message);
+                return "An error occurred while deleting the item.";
+            }
+        }
+      
         public void AddItem(ItemModel item)
         {
             string query = "INSERT INTO Item (PartNo, OEMNo, BrandId, QtySold, TotalQty, Category, Description, BuyingPrice, UnitPrice, ItemImage) " +
@@ -201,6 +264,5 @@ namespace inventory_management_system_kap.Repositories
                 command.ExecuteNonQuery();
             }
         }
-
     }
 }
