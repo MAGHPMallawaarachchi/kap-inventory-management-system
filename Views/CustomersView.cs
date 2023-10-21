@@ -29,7 +29,7 @@ namespace inventory_management_system_kap.Views
             controller = new CustomerController(new CustomerRepository(sqlConnectionString));
         }
 
-        private void RefreshDataGrid()
+        public void RefreshDataGrid()
         {
             dgvCustomers.AutoGenerateColumns = false;
 
@@ -65,7 +65,7 @@ namespace inventory_management_system_kap.Views
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            NewCustomerModalView newCustomerModalView = new NewCustomerModalView();
+            NewCustomerModalView newCustomerModalView = new NewCustomerModalView(this);
             newCustomerModalView.ShowDialog();
         }
 

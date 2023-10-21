@@ -168,17 +168,16 @@ namespace inventory_management_system_kap.Repositories
 
         public void AddCustomer(CustomerModel customer)
         {
-            string query = "INSERT INTO Customer (CustomerId, Name,Address,City,ContactNo) " +
+            string query = "INSERT INTO Customer (CustomerId, Name, Address, City, ContactNo) " +
                            "VALUES (@CustomerId, @Name, @Address, @City, @ContactNo)";
 
             var parameters = new Dictionary<string, object>
             {
-                { "@CustomerId,", customer.CustomerId },
+                { "@CustomerId", customer.CustomerId },
                 { "@Name", customer.Name },
                 { "@Address", customer.Address },
                 { "@City", customer.City },
-                { "@ContactNo", customer.ContactNo },
-                
+                { "@ContactNo", customer.ContactNo },               
             };
 
             using (var connection = new SqlConnection(connectionString))
