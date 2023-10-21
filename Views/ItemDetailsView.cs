@@ -53,14 +53,14 @@ namespace inventory_management_system_kap.Views
 
                 if (itemDetails.ItemImage != null)
                 {
-                    using (MemoryStream ms = new MemoryStream(itemDetails.ItemImage))
+/*                    using (MemoryStream ms = new MemoryStream(itemDetails.ItemImage))
                     {
                         Image itemImage = Image.FromStream(ms);
                         guna2PictureBox1.Image = itemImage;
-                    }
+                    }*/
                 }
                 else {
-                    guna2PictureBox1.Image = null;
+                    puItemImage.Image = null;
                 }
             }
 
@@ -96,7 +96,7 @@ namespace inventory_management_system_kap.Views
                 if (deletionMessage == "Item deleted successfully.")
                 {
                     MessageBox.Show("Item deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     this.Close();
                 }
                 else if (deletionMessage == "Item not found.")
@@ -104,7 +104,8 @@ namespace inventory_management_system_kap.Views
                     MessageBox.Show("Item not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                 }
-                else {
+                else
+                {
                     MessageBox.Show("An error occurred during the process. Please try again!");
                     this.Close();
                 }
