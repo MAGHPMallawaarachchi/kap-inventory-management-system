@@ -74,8 +74,12 @@ namespace inventory_management_system_kap.Controllers
 
         public string DeleteItem(string partNo)
         {
-
             return _itemRepository.DeleteItem(partNo);
+        }
+      
+        public void AddItem(ItemModel item)
+        {
+            _itemRepository.AddItem(item);
         }
     }
 }
