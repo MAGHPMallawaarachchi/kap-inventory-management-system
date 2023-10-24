@@ -1,6 +1,7 @@
 ﻿using inventory_management_system_kap.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -52,19 +53,17 @@ namespace inventory_management_system_kap.Repositories
 
         public IEnumerable<CustomerModel> GetAll(int page, int itemsPerPage)
         {
-            int offset = (page - 1) * itemsPerPage;
-            string query = "SELECT * FROM Customer " +
-                           "ORDER BY CustomerId desc " +
-                           "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
+            string query = "SELECT * FROM GetAllCustomers(@Page, @CustomersPerPage)";
 
             var parameters = new Dictionary<string, object>
             {
-                { "@Offset", offset },
-                { "@ItemsPerPage", itemsPerPage }
+                { "@Page", page },
+                { "@CustomersPerPage", itemsPerPage }
             };
 
             return GetCustomers(query, parameters);
         }
+
 
         public IEnumerable<CustomerModel> GetByValue(string value, int page, int itemsPerPage)
         {
@@ -72,10 +71,7 @@ namespace inventory_management_system_kap.Repositories
             string CustomerId = value;
             int offset = (page - 1) * itemsPerPage;
 
-            string query = "SELECT * FROM Customer " +
-                           "WHERE CustomerId LIKE @CustomerId + '%' " +
-                           "ORDER BY CustomerId desc " +
-                           "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
+            string query = "SELECT * FROM SearchCustomersByCustomerId(@CustomerId, @Offset, @ItemsPerPage)";
 
             var parameters = new Dictionary<string, object>
             {
@@ -115,18 +111,14 @@ namespace inventory_management_system_kap.Repositories
         {
             int offset = (page - 1) * itemsPerPage;
 
-            string query = "SELECT * FROM Customer WHERE 1 = 1 ";
+            string query = "SELECT * FROM FilterCustomersByCity(@City, @Offset, @ItemsPerPage)";
 
-            var parameters = new Dictionary<string, object>();
-
-            if (!string.IsNullOrEmpty(city))
+            var parameters = new Dictionary<string, object>
             {
-                query += " AND City LIKE @City + '%' ";
-                parameters.Add("@City", city);
-            }
-
-            query += " ORDER BY CustomerId DESC " +
-                     $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY ";
+                { "@City", city },
+                { "@Offset", offset },
+                { "@ItemsPerPage", itemsPerPage }
+            };
 
             return GetCustomers(query, parameters);
         }
@@ -154,7 +146,7 @@ namespace inventory_management_system_kap.Repositories
 
         public CustomerModel GetCustomerByCustomerId(string customerId)
         {
-            string query = "SELECT * FROM Customer WHERE CustomerId = @CustomerId";
+            string query = "SELECT * FROM GetCustomerByCustomerId(@CustomerId)";
 
             var parameters = new Dictionary<string, object>
             {
@@ -168,8 +160,7 @@ namespace inventory_management_system_kap.Repositories
 
         public void AddCustomer(CustomerModel customer)
         {
-            string query = "INSERT INTO Customer (CustomerId, Name, Address, City, ContactNo) " +
-                           "VALUES (@CustomerId, @Name, @Address, @City, @ContactNo)";
+            string query = "AddCustomer";
 
             var parameters = new Dictionary<string, object>
             {
@@ -183,6 +174,8 @@ namespace inventory_management_system_kap.Repositories
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand(query, connection))
             {
+                command.CommandType = CommandType.StoredProcedure;
+
                 foreach (var param in parameters)
                 {
                     command.Parameters.Add(new SqlParameter(param.Key, param.Value));
