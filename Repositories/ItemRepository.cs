@@ -197,5 +197,23 @@ namespace inventory_management_system_kap.Repositories
                 command.ExecuteNonQuery();
             }
         }
+
+        public int CalculateTotalAvailableItems()
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalAvailableItems()";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    int result = (int)command.ExecuteScalar();
+                    return result;
+                }
+            }
+
+        }
     }
 }

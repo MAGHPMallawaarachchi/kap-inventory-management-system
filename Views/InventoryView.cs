@@ -32,7 +32,22 @@ namespace inventory_management_system_kap.Views
             controller = new ItemController(new ItemRepository(sqlConnectionString));
         }
 
-        public void RefreshDataGrid()
+        public void Refresh()
+        {
+            LoadInventorySummary();
+            RefreshDataGrid();
+        }
+
+        private void InventoryView_Load(object sender, EventArgs e)
+        {
+            UIHelper.UpdatePanelRegion(pnlInventorySummary);
+            UIHelper.UpdatePanelRegion(pnlItems);
+
+            Refresh();
+            dgvItems.DataBindingComplete += dgvItems_DataBindingComplete;
+        }
+
+        private void RefreshDataGrid()
         {
             dgvItems.AutoGenerateColumns = false;
 
@@ -51,14 +66,9 @@ namespace inventory_management_system_kap.Views
                 currentRowNumber++;
             }
         }
-
-        private void InventoryView_Load(object sender, EventArgs e)
+        private void LoadInventorySummary()
         {
-            UIHelper.UpdatePanelRegion(pnlInventorySummary);
-            UIHelper.UpdatePanelRegion(pnlItems);
-
-            RefreshDataGrid();
-            dgvItems.DataBindingComplete += dgvItems_DataBindingComplete;
+            lblItems.Text = controller.GetTotalAvailableItems().ToString();
         }
 
         private void pnlInventorySummary_SizeChanged(object sender, EventArgs e)
@@ -206,6 +216,5 @@ namespace inventory_management_system_kap.Views
         {
             dgvItems.Cursor = Cursors.Default;
         }
-
     }
 }

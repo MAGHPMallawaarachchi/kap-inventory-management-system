@@ -131,5 +131,18 @@ namespace inventory_management_system_kap.Controllers
                 MessageBox.Show("An error occurred while adding new item\n" + ex);
             }
         }
+
+        public int GetTotalAvailableItems()
+        {
+            try
+            {
+                return _itemRepository.CalculateTotalAvailableItems();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of available items\n" + ex);
+                return 0;
+            }
+        }
     }
 }

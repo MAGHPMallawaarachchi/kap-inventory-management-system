@@ -89,7 +89,7 @@ namespace inventory_management_system_kap.Views
 
                     itemController.AddItem(item);
                     ClearForm();
-                    inventoryView.RefreshDataGrid();
+                    inventoryView.Refresh();
                     MessageBox.Show("Item added successfully");
                 }
                 catch (Exception ex)
