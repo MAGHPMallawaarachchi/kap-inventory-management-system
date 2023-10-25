@@ -124,7 +124,7 @@ namespace inventory_management_system_kap.Views
         private void CloseItemsDetails()
         {
             this.Close();
-            inventoryView.Refresh();
+            inventoryView.RefreshInventoryView();
         }
 
     }

@@ -232,5 +232,22 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
+        public int CalculateLowInStockItems()
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalLowInStockItems()";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    int result = (int)command.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+
     }
 }

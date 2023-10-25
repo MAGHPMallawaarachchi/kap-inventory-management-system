@@ -157,5 +157,18 @@ namespace inventory_management_system_kap.Controllers
                 return 0;
             }
         }
+
+        public int GetLowInStockItems()
+        {
+            try
+            {
+                return _itemRepository.CalculateLowInStockItems();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of low-in-stock items\n" + ex);
+                return 0;
+            }
+        }
     }
 }

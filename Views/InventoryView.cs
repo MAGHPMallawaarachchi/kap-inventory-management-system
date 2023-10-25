@@ -32,7 +32,7 @@ namespace inventory_management_system_kap.Views
             controller = new ItemController(new ItemRepository(sqlConnectionString));
         }
 
-        public void Refresh()
+        public void RefreshInventoryView()
         {
             LoadInventorySummary();
             RefreshDataGrid();
@@ -43,7 +43,7 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(pnlInventorySummary);
             UIHelper.UpdatePanelRegion(pnlItems);
 
-            Refresh();
+            RefreshInventoryView();
             dgvItems.DataBindingComplete += dgvItems_DataBindingComplete;
         }
 
@@ -70,6 +70,7 @@ namespace inventory_management_system_kap.Views
         {
             lblItems.Text = controller.GetTotalAvailableItems().ToString();
             lblCategories.Text = controller.GetTotalCategories().ToString();
+            lblLowInStock.Text = controller.GetLowInStockItems().ToString();
         }
 
         private void pnlInventorySummary_SizeChanged(object sender, EventArgs e)
