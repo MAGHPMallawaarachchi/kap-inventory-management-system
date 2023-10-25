@@ -88,31 +88,25 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(pnlItemDetails);
         }
 
-        //delete item details
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to delete this item?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                string partNo = lblPartNo.Text;
-                string deletionMessage = itemController.DeleteItem(partNo);
+                string message = itemController.DeleteItem(PartNo);
 
-                if (deletionMessage == "Item deleted successfully.")
+                if (message == "Item deleted successfully!")
                 {
-                    MessageBox.Show("Item deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CloseItemsDetails();
                 }
-                else if (deletionMessage == "Item not found.")
+                else if (message == "Item found in Invoices, cannot delete.")
                 {
-                    MessageBox.Show("Item not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (deletionMessage == "Item found in Invoices, cannot delete.")
-                {
-                    MessageBox.Show("Item found in Invoices, cannot delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("An error occurred during the process. Please try again!");
+                    MessageBox.Show("An error occurred while deleting the item\n"+message);
                 }
             }
         }
