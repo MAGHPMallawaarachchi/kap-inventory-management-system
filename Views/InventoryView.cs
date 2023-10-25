@@ -69,6 +69,7 @@ namespace inventory_management_system_kap.Views
         private void LoadInventorySummary()
         {
             lblItems.Text = controller.GetTotalAvailableItems().ToString();
+            lblCategories.Text = controller.GetTotalCategories().ToString();
         }
 
         private void pnlInventorySummary_SizeChanged(object sender, EventArgs e)

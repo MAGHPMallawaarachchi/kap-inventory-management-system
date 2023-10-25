@@ -144,5 +144,18 @@ namespace inventory_management_system_kap.Controllers
                 return 0;
             }
         }
+
+        public int GetTotalCategories()
+        {
+            try
+            {
+                return _itemRepository.CalculateTotalCategories();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of categories\n" + ex);
+                return 0;
+            }
+        }
     }
 }
