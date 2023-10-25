@@ -59,13 +59,11 @@ namespace inventory_management_system_kap.Repositories
 
         public IEnumerable<ItemModel> GetAll(int page, int itemsPerPage)
         {
-            int offset = (page - 1) * itemsPerPage;
-            string query = "SELECT * FROM Item ORDER BY PartNo DESC " +
-                           "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
+            string query = "SELECT * FROMGetAllItems(@Page, @ItemsPerPage)";
 
             var parameters = new Dictionary<string, object>
             {
-                { "@Offset", offset },
+                { "@Page", page },
                 { "@ItemsPerPage", itemsPerPage }
             };
 
@@ -75,17 +73,15 @@ namespace inventory_management_system_kap.Repositories
         public IEnumerable<ItemModel> GetByValue(string value, int page, int itemsPerPage)
         {
             string PartNo = value;
-
             int offset = (page - 1) * itemsPerPage;
 
-            string query = "SELECT * FROM Item " +
-                           "WHERE (PartNo LIKE @PartNo+'%') " +
-                           "ORDER BY PartNo DESC " +
-                           $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY";
+            string query = "SELECT * FROM SearchItemsByPartNo(@PartNo, @Offset, @ItemsPerPage)";
 
             var parameters = new Dictionary<string, object>
             {
                 { "@PartNo", PartNo },
+                { "@Offset", offset },
+                { "@ItemsPerPage", itemsPerPage }
             };
 
             return GetItems(query, parameters);
@@ -95,18 +91,14 @@ namespace inventory_management_system_kap.Repositories
         {
             int offset = (page - 1) * itemsPerPage;
 
-            string query = "SELECT * FROM Item WHERE 1 = 1 ";
+            string query = "SELECT * FROM FilterItemsByBrandId(@BrandId, @Offset, @ItemsPerPage)";
 
-            var parameters = new Dictionary<string, object>();
-
-            if (!string.IsNullOrEmpty(brandId))
+            var parameters = new Dictionary<string, object>
             {
-                query += " AND BrandId LIKE @BrandId + '%' ";
-                parameters.Add("@BrandId", brandId);
-            }
-
-            query += " ORDER BY PartNo DESC " +
-                     $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY ";
+                { "@BrandId", brandId },
+                { "@Offset", offset },
+                { "@ItemsPerPage", itemsPerPage }
+            };
 
             return GetItems(query, parameters);
         }
@@ -134,7 +126,7 @@ namespace inventory_management_system_kap.Repositories
 
         public ItemModel GetItemByPartNo(string partNo)
         {
-            string query = "SELECT * FROM Item WHERE PartNo = @PartNo";
+            string query = "SELECT * FROM GetItemByPartNo(@PartNo)";
 
             var parameters = new Dictionary<string, object>
             {
@@ -146,72 +138,36 @@ namespace inventory_management_system_kap.Repositories
             return items.FirstOrDefault();
         }
 
-        public bool IsItemAvailableInInvoice(string partNo)
-        {
-            string query = "SELECT COUNT(*) FROM InvoiceItem WHERE PartNo = @PartNo";
-
-            try
-            {
-                using (var connection = new SqlConnection(connectionString))
-                using (var command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@PartNo", partNo);
-
-                    connection.Open();
-                    int itemCount = (int)command.ExecuteScalar();
-                    return itemCount > 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error checking item availability: " + ex.Message);
-                return false;
-            }
-        }
-
-
         public string DeleteItem(string partNo)
         {
-            string query = "DELETE FROM Item WHERE PartNo = @PartNo";
+            string query = "DeleteItem";
+            string message = "";
 
-            try
+            using (var connection = new SqlConnection(connectionString))
             {
-                if (!IsItemAvailableInInvoice(partNo))
+                using (var command = new SqlCommand(query, connection))
                 {
-                    using (var connection = new SqlConnection(connectionString))
-                    using (var command = new SqlCommand(query, connection))
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PartNo", partNo);
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if(rowsAffected == 0)
                     {
-                        command.Parameters.AddWithValue("@PartNo", partNo);
-
-                        connection.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            return "Item deleted successfully.";
-                        }
-                        else
-                        {
-                            return "Item not found.";
-                        }
+                        message = "Item found in Invoices, cannot delete.";
+                    }
+                    else if(rowsAffected == 1)
+                    {
+                        message = "Item deleted successfully!";
                     }
                 }
-                else
-                {
-                    return "Item found in Invoices, cannot delete.";
-                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error deleting item: " + ex.Message);
-                return "An error occurred while deleting the item.";
-            }
+            return message;
         }
       
         public void AddItem(ItemModel item)
         {
-            string query = "INSERT INTO Item (PartNo, OEMNo, BrandId, QtySold, TotalQty, Category, Description, BuyingPrice, UnitPrice, ItemImage) " +
-                           "VALUES (@PartNo, @OEMNo, @BrandId, @QtySold, @TotalQty, @Category, @Description, @BuyingPrice, @UnitPrice, @ItemImage)";
+            string query = "AddItem";
 
             var parameters = new Dictionary<string, object>
             {
@@ -230,6 +186,8 @@ namespace inventory_management_system_kap.Repositories
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand(query, connection))
             {
+                command.CommandType = CommandType.StoredProcedure;
+
                 foreach (var param in parameters)
                 {
                     command.Parameters.Add(new SqlParameter(param.Key, param.Value));

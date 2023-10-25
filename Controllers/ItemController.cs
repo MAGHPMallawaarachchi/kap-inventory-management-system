@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace inventory_management_system_kap.Controllers
 {
@@ -19,12 +20,28 @@ namespace inventory_management_system_kap.Controllers
 
         public IEnumerable<ItemModel> GetAllItems(int page, int itemsPerPage) 
         {
-            return _itemRepository.GetAll(page, itemsPerPage);
+            try
+            {
+                return _itemRepository.GetAll(page, itemsPerPage);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting all customers\n" + ex);
+                return null;
+            }
         }
 
         public IEnumerable<ItemModel> GetItemByValue(string value, int page, int itemsPerPage)
         {
-            return _itemRepository.GetByValue(value, page, itemsPerPage);
+            try
+            {
+                return _itemRepository.GetByValue(value, page, itemsPerPage);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching items\n" + ex);
+                return null;
+            }
         }
 
         public IEnumerable<ItemModel> SearchItem(string value, int page, int itemsPerPage)
@@ -41,13 +58,21 @@ namespace inventory_management_system_kap.Controllers
 
         public IEnumerable<ItemModel> FilterItems(string brandId, int page, int itemsPerPage)
         {
-            if (brandId == null)
+            try
             {
-                return _itemRepository.GetAll(page, itemsPerPage);
+                if (brandId == null)
+                {
+                    return _itemRepository.GetAll(page, itemsPerPage);
+                }
+                else
+                {
+                    return _itemRepository.FilterItems(brandId, page, itemsPerPage);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return _itemRepository.FilterItems(brandId, page, itemsPerPage);
+                MessageBox.Show("An error occurred while filtering items\n" + ex);
+                return null;
             }
         }
 
@@ -59,22 +84,52 @@ namespace inventory_management_system_kap.Controllers
 
         public IEnumerable<string> GetAllPartNos()
         {
-            return _itemRepository.GetAllPartNos();
+            try
+            {
+                return _itemRepository.GetAllPartNos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting part numbers\n" + ex);
+                return null;
+            }
         }
 
         public ItemModel GetItemByPartNo(string partNo)
         {
-            return _itemRepository.GetItemByPartNo(partNo);
+            try
+            {
+                return _itemRepository.GetItemByPartNo(partNo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting item\n" + ex);
+                return null;
+            }
         }
 
         public string DeleteItem(string partNo)
         {
-            return _itemRepository.DeleteItem(partNo);
+            try
+            {
+                return _itemRepository.DeleteItem(partNo);
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
         }
       
         public void AddItem(ItemModel item)
         {
-            _itemRepository.AddItem(item);
+            try 
+            { 
+                _itemRepository.AddItem(item); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while adding new item\n" + ex);
+            }
         }
     }
 }
