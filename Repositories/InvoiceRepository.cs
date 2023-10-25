@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -222,6 +223,110 @@ namespace inventory_management_system_kap.Repositories
             };
 
             return GetInvoices(query, parameters);
+        }
+
+        public int CalculateTotalSales()
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalSales()";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    int result = (int)command.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+
+        public decimal CalculateTotalRevenue(DateTime startDate, DateTime endDate)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalRevenue(@StartDate, @EndDate)";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@StartDate", startDate },
+                    { "@EndDate", endDate }
+                };
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                    }
+
+                    decimal result = (decimal)command.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+
+        public decimal CalculateTotalCost(DateTime startDate, DateTime endDate)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalCost(@StartDate, @EndDate)";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@StartDate", startDate },
+                    { "@EndDate", endDate }
+                };
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                    }
+
+                    decimal result = (decimal)command.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+
+        public decimal CalculateTotalProfit(DateTime startDate, DateTime endDate)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalProfit(@StartDate, @EndDate)";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@StartDate", startDate },
+                    { "@EndDate", endDate }
+                };
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                    }
+
+                    decimal result = (decimal)command.ExecuteScalar();
+                    return result;
+                }
+            }
         }
 
     }
