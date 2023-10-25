@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace inventory_management_system_kap.Controllers
 {
@@ -19,7 +20,15 @@ namespace inventory_management_system_kap.Controllers
 
         public SupplierModel GetSupplierByBrand(string brandId)
         {
-            return _supplierRepository.GetSupplierByBrand(brandId);
+            try
+            {
+                return _supplierRepository.GetSupplierByBrand(brandId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error ocurred while getting the supplier\n"+ex);
+                return null; 
+            }
         }
     }
 }

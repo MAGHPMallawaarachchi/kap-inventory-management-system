@@ -53,7 +53,7 @@ namespace inventory_management_system_kap.Repositories
         public SupplierModel GetSupplierByBrand(string brandId)
         {
 
-            string query = "SELECT * FROM Supplier WHERE SupplierId = (SELECT SupplierId FROM Brand WHERE BrandId = @BrandId)";
+            string query = "SELECT * FROM GetSupplierByBrandId(@BrandId)";
 
             var parameters = new Dictionary<string, object> {
                 {"@BrandId",brandId }
