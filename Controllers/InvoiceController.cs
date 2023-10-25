@@ -208,5 +208,18 @@ namespace inventory_management_system_kap.Controllers
                 return 0;
             }
         }
+
+        public decimal GetTotalCost(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return _invoiceRepository.CalculateTotalCost(startDate, endDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total cost\n" + ex);
+                return 0;
+            }
+        }
     }
 }
