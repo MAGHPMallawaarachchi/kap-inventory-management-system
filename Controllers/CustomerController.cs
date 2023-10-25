@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace inventory_management_system_kap.Controllers
 {
@@ -19,13 +20,29 @@ namespace inventory_management_system_kap.Controllers
 
         public IEnumerable<CustomerModel> GetAllCustomers(int page, int itemsPerPage)
         {
-            return _customerRepository.GetAll(page, itemsPerPage);
+            try
+            {
+                return _customerRepository.GetAll(page, itemsPerPage);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting all customers\n" +ex);
+                return null;
+            }
         }
 
 
         public IEnumerable<CustomerModel> GetCustomerByValue(string value, int page, int itemsPerPage)
         {
-            return _customerRepository.GetByValue(value, page, itemsPerPage);
+            try
+            {
+                return _customerRepository.GetByValue(value, page, itemsPerPage);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching customers\n" + ex);
+                return null;
+            }
         }
 
         public IEnumerable<CustomerModel> SearchCustomer(string value, int page, int itemsPerPage)
@@ -48,34 +65,73 @@ namespace inventory_management_system_kap.Controllers
 
         public IEnumerable<string> GetCities()
         {
-            return _customerRepository.GetUniqueCities();
+            try
+            {
+                return _customerRepository.GetUniqueCities();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting cities\n" + ex);
+                return null;
+            }
         }
 
         public IEnumerable<CustomerModel> FilterCustomers(string city, int page, int itemsPerPage)
         {
-            if (city == null)
+            try
             {
-                return _customerRepository.GetAll(page, itemsPerPage);
+                if (city == null)
+                {
+                    return _customerRepository.GetAll(page, itemsPerPage);
+                }
+                else
+                {
+                    return _customerRepository.FilterCustomers(city, page, itemsPerPage);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return _customerRepository.FilterCustomers(city, page, itemsPerPage);
+                MessageBox.Show("An error occurred while filtering customers\n" + ex);
+                return null;
             }
         }
 
         public IEnumerable<string> GettAllCustomerId()
         {
-            return _customerRepository.GetAllCustomerIds();
+            try
+            {
+                return _customerRepository.GetAllCustomerIds();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting customers IDs\n" + ex);
+                return null;
+            }
         }
 
         public CustomerModel GetCustomerByCustomerId(string customerId)
         {
-            return _customerRepository.GetCustomerByCustomerId(customerId);
+            try
+            {
+                return _customerRepository.GetCustomerByCustomerId(customerId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting customers\n" + ex);
+                return null;
+            }
         }
 
         public void AddCustomers(CustomerModel customer)
         {
-            _customerRepository.AddCustomer(customer);
+            try
+            {
+                _customerRepository.AddCustomer(customer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while adding new customer\n" + ex);
+            }
         }
     }
 }
