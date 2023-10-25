@@ -28,6 +28,8 @@ namespace inventory_management_system_kap.Views
 
             controller = new CustomerController(new CustomerRepository(sqlConnectionString));
 
+            dtpToDate.MaxDate = DateTime.Now;
+
             dtpFromDate.Value = FromDate = fromDate;
             dtpToDate.Value = ToDate = toDate;
             cmbCustomer.Text = Customer = customer;

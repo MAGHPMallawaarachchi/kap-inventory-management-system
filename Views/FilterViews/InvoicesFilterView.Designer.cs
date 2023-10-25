@@ -62,19 +62,20 @@
             this.tableLayoutPanel1.Controls.Add(this.guna2HtmlLabel2, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(27, 25);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(283, 331);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(377, 407);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dtpToDate
@@ -87,12 +88,13 @@
             this.dtpToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpToDate.HoverState.Parent = this.dtpToDate;
-            this.dtpToDate.Location = new System.Drawing.Point(3, 237);
-            this.dtpToDate.MaxDate = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
+            this.dtpToDate.Location = new System.Drawing.Point(4, 293);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpToDate.MaxDate = new System.DateTime(2023, 10, 25, 14, 25, 5, 0);
             this.dtpToDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.ShadowDecoration.Parent = this.dtpToDate;
-            this.dtpToDate.Size = new System.Drawing.Size(277, 36);
+            this.dtpToDate.Size = new System.Drawing.Size(369, 44);
             this.dtpToDate.TabIndex = 17;
             this.dtpToDate.Value = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
             // 
@@ -101,9 +103,10 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(3, 215);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(4, 266);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(19, 16);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(24, 19);
             this.guna2HtmlLabel3.TabIndex = 16;
             this.guna2HtmlLabel3.Text = "To";
             // 
@@ -126,11 +129,11 @@
             this.cmbCustomer.HoverState.Parent = this.cmbCustomer;
             this.cmbCustomer.ItemHeight = 30;
             this.cmbCustomer.ItemsAppearance.Parent = this.cmbCustomer;
-            this.cmbCustomer.Location = new System.Drawing.Point(4, 73);
-            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 15);
+            this.cmbCustomer.Location = new System.Drawing.Point(5, 90);
+            this.cmbCustomer.Margin = new System.Windows.Forms.Padding(5, 4, 5, 18);
             this.cmbCustomer.Name = "cmbCustomer";
             this.cmbCustomer.ShadowDecoration.Parent = this.cmbCustomer;
-            this.cmbCustomer.Size = new System.Drawing.Size(275, 36);
+            this.cmbCustomer.Size = new System.Drawing.Size(367, 36);
             this.cmbCustomer.TabIndex = 8;
             // 
             // tableLayoutPanel2
@@ -141,11 +144,12 @@
             this.tableLayoutPanel2.Controls.Add(this.imgBtnClose, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblHeading, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(277, 34);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(369, 41);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // imgBtnClose
@@ -156,10 +160,11 @@
             this.imgBtnClose.HoverState.Parent = this.imgBtnClose;
             this.imgBtnClose.Image = ((System.Drawing.Image)(resources.GetObject("imgBtnClose.Image")));
             this.imgBtnClose.ImageSize = new System.Drawing.Size(15, 15);
-            this.imgBtnClose.Location = new System.Drawing.Point(247, 3);
+            this.imgBtnClose.Location = new System.Drawing.Point(329, 4);
+            this.imgBtnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.imgBtnClose.Name = "imgBtnClose";
             this.imgBtnClose.PressedState.Parent = this.imgBtnClose;
-            this.imgBtnClose.Size = new System.Drawing.Size(27, 23);
+            this.imgBtnClose.Size = new System.Drawing.Size(36, 28);
             this.imgBtnClose.TabIndex = 3;
             this.imgBtnClose.Click += new System.EventHandler(this.imgBtnClose_Click);
             // 
@@ -169,9 +174,10 @@
             this.lblHeading.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblHeading.Font = new System.Drawing.Font("Inter Medium", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.lblHeading.Location = new System.Drawing.Point(3, 3);
+            this.lblHeading.Location = new System.Drawing.Point(4, 4);
+            this.lblHeading.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(59, 28);
+            this.lblHeading.Size = new System.Drawing.Size(76, 33);
             this.lblHeading.TabIndex = 2;
             this.lblHeading.Text = "Filter";
             // 
@@ -180,9 +186,10 @@
             this.lblPartNumber.BackColor = System.Drawing.Color.Transparent;
             this.lblPartNumber.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPartNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.lblPartNumber.Location = new System.Drawing.Point(3, 43);
+            this.lblPartNumber.Location = new System.Drawing.Point(4, 53);
+            this.lblPartNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblPartNumber.Name = "lblPartNumber";
-            this.lblPartNumber.Size = new System.Drawing.Size(113, 18);
+            this.lblPartNumber.Size = new System.Drawing.Size(146, 22);
             this.lblPartNumber.TabIndex = 3;
             this.lblPartNumber.Text = "Sort by Customer";
             // 
@@ -196,12 +203,13 @@
             this.dtpFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpFromDate.HoverState.Parent = this.dtpFromDate;
-            this.dtpFromDate.Location = new System.Drawing.Point(3, 173);
+            this.dtpFromDate.Location = new System.Drawing.Point(4, 214);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpFromDate.MaxDate = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
             this.dtpFromDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.ShadowDecoration.Parent = this.dtpFromDate;
-            this.dtpFromDate.Size = new System.Drawing.Size(277, 36);
+            this.dtpFromDate.Size = new System.Drawing.Size(369, 44);
             this.dtpFromDate.TabIndex = 14;
             this.dtpFromDate.Value = new System.DateTime(2023, 10, 14, 0, 0, 0, 0);
             // 
@@ -210,9 +218,10 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(3, 119);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(4, 147);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(81, 18);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(105, 22);
             this.guna2HtmlLabel1.TabIndex = 13;
             this.guna2HtmlLabel1.Text = "Sort by Date";
             // 
@@ -221,9 +230,10 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Inter", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(3, 148);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(4, 183);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(35, 18);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(45, 22);
             this.guna2HtmlLabel2.TabIndex = 15;
             this.guna2HtmlLabel2.Text = "From";
             // 
@@ -235,11 +245,12 @@
             this.tableLayoutPanel3.Controls.Add(this.btnAddFilter, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnClear, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 279);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 345);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(277, 49);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(369, 58);
             this.tableLayoutPanel3.TabIndex = 18;
             // 
             // btnAddFilter
@@ -255,11 +266,11 @@
             this.btnAddFilter.HoverState.Parent = this.btnAddFilter;
             this.btnAddFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnAddFilter.Image")));
             this.btnAddFilter.ImageSize = new System.Drawing.Size(11, 11);
-            this.btnAddFilter.Location = new System.Drawing.Point(168, 15);
-            this.btnAddFilter.Margin = new System.Windows.Forms.Padding(30, 15, 3, 3);
+            this.btnAddFilter.Location = new System.Drawing.Point(224, 18);
+            this.btnAddFilter.Margin = new System.Windows.Forms.Padding(40, 18, 4, 4);
             this.btnAddFilter.Name = "btnAddFilter";
             this.btnAddFilter.ShadowDecoration.Parent = this.btnAddFilter;
-            this.btnAddFilter.Size = new System.Drawing.Size(106, 31);
+            this.btnAddFilter.Size = new System.Drawing.Size(141, 36);
             this.btnAddFilter.TabIndex = 5;
             this.btnAddFilter.Text = "Add Filter";
             this.btnAddFilter.Click += new System.EventHandler(this.btnAddFilter_Click);
@@ -278,27 +289,28 @@
             this.btnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(179)))), ((int)(((byte)(184)))));
             this.btnClear.HoverState.Parent = this.btnClear;
             this.btnClear.ImageSize = new System.Drawing.Size(11, 11);
-            this.btnClear.Location = new System.Drawing.Point(3, 15);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 15, 30, 3);
+            this.btnClear.Location = new System.Drawing.Point(4, 18);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 18, 40, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.ShadowDecoration.Parent = this.btnClear;
-            this.btnClear.Size = new System.Drawing.Size(105, 31);
+            this.btnClear.Size = new System.Drawing.Size(140, 36);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // InvoicesFilterView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(323, 371);
+            this.ClientSize = new System.Drawing.Size(431, 457);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "InvoicesFilterView";
-            this.Padding = new System.Windows.Forms.Padding(20);
+            this.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FilterPopupView_Load);
