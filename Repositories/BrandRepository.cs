@@ -18,7 +18,7 @@ namespace inventory_management_system_kap.Repositories
 
         public IEnumerable<string> GetAllBrands()
         {
-            string query = "SELECT BrandId FROM Brand";
+            string query = "SELECT * FROM GetAllBrandIds()";
 
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand(query, connection))

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace inventory_management_system_kap.Controllers
 {
@@ -19,7 +20,15 @@ namespace inventory_management_system_kap.Controllers
 
         public IEnumerable<string> GetAllBrands()
         {
-            return _brandRepository.GetAllBrands();
+            try
+            {
+                return _brandRepository.GetAllBrands();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error ocurred while getting Brand Ids\n" + ex);
+                return new List<string>();
+            }
         }
     }
 }
