@@ -26,7 +26,7 @@ namespace inventory_management_system_kap.Controllers
             }
             catch(Exception ex)
             {
-                MessageBox.Show("An error ocurred while getting Brand Ids\n" + ex);
+                MessageBox.Show("An error occurred while getting Brand Ids\n" + ex);
                 return new List<string>();
             }
         }

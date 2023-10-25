@@ -55,16 +55,14 @@ namespace inventory_management_system_kap.Repositories
             return invoiceList;
         }
 
-        public IEnumerable<InvoiceModel> GetAll(int page, int itemsPerPage)
+        public IEnumerable<InvoiceModel> GetAll(int page, int invoicesPerPage)
         {
-            int offset = (page - 1) * itemsPerPage;
-            string query = "SELECT * FROM Invoice ORDER BY InvoiceNo DESC " +
-                           "OFFSET @Offset ROWS FETCH NEXT @ItemsPerPage ROWS ONLY";
+            string query = "SELECT * FROM GetAllInvoices(@Page, @InvoicesPerPage)";
 
             var parameters = new Dictionary<string, object>
             {
-                { "@Offset", offset },
-                { "@ItemsPerPage", itemsPerPage }
+                { "@Page", page},
+                { "@InvoicesPerPage", invoicesPerPage }
             };
 
             return GetInvoices(query, parameters);
@@ -76,15 +74,14 @@ namespace inventory_management_system_kap.Repositories
             string CustomerId = value;
             int offset = (page - 1) * itemsPerPage;
 
-            string query = "SELECT * FROM Invoice " +
-                           "WHERE (InvoiceNo = @InvoiceNo OR CustomerId LIKE @CustomerId+'%') " +
-                           "ORDER BY InvoiceNo DESC " +
-                           $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY";
+            string query = "SELECT * FROM SearchInvoices(@InvoiceNo, @CustomerId, @Offset @ItemsPerPage)";
 
             var parameters = new Dictionary<string, object>
             {
                 { "@InvoiceNo", InvoiceNo },
-                { "@CustomerId", CustomerId }
+                { "@CustomerId", CustomerId },
+                { "@Offset", offset },
+                { "@ItemsPerPage", itemsPerPage }
             };
 
             return GetInvoices(query, parameters);
@@ -92,27 +89,16 @@ namespace inventory_management_system_kap.Repositories
 
         public IEnumerable<InvoiceModel> FilterInvoices(DateTime fromDate, DateTime toDate, string customer, int page, int itemsPerPage)
         {
-            int offset = (page - 1) * itemsPerPage;
+            string query = "SELECT * FROM FilterInvoices(@FromDate, @ToDate, @CustomerId, @Page, @ItemsPerPage)";
 
-            string query = "SELECT * FROM Invoice WHERE 1 = 1";
-
-            var parameters = new Dictionary<string, object>();
-
-            if (fromDate != DateTime.MinValue && toDate != DateTime.MinValue)
+            var parameters = new Dictionary<string, object>
             {
-                query += " AND Date >= @FromDate AND Date <= @ToDate";
-                parameters.Add("@FromDate", fromDate);
-                parameters.Add("@ToDate", toDate);
-            }
-
-            if (!string.IsNullOrEmpty(customer))
-            {
-                query += " AND CustomerId LIKE @CustomerId + '%'";
-                parameters.Add("@CustomerId", customer);
-            }
-
-            query += " ORDER BY InvoiceNo DESC " +
-                     $"OFFSET {offset} ROWS FETCH NEXT {itemsPerPage} ROWS ONLY";
+                { "@FromDate", fromDate },
+                { "@ToDate", toDate },
+                { "@CustomerId", customer },
+                { "@Page", page },
+                { "@ItemsPerPage", itemsPerPage }
+            };     
 
             return GetInvoices(query, parameters);
         }
@@ -147,9 +133,7 @@ namespace inventory_management_system_kap.Repositories
 
         private int InsertInvoice(InvoiceModel invoice, SqlConnection connection, SqlTransaction transaction)
         {
-            var invoiceQuery = "INSERT INTO Invoice (CustomerId, Date, DueDate, PaymentType, Discount, TotalAmount, PaymentStatus) " +
-                              "VALUES (@CustomerId, @Date, @DueDate, @PaymentType, @Discount, @TotalAmount, @PaymentStatus); " +
-                              "SELECT SCOPE_IDENTITY()";
+            var invoiceQuery = "InsertInvoice";
 
             var invoiceParameters = new Dictionary<string, object>
             {
@@ -164,6 +148,8 @@ namespace inventory_management_system_kap.Repositories
 
             using (var command = new SqlCommand(invoiceQuery, connection, transaction))
             {
+                command.CommandType = CommandType.StoredProcedure;
+
                 foreach (var param in invoiceParameters)
                 {
                     command.Parameters.Add(new SqlParameter(param.Key, param.Value));
@@ -173,14 +159,13 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
-        private void InsertInvoiceItem(InvoiceItemModel item, int invoiceId, SqlConnection connection, SqlTransaction transaction)
+        private void InsertInvoiceItem(InvoiceItemModel item, int invoiceNo, SqlConnection connection, SqlTransaction transaction)
         {
-            var invoiceItemQuery = "INSERT INTO InvoiceItem (InvoiceNo, PartNo, Qty, BuyingPrice, UnitPrice, Amount) " +
-                                "VALUES (@InvoiceNo, @PartNo, @Qty, @BuyingPrice, @UnitPrice, @Amount)";
+            var invoiceItemQuery = "InsertInvoiceItem";
 
             var invoiceItemParameters = new Dictionary<string, object>
             {
-                { "@InvoiceNo", invoiceId },
+                { "@InvoiceNo", invoiceNo },
                 { "@PartNo", item.PartNo },
                 { "@Qty", item.Qty },
                 { "@BuyingPrice", item.BuyingPrice },
@@ -190,6 +175,8 @@ namespace inventory_management_system_kap.Repositories
 
             using (var command = new SqlCommand(invoiceItemQuery, connection, transaction))
             {
+                command.CommandType = CommandType.StoredProcedure;
+
                 foreach (var param in invoiceItemParameters)
                 {
                     command.Parameters.Add(new SqlParameter(param.Key, param.Value));
@@ -199,20 +186,22 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
-        public int GetLastInvoiceNumber()
+        public int GetInvoiceNumber()
         {
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                var query = "SELECT TOP 1 InvoiceNo FROM Invoice ORDER BY InvoiceNo DESC";
+                var query = "SELECT dbo.GetLastInvoiceNo()";
 
                 using (var command = new SqlCommand(query, connection))
                 {
-                    var result = command.ExecuteScalar();
-                    if (result != DBNull.Value && result != null)
+                    command.CommandType = CommandType.Text;
+                    int lastInvoiceNo = (int)command.ExecuteScalar();
+
+                    if (lastInvoiceNo > 0)
                     {
-                        return (int)result + 1;
+                        return (int)lastInvoiceNo + 1;
                     }
                     else
                     {
@@ -220,6 +209,19 @@ namespace inventory_management_system_kap.Repositories
                     }
                 }
             }
+        }
+
+        public IEnumerable<InvoiceModel> GetInvoicesForDateRange(DateTime startDate, DateTime endDate)
+        {
+            string query = "SELECT * FROM GetInvoicesByDateRange(@StartDate, @EndDate)";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@StartDate", startDate },
+                { "@EndDate", endDate }
+            };
+
+            return GetInvoices(query, parameters);
         }
 
     }

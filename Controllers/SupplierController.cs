@@ -26,7 +26,7 @@ namespace inventory_management_system_kap.Controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error ocurred while getting the supplier\n"+ex);
+                MessageBox.Show("An error occurred while getting the supplier\n"+ex);
                 return null; 
             }
         }

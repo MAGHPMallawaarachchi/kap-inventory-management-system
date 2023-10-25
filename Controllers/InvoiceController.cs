@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace inventory_management_system_kap.Controllers
 {
@@ -19,25 +20,49 @@ namespace inventory_management_system_kap.Controllers
 
         public IEnumerable<InvoiceModel> GetAllInvoices(int page, int itemsPerPage)
         {
-            return _invoiceRepository.GetAll(page, itemsPerPage);
+            try
+            {
+                return _invoiceRepository.GetAll(page, itemsPerPage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting all invoices\n" + ex);
+                return null;
+            }
         }
 
         public IEnumerable<InvoiceModel> FilterInvoices(DateTime fromDate, DateTime toDate, string customer, int page, int itemsPerPage)
         {
-            if(fromDate == null || toDate == null || customer == null)
+            try
             {
-                return _invoiceRepository.GetAll(page, itemsPerPage);
+                if (fromDate == null || toDate == null || customer == null)
+                {
+                    return _invoiceRepository.GetAll(page, itemsPerPage);
+                }
+                else
+                {
+                    return _invoiceRepository.FilterInvoices(fromDate, toDate, customer, page, itemsPerPage);
+                }             
             }
-            else
+            catch (Exception ex)
             {
-                return _invoiceRepository.FilterInvoices(fromDate, toDate, customer, page, itemsPerPage);
+                MessageBox.Show("An error occurred while filtering invoices\n" + ex);
+                return null;
             }
         }
 
 
         public IEnumerable<InvoiceModel> GetInvoiceByValue(string value, int page, int itemsPerPage)
         {
-            return _invoiceRepository.GetByValue(value, page, itemsPerPage);
+            try
+            {
+                return _invoiceRepository.GetByValue(value, page, itemsPerPage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching invoices\n" + ex);
+                return null;
+            }
         }
 
         public IEnumerable<InvoiceModel> SearchInvoice(string value, int page, int itemsPerPage)
@@ -58,35 +83,101 @@ namespace inventory_management_system_kap.Controllers
             return items.Any();
         }
 
-        public int GetLastInvoiceNumber()
+        public int GetInvoiceNumber()
         {
-            return _invoiceRepository.GetLastInvoiceNumber();
+            try
+            {
+                return _invoiceRepository.GetInvoiceNumber();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("An error occurred while fetching the invoice number\n" + ex);
+                return 1;
+            }
         }
 
         public decimal GetAmountPerItem(int discount, decimal unitPrice, int qty)
         {
-            decimal amount = (decimal)(unitPrice * qty * (100 - discount) / 100);
-            return amount;
+            try
+            {
+                decimal amount = (decimal)(unitPrice * qty * (100 - discount) / 100);
+                return amount;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the amount\n"+ex);
+                return 0;
+            }
         }
 
         public void AddInvoice(InvoiceModel invoice, List<InvoiceItemModel> invoiceItems)
         {
-            _invoiceRepository.AddInvoice(invoice, invoiceItems);
+            try
+            {
+                _invoiceRepository.AddInvoice(invoice, invoiceItems);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while adding the invoice\n" + ex);
+            }
         }
 
         public DateTime GetDueDate(string paymentType)
         {
-            if (paymentType == "cash")
+            try
             {
-                return DateTime.Now.AddMonths(1);
+                if (paymentType == "cash")
+                {
+                    return DateTime.Now.AddMonths(1);
+                }
+                else if (paymentType == "credit")
+                {
+                    return DateTime.Now.AddMonths(3);
+                }
+                else
+                {
+                    return DateTime.Now.AddMonths(1);
+                }
             }
-            else if (paymentType == "credit")
+            catch (Exception ex)
             {
-                return DateTime.Now.AddMonths(3);
+                MessageBox.Show("An error occurred while calculating the due date\n" + ex);
+                return DateTime.Now;
             }
-            else
+        }
+
+        public IEnumerable<InvoiceModel> GetInvoicesForCurrentMonth()
+        {
+            try
             {
-                return DateTime.Now.AddMonths(1);
+                DateTime currentDate = DateTime.Now;
+                DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+                DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+                return _invoiceRepository.GetInvoicesForDateRange(firstDayOfMonth, lastDayOfMonth);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting the invoices\n"+ex);
+                return Enumerable.Empty<InvoiceModel>();
+            }
+        }
+
+        public IEnumerable<InvoiceModel> GetInvoicesForPreviousMonth()
+        {
+            try
+            {
+                DateTime currentDate = DateTime.Now;
+                DateTime firstDayOfCurrentMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+                DateTime firstDayOfPreviousMonth = firstDayOfCurrentMonth.AddMonths(-1);
+                DateTime lastDayOfPreviousMonth = firstDayOfCurrentMonth.AddDays(-1);
+
+                return _invoiceRepository.GetInvoicesForDateRange(firstDayOfPreviousMonth, lastDayOfPreviousMonth);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting the invoices\n" + ex);
+                return Enumerable.Empty<InvoiceModel>();
             }
         }
     }

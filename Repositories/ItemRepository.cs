@@ -59,7 +59,7 @@ namespace inventory_management_system_kap.Repositories
 
         public IEnumerable<ItemModel> GetAll(int page, int itemsPerPage)
         {
-            string query = "SELECT * FROMGetAllItems(@Page, @ItemsPerPage)";
+            string query = "SELECT * FROM GetAllItems(@Page, @ItemsPerPage)";
 
             var parameters = new Dictionary<string, object>
             {
