@@ -35,6 +35,7 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(panel3);
             UIHelper.UpdatePanelRegion(panel5);
             populateChart();
+            LoadSalesOverview();
         }
 
         private void pnlQuickActions_SizeChanged(object sender, EventArgs e)
@@ -98,6 +99,11 @@ namespace inventory_management_system_kap.Views
 
             chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Minimum = 1;
             chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Maximum = 31;
+        }
+
+        private void LoadSalesOverview()
+        {
+            lblSales.Text = controller.GetTotalSales().ToString();
         }
 
     }

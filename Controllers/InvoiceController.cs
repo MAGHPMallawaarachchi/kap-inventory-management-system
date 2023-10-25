@@ -2,6 +2,8 @@
 using inventory_management_system_kap.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -178,6 +180,19 @@ namespace inventory_management_system_kap.Controllers
             {
                 MessageBox.Show("An error occurred while getting the invoices\n" + ex);
                 return Enumerable.Empty<InvoiceModel>();
+            }
+        }
+
+        public int GetTotalSales()
+        {
+            try
+            {
+                return _invoiceRepository.CalculateTotalSales();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of sales\n" + ex);
+                return 0;
             }
         }
     }

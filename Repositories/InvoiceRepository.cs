@@ -224,5 +224,22 @@ namespace inventory_management_system_kap.Repositories
             return GetInvoices(query, parameters);
         }
 
+        public int CalculateTotalSales()
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalSales()";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    int result = (int)command.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+
     }
 }
