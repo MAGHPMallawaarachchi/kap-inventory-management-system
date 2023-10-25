@@ -1,7 +1,12 @@
-﻿using InventoryManagementSystem;
+﻿using Guna.UI2.AnimatorNS;
+using inventory_management_system_kap.Controllers;
+using inventory_management_system_kap.Models;
+using inventory_management_system_kap.Repositories;
+using InventoryManagementSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,9 +19,12 @@ namespace inventory_management_system_kap.Views
     public partial class HomeView : Form
     {
         UIHelper UIHelper = new UIHelper();
+        private InvoiceController controller;
+        private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
         public HomeView()
         {
             InitializeComponent();
+            controller = new InvoiceController(new InvoiceRepository(sqlConnectionString));
         }
 
         private void HomeView_Load(object sender, EventArgs e)
@@ -26,6 +34,7 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(pnlTopSellingItems);
             UIHelper.UpdatePanelRegion(panel3);
             UIHelper.UpdatePanelRegion(panel5);
+            populateChart();
         }
 
         private void pnlQuickActions_SizeChanged(object sender, EventArgs e)
@@ -52,5 +61,44 @@ namespace inventory_management_system_kap.Views
         {
             UIHelper.UpdatePanelRegion(panel5);
         }
+
+        private void populateChart()
+        {
+            IEnumerable<InvoiceModel> invoicesThisMonth = controller.GetInvoicesForCurrentMonth();
+            IEnumerable<InvoiceModel> invoicesLastMonth = controller.GetInvoicesForPreviousMonth();
+
+            var dailyTotalAmountsThisMonth = invoicesThisMonth
+                .GroupBy(i => i.Date.Day)
+                .OrderBy(group => group.Key)
+                .Select(group => new EarningSummaryChartDataModel
+                {
+                    Date = group.Key,
+                    TotalAmount = group.Sum(i => i.TotalAmount)
+                })
+                .ToList();
+
+            var dailyTotalAmountsLastMonth = invoicesLastMonth
+                .GroupBy(i => i.Date.Day)
+                .OrderBy(group => group.Key)
+                .Select(group => new EarningSummaryChartDataModel
+                {
+                    Date = group.Key,
+                    TotalAmount = group.Sum(i => i.TotalAmount)
+                })
+                .ToList();
+
+            chartEarningsSummary.Series["ThisMonth"].Points.DataBind(dailyTotalAmountsThisMonth, "Date", "TotalAmount", "");
+            chartEarningsSummary.Series["LastMonth"].Points.DataBind(dailyTotalAmountsLastMonth, "Date", "TotalAmount", "");
+
+            chartEarningsSummary.ChartAreas["ChartArea"].AxisY.Minimum = 0;
+
+            double maxThisMonth = (double)dailyTotalAmountsThisMonth.Max(d => d.TotalAmount);
+            double maxLastMonth = (double)dailyTotalAmountsLastMonth.Max(d => d.TotalAmount);
+            chartEarningsSummary.ChartAreas["ChartArea"].AxisY.Maximum = Math.Max(maxThisMonth, maxLastMonth);
+
+            chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Minimum = 1;
+            chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Maximum = 31;
+        }
+
     }
 }
