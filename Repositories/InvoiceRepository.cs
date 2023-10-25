@@ -300,5 +300,34 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
+        public decimal CalculateTotalProfit(DateTime startDate, DateTime endDate)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateTotalProfit(@StartDate, @EndDate)";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@StartDate", startDate },
+                    { "@EndDate", endDate }
+                };
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(new SqlParameter(param.Key, param.Value));
+                    }
+
+                    decimal result = (decimal)command.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+
     }
 }

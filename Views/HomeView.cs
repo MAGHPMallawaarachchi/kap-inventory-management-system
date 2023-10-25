@@ -109,6 +109,7 @@ namespace inventory_management_system_kap.Views
             lblSales.Text = controller.GetTotalSales().ToString();
             lblRevenue.Text = "Rs. "+controller.GetTotalRevenue(startDate, endDate).ToString("N2");
             lblCost.Text = "Rs. "+controller.GetTotalCost(startDate, endDate).ToString("N2");
+            lblProfit.Text = "Rs. "+controller.GetTotalProfit(startDate, endDate).ToString("N2");
         }
 
     }

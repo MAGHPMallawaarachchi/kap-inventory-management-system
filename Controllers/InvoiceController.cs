@@ -221,5 +221,18 @@ namespace inventory_management_system_kap.Controllers
                 return 0;
             }
         }
+
+        public decimal GetTotalProfit(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return _invoiceRepository.CalculateTotalProfit(startDate, endDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total profit\n" + ex);
+                return 0;
+            }
+        }
     }
 }
