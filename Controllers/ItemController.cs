@@ -131,5 +131,57 @@ namespace inventory_management_system_kap.Controllers
                 MessageBox.Show("An error occurred while adding new item\n" + ex);
             }
         }
+
+        public int GetTotalAvailableItems()
+        {
+            try
+            {
+                return _itemRepository.CalculateTotalAvailableItems();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of available items\n" + ex);
+                return 0;
+            }
+        }
+
+        public int GetTotalCategories()
+        {
+            try
+            {
+                return _itemRepository.CalculateTotalCategories();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of categories\n" + ex);
+                return 0;
+            }
+        }
+
+        public int GetLowInStockItems()
+        {
+            try
+            {
+                return _itemRepository.CalculateLowInStockItems();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of low-in-stock items\n" + ex);
+                return 0;
+            }
+        }
+
+        public int GetOutOfStockItems()
+        {
+            try
+            {
+                return _itemRepository.CalculateOutOfStockItems();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of out-of-stock items\n" + ex);
+                return 0;
+            }
+        }
     }
 }
