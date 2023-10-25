@@ -71,6 +71,7 @@ namespace inventory_management_system_kap.Views
             lblItems.Text = controller.GetTotalAvailableItems().ToString();
             lblCategories.Text = controller.GetTotalCategories().ToString();
             lblLowInStock.Text = controller.GetLowInStockItems().ToString();
+            lblOutOfStock.Text = controller.GetOutOfStockItems().ToString();
         }
 
         private void pnlInventorySummary_SizeChanged(object sender, EventArgs e)

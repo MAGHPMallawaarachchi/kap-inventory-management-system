@@ -170,5 +170,18 @@ namespace inventory_management_system_kap.Controllers
                 return 0;
             }
         }
+
+        public int GetOutOfStockItems()
+        {
+            try
+            {
+                return _itemRepository.CalculateOutOfStockItems();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total number of out-of-stock items\n" + ex);
+                return 0;
+            }
+        }
     }
 }
