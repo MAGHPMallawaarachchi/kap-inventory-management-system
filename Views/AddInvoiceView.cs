@@ -115,7 +115,7 @@ namespace inventory_management_system_kap.Views
 
         private void setLabels()
         {
-            lblInvoiceNo.Text = "KAP-" + invoiceController.GetLastInvoiceNumber().ToString("D6");
+            lblInvoiceNo.Text = "KAP-" + invoiceController.GetInvoiceNumber().ToString("D6");
             lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm tt");
             setCustomerDetails();
             nudDiscount.Value = 0;
@@ -337,7 +337,6 @@ namespace inventory_management_system_kap.Views
 
                             var item = new InvoiceItemModel
                             {
-                                InvoiceNo = invoiceController.GetLastInvoiceNumber(),
                                 PartNo = partNo,
                                 Qty = qty,
                                 BuyingPrice = buyingPrice,
