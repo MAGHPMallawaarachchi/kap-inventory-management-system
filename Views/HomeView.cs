@@ -103,7 +103,11 @@ namespace inventory_management_system_kap.Views
 
         private void LoadSalesOverview()
         {
+            DateTime startDate = new DateTime(2010,1,1);
+            DateTime endDate = DateTime.Now.Date;
+
             lblSales.Text = controller.GetTotalSales().ToString();
+            lblRevenue.Text = "Rs. "+controller.GetTotalRevenue(startDate, endDate).ToString("N2");
         }
 
     }

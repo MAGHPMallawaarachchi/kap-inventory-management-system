@@ -195,5 +195,18 @@ namespace inventory_management_system_kap.Controllers
                 return 0;
             }
         }
+
+        public decimal GetTotalRevenue(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return _invoiceRepository.CalculateTotalRevenue(startDate, endDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while calculating the total revenue\n" + ex);
+                return 0;
+            }
+        }
     }
 }
