@@ -88,18 +88,29 @@ namespace inventory_management_system_kap.Views
                 })
                 .ToList();
 
-            chartEarningsSummary.Series["ThisMonth"].Points.DataBind(dailyTotalAmountsThisMonth, "Date", "TotalAmount", "");
-            chartEarningsSummary.Series["LastMonth"].Points.DataBind(dailyTotalAmountsLastMonth, "Date", "TotalAmount", "");
+            // Check whether the lists are empty
+            if (dailyTotalAmountsThisMonth.Any() && dailyTotalAmountsLastMonth.Any())
+            {
+                chartEarningsSummary.Series["ThisMonth"].Points.DataBind(dailyTotalAmountsThisMonth, "Date", "TotalAmount", "");
+                chartEarningsSummary.Series["LastMonth"].Points.DataBind(dailyTotalAmountsLastMonth, "Date", "TotalAmount", "");
 
-            chartEarningsSummary.ChartAreas["ChartArea"].AxisY.Minimum = 0;
+                chartEarningsSummary.ChartAreas["ChartArea"].AxisY.Minimum = 0;
 
-            double maxThisMonth = (double)dailyTotalAmountsThisMonth.Max(d => d.TotalAmount);
-            double maxLastMonth = (double)dailyTotalAmountsLastMonth.Max(d => d.TotalAmount);
-            chartEarningsSummary.ChartAreas["ChartArea"].AxisY.Maximum = Math.Max(maxThisMonth, maxLastMonth);
+                double maxThisMonth = (double)dailyTotalAmountsThisMonth.Max(d => d.TotalAmount);
+                double maxLastMonth = (double)dailyTotalAmountsLastMonth.Max(d => d.TotalAmount);
+                chartEarningsSummary.ChartAreas["ChartArea"].AxisY.Maximum = Math.Max(maxThisMonth, maxLastMonth);
 
-            chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Minimum = 1;
-            chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Maximum = 31;
+                chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Minimum = 1;
+                chartEarningsSummary.ChartAreas["ChartArea"].AxisX.Maximum = 31;
+            }
+            else
+            {
+                // If empty, clear the existing data in the chart
+                chartEarningsSummary.Series["ThisMonth"].Points.Clear();
+                chartEarningsSummary.Series["LastMonth"].Points.Clear();
+            }
         }
+
 
         private void LoadSalesOverview()
         {

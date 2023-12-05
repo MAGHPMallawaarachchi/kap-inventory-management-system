@@ -266,5 +266,27 @@ namespace inventory_management_system_kap.Repositories
             }
         }
 
+        public decimal CalculateItemTurnoverRatio(string partNo, DateTime startDate, DateTime endDate)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT dbo.CalculateItemTurnoverRatio(@PartNo, @StartDate, @EndDate)";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.CommandType = CommandType.Text;
+
+                    command.Parameters.AddWithValue("@PartNo", partNo);
+                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
+
+                    decimal result = (decimal)command.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+
     }
 }

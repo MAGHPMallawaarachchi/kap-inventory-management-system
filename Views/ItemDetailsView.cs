@@ -40,9 +40,18 @@ namespace inventory_management_system_kap.Views
         //Display item details
         private void LoadItemDetails(string partNo)
         {
+            DateTime startDate = new DateTime(2010, 1, 1);
+            DateTime endDate = DateTime.Now;
+
+            const decimal fastMovingThreshold = 5.0m;
+            const decimal slowMovingThreshold = 1.0m;
+
+
             ItemModel item = itemController.GetItemByPartNo(partNo);
             if (item != null)
             {
+                decimal turnOverRatio = itemController.CalculateItemTurnoverRatio(item.PartNo, startDate, endDate);
+
                 lblPartNo.Text = item.PartNo;
                 lblPartNo2.Text = item.PartNo;
                 lblOemNo.Text = item.OEMNo;
@@ -54,6 +63,20 @@ namespace inventory_management_system_kap.Views
                 lblTotalQty.Text = item.TotalQty.ToString();
                 lblQtyInHand.Text = item.QtyInHand.ToString();
                 lblQtySold.Text = item.QtySold.ToString();
+                lblTurnoverRatio.Text = turnOverRatio.ToString();
+
+                if(turnOverRatio > fastMovingThreshold)
+                {
+                    lblTurnoverClass.Text = "Fast Moving";
+                }
+                else if (turnOverRatio > slowMovingThreshold)
+                {
+                    lblTurnoverClass.Text = "Moderate Moving";
+                }
+                else
+                {
+                    lblTurnoverClass.Text = "Slow Moving";
+                }
 
                 if (item.ItemImage != null)
                 {
@@ -126,6 +149,5 @@ namespace inventory_management_system_kap.Views
             this.Close();
             inventoryView.RefreshInventoryView();
         }
-
     }
 }
