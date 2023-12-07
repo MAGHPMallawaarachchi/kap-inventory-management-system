@@ -19,12 +19,14 @@ namespace inventory_management_system_kap.Views
     public partial class HomeView : Form
     {
         UIHelper UIHelper = new UIHelper();
-        private InvoiceController controller;
+        private InvoiceController _invoiceController;
+        private ItemController _itemController;
         private readonly string sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
         public HomeView()
         {
             InitializeComponent();
-            controller = new InvoiceController(new InvoiceRepository(sqlConnectionString));
+            _invoiceController = new InvoiceController(new InvoiceRepository(sqlConnectionString));
+            _itemController = new ItemController(new ItemRepository(sqlConnectionString));
         }
 
         private void HomeView_Load(object sender, EventArgs e)
@@ -36,6 +38,7 @@ namespace inventory_management_system_kap.Views
             UIHelper.UpdatePanelRegion(panel5);
             populateChart();
             LoadSalesOverview();
+            LoadInventoryOverview();
         }
 
         private void pnlQuickActions_SizeChanged(object sender, EventArgs e)
@@ -65,8 +68,8 @@ namespace inventory_management_system_kap.Views
 
         private void populateChart()
         {
-            IEnumerable<InvoiceModel> invoicesThisMonth = controller.GetInvoicesForCurrentMonth();
-            IEnumerable<InvoiceModel> invoicesLastMonth = controller.GetInvoicesForPreviousMonth();
+            IEnumerable<InvoiceModel> invoicesThisMonth = _invoiceController.GetInvoicesForCurrentMonth();
+            IEnumerable<InvoiceModel> invoicesLastMonth = _invoiceController.GetInvoicesForPreviousMonth();
 
             var dailyTotalAmountsThisMonth = invoicesThisMonth
                 .GroupBy(i => i.Date.Day)
@@ -117,11 +120,18 @@ namespace inventory_management_system_kap.Views
             DateTime startDate = new DateTime(2010,1,1);
             DateTime endDate = DateTime.Now.Date;
 
-            lblSales.Text = controller.GetTotalSales().ToString();
-            lblRevenue.Text = "Rs. "+controller.GetTotalRevenue(startDate, endDate).ToString("N2");
-            lblCost.Text = "Rs. "+controller.GetTotalCost(startDate, endDate).ToString("N2");
-            lblProfit.Text = "Rs. "+controller.GetTotalProfit(startDate, endDate).ToString("N2");
+            lblSales.Text = _invoiceController.GetTotalSales().ToString();
+            lblRevenue.Text = "Rs. "+ _invoiceController.GetTotalRevenue(startDate, endDate).ToString("N2");
+            lblCost.Text = "Rs. "+ _invoiceController.GetTotalCost(startDate, endDate).ToString("N2");
+            lblProfit.Text = "Rs. "+ _invoiceController.GetTotalProfit(startDate, endDate).ToString("N2");
         }
 
+        private void LoadInventoryOverview()
+        {
+            lblItems.Text = _itemController.GetTotalAvailableItems().ToString();
+            lblCategories.Text = _itemController.GetTotalCategories().ToString();
+            lblLowInStock.Text = _itemController.GetLowInStockItems().ToString();
+            lblOutOfStock.Text = _itemController.GetOutOfStockItems().ToString();
+        }
     }
 }

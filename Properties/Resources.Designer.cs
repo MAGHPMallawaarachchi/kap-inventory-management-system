@@ -273,6 +273,16 @@ namespace inventory_management_system_kap.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap OStock {
+            get {
+                object obj = ResourceManager.GetObject("OStock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap out_of_stock {
             get {
                 object obj = ResourceManager.GetObject("out-of-stock", resourceCulture);
@@ -326,6 +336,16 @@ namespace inventory_management_system_kap.Properties {
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stock {
+            get {
+                object obj = ResourceManager.GetObject("Stock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
